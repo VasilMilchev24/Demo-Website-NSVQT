@@ -1,18 +1,21 @@
 ---
-/** Section heading block (`.glava-sek`): eyebrow, H2 and an optional lead paragraph (default slot). */
+/** Section heading block (`.glava-sek`): eyebrow, H2 and an optional lead (`lead` prop or default slot). */
 interface Props {
   eyebrow: string;
   title: string;
+  lead?: string | undefined;
   /** Full-width long heading (`.dalgo`). */
   long?: boolean;
   centered?: boolean;
   headingClass?: string;
 }
-const { eyebrow, title, long = false, centered = false, headingClass = 'h-2' } = Astro.props;
+const { eyebrow, title, lead, long = false, centered = false, headingClass = 'h-2' } = Astro.props;
+const hasSlot = Astro.slots.has('default');
 ---
 
 <div class:list={['glava-sek', { 'glava-sek--centar': centered }]}>
   <span class="etiket">{eyebrow}</span>
   <h2 class:list={[headingClass, { dalgo: long }]}>{title}</h2>
-  {Astro.slots.has('default') && <p><slot /></p>}
+  {lead && <p>{lead}</p>}
+  {!lead && hasSlot && <p><slot /></p>}
 </div>

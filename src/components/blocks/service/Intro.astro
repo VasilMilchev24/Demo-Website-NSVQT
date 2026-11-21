@@ -1,0 +1,25 @@
+---
+/** Two-column intro: eyebrow + statement sentence on the left, prose on the right. */
+interface Props {
+  eyebrow: string;
+  statement: string;
+  size: 'l' | 'm';
+  paragraphs: string[];
+  flush: boolean;
+}
+const { eyebrow, statement, size, paragraphs, flush } = Astro.props;
+---
+
+<section class:list={['sek', { 'u-pt-0': flush }]}>
+  <div class="obv">
+    <div class="tekst-kol">
+      <div class="tekst-kol__lyavo">
+        <span class="etiket">{eyebrow}</span>
+        <p class={`izrechenie izrechenie--${size} u-mt-20`}>{statement}</p>
+      </div>
+      <div class="proza">
+        {paragraphs.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+  </div>
+</section>

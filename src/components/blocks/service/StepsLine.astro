@@ -1,0 +1,48 @@
+---
+import BackgroundWord from '@/components/ui/BackgroundWord.astro';
+import Icon from '@/components/ui/Icon.astro';
+
+/** Dark section with numbered steps on a line ("Стъпка по стъпка" / "Предлагаме"). */
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead?: string | undefined;
+  backgroundWord?: string | undefined;
+  link3d: boolean;
+  compact: boolean;
+  items: { title: string; text?: string | undefined }[];
+  flush: boolean;
+}
+const { eyebrow, title, lead, backgroundWord, link3d, compact, items, flush } = Astro.props;
+---
+
+<section class:list={['sek', 'sek--tamno', { 's-fon': backgroundWord, 'u-pt-0': flush }]}>
+  {backgroundWord && <BackgroundWord top="6%">{backgroundWord}</BackgroundWord>}
+  <div class="obv">
+    <div class="glava-sek">
+      <span class="etiket">{eyebrow}</span>
+      <h2 class="h-2">{title}</h2>
+      {lead && <p>{lead}</p>}
+      {
+        link3d && (
+          <p>
+            <a class="vrazka" href="/proces/">
+              Вижте процеса в 3D <Icon name="arrow" />
+            </a>
+          </p>
+        )
+      }
+    </div>
+    <ol class:list={['linia-st', { 'linia-st--edno': compact }]}>
+      {
+        items.map((s, i) => (
+          <li class="vlez">
+            <b>{String(i + 1).padStart(2, '0')}</b>
+            <h3>{s.title}</h3>
+            {s.text && <p>{s.text}</p>}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

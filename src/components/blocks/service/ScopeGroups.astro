@@ -1,0 +1,45 @@
+---
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import Icon from '@/components/ui/Icon.astro';
+
+/** "Обхватът": numbered groups of activities; the count chip is computed from the list. */
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead?: string | undefined;
+  groups: { title: string; items: string[]; note?: string | undefined }[];
+  footnote?: string | undefined;
+  flush: boolean;
+}
+const { eyebrow, title, lead, groups, footnote, flush } = Astro.props;
+const countLabel = (n: number) => `${n} ${n === 1 ? 'дейност' : 'дейности'}`;
+---
+
+<section class:list={['sek', { 'u-pt-0': flush }]}>
+  <div class="obv">
+    <SectionHeader eyebrow={eyebrow} title={title} lead={lead} />
+    <div class="vkl">
+      {
+        groups.map((g, i) => (
+          <div class="vkl__g vlez" data-zabava={i % 2}>
+            <div class="vkl__n">
+              <b>{String(i + 1).padStart(2, '0')}</b>
+              <span class="chip">{countLabel(g.items.length)}</span>
+            </div>
+            <h3>{g.title}</h3>
+            <ul class="spisak-otm">
+              {g.items.map((item) => (
+                <li>
+                  <Icon name="check" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            {g.note && <p class="bel">{g.note}</p>}
+          </div>
+        ))
+      }
+    </div>
+    {footnote && <p class="vodach vlez u-mt-32 u-mw-720">{footnote}</p>}
+  </div>
+</section>

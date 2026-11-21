@@ -27,6 +27,11 @@
   font: 600 14px/1 var(--f-d);
   color: var(--sky);
 }
+
+/* FIX G-09: on the white card the small sky number was 2.56:1. */
+.reshenie--guma .reshenie__n {
+  color: var(--sky-deep);
+}
 .reshenie p {
   opacity: 0.84;
 }

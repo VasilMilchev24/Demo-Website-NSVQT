@@ -1,0 +1,81 @@
+---
+import '@/styles/inner/index.css';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/blocks/PageHero.astro';
+import Intro from '@/components/blocks/service/Intro.astro';
+import ScopeGroups from '@/components/blocks/service/ScopeGroups.astro';
+import StepsLine from '@/components/blocks/service/StepsLine.astro';
+import Questions from '@/components/blocks/service/Questions.astro';
+import WhyTiles from '@/components/blocks/service/WhyTiles.astro';
+import FacadeStats from '@/components/blocks/service/FacadeStats.astro';
+import RoofSolutions from '@/components/blocks/service/RoofSolutions.astro';
+import Closing from '@/components/blocks/service/Closing.astro';
+import RelatedServices from '@/components/blocks/service/RelatedServices.astro';
+import CtaPanel from '@/components/blocks/CtaPanel.astro';
+
+export async function getStaticPaths() {
+  const services = await getCollection('uslugi');
+  return services.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+interface Props {
+  entry: CollectionEntry<'uslugi'>;
+}
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={data.seo.title} description={data.seo.description}>
+  <PageHero
+    eyebrow="Услуга"
+    title={data.title}
+    long={data.heroLong}
+    crumbs={[{ label: 'Услуги', href: '/uslugi/' }, { label: data.title }]}
+    mediaClass="usl-kadar"
+  >
+    {data.tagline}
+    <Image
+      slot="media"
+      src={data.image}
+      alt={data.title}
+      widths={[640, 1280, 2048]}
+      sizes="(max-width: 1300px) 92vw, 1240px"
+      fetchpriority="high"
+      loading="eager"
+    />
+  </PageHero>
+
+  {
+    data.sections.map((s) => {
+      switch (s.type) {
+        case 'intro':
+          return <Intro {...s} />;
+        case 'scope':
+          return <ScopeGroups {...s} />;
+        case 'steps':
+          return <StepsLine {...s} />;
+        case 'questions':
+          return <Questions {...s} />;
+        case 'why':
+          return <WhyTiles {...s} />;
+        case 'facade-stats':
+          return <FacadeStats {...s} />;
+        case 'roof-solutions':
+          return <RoofSolutions {...s} />;
+        case 'closing':
+          return (
+            <Closing {...s}>
+              <Content />
+            </Closing>
+          );
+      }
+    })
+  }
+
+  <RelatedServices exclude={entry.id} />
+
+  <CtaPanel />
+</BaseLayout>

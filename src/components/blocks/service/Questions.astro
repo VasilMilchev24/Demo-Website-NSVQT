@@ -1,0 +1,31 @@
+---
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+
+/** "Какво е важно да знаете преди ремонта?" — numbered question tiles + closing note. */
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  items: string[];
+  footnote: string;
+  flush: boolean;
+}
+const { eyebrow, title, lead, items, footnote, flush } = Astro.props;
+---
+
+<section class:list={['sek', { 'u-pt-0': flush }]}>
+  <div class="obv">
+    <SectionHeader eyebrow={eyebrow} title={title} lead={lead} />
+    <div class="vaprosi">
+      {
+        items.map((q, i) => (
+          <div class="vapros vlez" data-zabava={i % 3}>
+            <span>{String(i + 1).padStart(2, '0')}</span>
+            <b>{q}</b>
+          </div>
+        ))
+      }
+    </div>
+    <p class="vodach vlez u-mt-32 u-mw-760">{footnote}</p>
+  </div>
+</section>

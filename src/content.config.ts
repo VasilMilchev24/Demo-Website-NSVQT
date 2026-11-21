@@ -8,6 +8,79 @@ const seo = z.object({
   description: z.string().min(1),
 });
 
+/**
+ * Service page sections, rendered in order by /uslugi/[slug]/. Each maps to one block component.
+ * `flush` removes the section's top padding (the original's `padding-top:0`).
+ */
+const base = { flush: z.boolean().default(false) };
+const serviceSection = z.discriminatedUnion('type', [
+  z.object({
+    ...base,
+    type: z.literal('intro'),
+    eyebrow: z.string(),
+    statement: z.string(),
+    size: z.enum(['l', 'm']).default('l'),
+    paragraphs: z.array(z.string()).min(1),
+  }),
+  z.object({
+    ...base,
+    type: z.literal('scope'),
+    eyebrow: z.string(),
+    title: z.string(),
+    lead: z.string().optional(),
+    groups: z.array(z.object({ title: z.string(), items: z.array(z.string()).min(1), note: z.string().optional() })),
+    footnote: z.string().optional(),
+  }),
+  z.object({
+    ...base,
+    type: z.literal('steps'),
+    eyebrow: z.string(),
+    title: z.string(),
+    lead: z.string().optional(),
+    backgroundWord: z.string().optional(),
+    link3d: z.boolean().default(false),
+    /** single-line steps (title only) */
+    compact: z.boolean().default(false),
+    items: z.array(z.object({ title: z.string(), text: z.string().optional() })).min(1),
+  }),
+  z.object({
+    ...base,
+    type: z.literal('questions'),
+    eyebrow: z.string(),
+    title: z.string(),
+    lead: z.string(),
+    items: z.array(z.string()).min(1),
+    footnote: z.string(),
+  }),
+  z.object({
+    ...base,
+    type: z.literal('why'),
+    eyebrow: z.string(),
+    title: z.string(),
+    lead: z.string().optional(),
+    dark: z.boolean().default(false),
+    items: z.array(z.object({ title: z.string(), text: z.string() })).min(1).max(6),
+  }),
+  z.object({ ...base, type: z.literal('facade-stats') }),
+  z.object({
+    ...base,
+    type: z.literal('roof-solutions'),
+    eyebrow: z.string(),
+    title: z.string(),
+    items: z.array(z.object({ variant: z.enum(['guma', 'bitum']), title: z.string(), text: z.string() })).length(2),
+    paragraphs: z.array(z.string()),
+  }),
+  /** Closing text block: the Markdown body of the entry, with optional heading / eyebrow / signature. */
+  z.object({
+    ...base,
+    type: z.literal('closing'),
+    eyebrow: z.string().optional(),
+    title: z.string().optional(),
+    signature: z.string().optional(),
+  }),
+]);
+export type ServiceSection = z.infer<typeof serviceSection>;
+
 /** Services ("Услуги"). Drives the mega-menu, mobile menu, footer, service cards and /uslugi/[slug]/. */
 const uslugi = defineCollection({
   loader: glob({ base: './src/content/uslugi', pattern: '**/*.md' }),
@@ -23,6 +96,9 @@ const uslugi = defineCollection({
       cardText: z.string(),
       chips: z.array(z.string()).min(1),
       image: image(),
+      /** Wide H1 style (`.dalgo`) on the service hero — every service except the bathroom page. */
+      heroLong: z.boolean().default(true),
+      sections: z.array(serviceSection).min(1),
       seo,
     }),
 });

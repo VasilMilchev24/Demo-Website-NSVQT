@@ -3,15 +3,22 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Button from '@/components/ui/Button.astro';
 import { site } from '@/config/site';
 
-/** Inner-page hero (`.str-glava`): breadcrumbs, eyebrow, H1, lead and the two contact buttons. */
+/**
+ * Inner-page hero (`.str-glava`): breadcrumbs, eyebrow, H1, lead (default slot) and the two contact
+ * buttons. An optional wide image goes in the "media" slot (rendered in `.str-glava__kadar`).
+ */
 interface Props {
   eyebrow: string;
   title: string;
   crumbs: { label: string; href?: string }[];
   /** Show "Безплатен оглед" + phone buttons under the lead (default true). */
   buttons?: boolean;
+  /** Wide H1 style (`.dalgo`). */
+  long?: boolean;
+  /** Extra classes for the media frame. */
+  mediaClass?: string;
 }
-const { eyebrow, title, crumbs, buttons = true } = Astro.props;
+const { eyebrow, title, crumbs, buttons = true, long = false, mediaClass } = Astro.props;
 ---
 
 <section class="str-glava">
@@ -20,7 +27,7 @@ const { eyebrow, title, crumbs, buttons = true } = Astro.props;
     <div class="str-glava__red">
       <div>
         <span class="etiket vlez">{eyebrow}</span>
-        <h1 class="redove u-mt-22"><span class="red"><span>{title}</span></span></h1>
+        <h1 class:list={['redove', { dalgo: long }, 'u-mt-22']}><span class="red"><span>{title}</span></span></h1>
       </div>
       <div class="vlez" data-zabava="1">
         <p class="vodach"><slot /></p>
@@ -37,5 +44,12 @@ const { eyebrow, title, crumbs, buttons = true } = Astro.props;
         }
       </div>
     </div>
+    {
+      Astro.slots.has('media') && (
+        <div class:list={['str-glava__kadar', 'otkrii', mediaClass]}>
+          <slot name="media" />
+        </div>
+      )
+    }
   </div>
 </section>

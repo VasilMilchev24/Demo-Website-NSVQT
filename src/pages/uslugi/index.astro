@@ -1,0 +1,49 @@
+---
+import '@/styles/inner/index.css';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/blocks/PageHero.astro';
+import ServiceStackCards from '@/components/blocks/ServiceStackCards.astro';
+import Marquee from '@/components/blocks/Marquee.astro';
+import PromoPair from '@/components/blocks/PromoPair.astro';
+import CtaPanel from '@/components/blocks/CtaPanel.astro';
+---
+
+<BaseLayout
+  title="Услуги"
+  description="Ремонтни дейности във Варна. Цялостни и частични ремонти на жилища (апартамент или къща), както и на бизнес имоти. Ремонт на фасади и покриви."
+>
+  <PageHero eyebrow="Услуги" title="Услуги" crumbs={[{ label: 'Услуги' }]}>
+    <strong>От ремонта на вашия дом до обновяването на цялата жилищна сграда.</strong> Когато предстои ремонт, най-важни
+    са доброто планиране, ясните условия и изпълнението, на което можете да разчитате.
+  </PageHero>
+
+  <section class="sek u-pt-0">
+    <div class="obv">
+      <div class="tekst-kol u-mb-intro">
+        <div class="tekst-kol__lyavo">
+          <p class="izrechenie izrechenie--l">От ремонта на вашия дом до обновяването на цялата жилищна сграда.</p>
+        </div>
+        <div class="proza">
+          <p>
+            Ремонт Студио предлага строително-ремонтни услуги за жилища, общи части и сгради във Варна и региона.
+            Работим както по отделни помещения и цялостни ремонти на апартаменти и къщи, така и по обновяване на
+            фасади и ремонт на покриви на жилищни и други сгради.
+          </p>
+          <p>
+            Независимо дали планирате ремонт на собственото си жилище, или търсите изпълнител от името на етажната
+            собственост, можете да разчитате на предварително уточнен обхват на работата, подробна оферта, стриктен
+            договор и организиран процес на изпълнение.
+          </p>
+        </div>
+      </div>
+      {/* FIX T-08: the cards' headings followed the H1 directly; here they are H2s (same styling). */}
+      <ServiceStackCards headingLevel={2} />
+    </div>
+  </section>
+
+  <Marquee tone="navy" />
+
+  <PromoPair />
+
+  <CtaPanel />
+</BaseLayout>

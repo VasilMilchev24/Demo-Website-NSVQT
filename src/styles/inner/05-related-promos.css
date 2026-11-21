@@ -80,6 +80,11 @@
 .promo-k--nebe .etiket {
   color: var(--navy);
 }
+
+/* FIX G-09: navy at 82% opacity on sky was 3.52:1; full navy is 4.77:1. */
+.promo-k--nebe p {
+  opacity: 1;
+}
 .promo-k--nebe .etiket::before {
   background: var(--navy);
 }

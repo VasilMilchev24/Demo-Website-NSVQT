@@ -1,0 +1,25 @@
+---
+/** Closing text block: optional eyebrow / H2 on the left, prose (Markdown body, default slot) + signature. */
+interface Props {
+  eyebrow?: string | undefined;
+  title?: string | undefined;
+  signature?: string | undefined;
+  flush: boolean;
+}
+const { eyebrow, title, signature, flush } = Astro.props;
+---
+
+<section class:list={['sek', { 'u-pt-0': flush }]}>
+  <div class="obv">
+    <div class="tekst-kol">
+      <div class="tekst-kol__lyavo">
+        {eyebrow && <span class="etiket">{eyebrow}</span>}
+        {title && <h2 class="h-2">{title}</h2>}
+      </div>
+      <div class="proza">
+        <slot />
+        {signature && <p class="podpis">{signature}</p>}
+      </div>
+    </div>
+  </div>
+</section>

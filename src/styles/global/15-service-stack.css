@@ -23,7 +23,7 @@
   background: var(--navy);
   color: #fff;
 }
-.u-karta--tamno h3 {
+.u-karta--tamno .u-karta__ime {
   color: #fff;
 }
 .u-karta--nebe {
@@ -41,7 +41,8 @@
   letter-spacing: 0.08em;
   opacity: 0.7;
 }
-.u-karta h3 {
+/* card title may be an h2 or h3 (ServiceStackCards headingLevel) */
+.u-karta .u-karta__ime {
   font-size: clamp(28px, 3vw, 44px);
 }
 .u-karta__tekst > p {

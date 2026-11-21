@@ -1,0 +1,51 @@
+---
+/**
+ * Facade service: three stat cards (materials / savings / renders). Copy kept verbatim by decision
+ * (C-14: the "до 40%" claim is the client's). Counters animate via data-broi.
+ * FIX T-08: card titles are H2 here (they follow the page H1 directly); same styling as H3.
+ */
+interface Props {
+  flush: boolean;
+}
+const { flush } = Astro.props;
+---
+
+<section class:list={['sek', { 'u-pt-0': flush }]}>
+  <div class="obv">
+    <div class="chisla chisla--3">
+      <article class="chislo chislo--navy vlez">
+        <div class="chislo__gore"><span>Изолацията</span></div>
+        <div class="chislo__n"><span data-broi="3">3</span><small>материала</small></div>
+        <div class="chislo__gr">
+          <div class="material-red"><span>EPS</span><span>XPS</span><span>Каменна вата</span></div>
+        </div>
+        <h2 class="chislo__ime">Според проекта и сградата</h2>
+      </article>
+      <article class="chislo chislo--nebe vlez" data-zabava="1">
+        <div class="chislo__gore"><span>Спестяване</span></div>
+        <div class="chislo__n">
+          <small class="u-mr-6">до</small><span data-broi="40">40</span><small>%</small>
+        </div>
+        <div class="chislo__gr">
+          <svg viewBox="0 0 260 110" class="gr gr--toplina" aria-hidden="true">
+            <rect x="10" y="20" width="240" height="26" rx="13" fill="#24345C" fill-opacity=".18"></rect>
+            <rect class="gr-lenta" x="10" y="20" width="240" height="26" rx="13" fill="#24345C"></rect>
+            <rect x="10" y="64" width="240" height="26" rx="13" fill="#fff" fill-opacity=".55"></rect>
+            <rect class="gr-lenta2" x="10" y="64" width="144" height="26" rx="13" fill="#fff"></rect>
+            <text x="16" y="14" font-family="Manrope" font-weight="700" font-size="11" fill="#24345C">преди</text>
+            <text x="16" y="106" font-family="Manrope" font-weight="700" font-size="11" fill="#24345C">след</text>
+          </svg>
+        </div>
+        <h2 class="chislo__ime">По-малко за отопление и охлаждане</h2>
+      </article>
+      <article class="chislo vlez" data-zabava="2">
+        <div class="chislo__gore"><span>Мазилките</span></div>
+        <div class="chislo__n"><span data-broi="3">3</span><small>вида</small></div>
+        <div class="chislo__gr">
+          <div class="material-red"><span>Силиконова</span><span>Силикатна</span><span>Минерална</span></div>
+        </div>
+        <h2 class="chislo__ime">Декоративни мазилки</h2>
+      </article>
+    </div>
+  </div>
+</section>

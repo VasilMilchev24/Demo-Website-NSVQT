@@ -1,0 +1,24 @@
+---
+import Icon from '@/components/ui/Icon.astro';
+
+/** Two promo cards: the 3D process and the renovation configurator (/uslugi/). */
+---
+
+<section class="sek">
+  <div class="obv">
+    <div class="dva-promo">
+      <a class="promo-k promo-k--tamno vlez" href="/proces/">
+        <span class="etiket">3D</span>
+        <h3 class="h-3">Процесът, стъпка по стъпка</h3>
+        <p>Дванайсет стъпки от огледа до ключа.</p>
+        <span class="vrazka">Към процеса <Icon name="arrow" /></span>
+      </a>
+      <a class="promo-k promo-k--nebe vlez" data-zabava="1" href="/konstruktor/">
+        <span class="etiket">Цена</span>
+        <h3 class="h-3">Конструктор на ремонта</h3>
+        <p>Изберете какво ремонтирате и вижте ориентировъчна цена по пера.</p>
+        <span class="vrazka">Към конструктора <Icon name="arrow" /></span>
+      </a>
+    </div>
+  </div>
+</section>

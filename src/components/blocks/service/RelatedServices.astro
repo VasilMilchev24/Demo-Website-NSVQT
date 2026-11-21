@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Icon from '@/components/ui/Icon.astro';
+
+/** "Вижте и": the other services as mini cards. */
+interface Props {
+  exclude: string;
+}
+const { exclude } = Astro.props;
+const services = (await getCollection('uslugi'))
+  .filter((s) => s.id !== exclude)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="sek sek--malko">
+  <div class="obv">
+    <div class="glava-sek">
+      <span class="etiket">Още услуги</span>
+      <h2 class="h-3">Вижте и</h2>
+    </div>
+    <div class="mini-uslugi">
+      {
+        services.map((s) => (
+          <a class="mini-u vlez" href={`/uslugi/${s.id}/`}>
+            <span class="mini-u__k">
+              <Image src={s.data.image} alt="" widths={[320, 640]} sizes="320px" loading="lazy" decoding="async" />
+            </span>
+            <b>{s.data.title}</b>
+            <span class="vrazka">
+              Към услугата <Icon name="arrow" />
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

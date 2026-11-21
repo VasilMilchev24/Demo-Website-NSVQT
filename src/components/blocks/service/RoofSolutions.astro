@@ -1,0 +1,42 @@
+---
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+
+/** Roof service: the two waterproofing systems with an animated cross-section of their layers. */
+interface Props {
+  eyebrow: string;
+  title: string;
+  items: { variant: 'guma' | 'bitum'; title: string; text: string }[];
+  paragraphs: string[];
+  flush: boolean;
+}
+const { eyebrow, title, items, paragraphs, flush } = Astro.props;
+const LAYERS = {
+  guma: ['beton', 'grund', 'guma'],
+  bitum: ['beton', 'grund', 'membr', 'membr2'],
+} as const;
+---
+
+<section class:list={['sek', { 'u-pt-0': flush }]}>
+  <div class="obv">
+    <SectionHeader eyebrow={eyebrow} title={title} />
+    <div class="dve-resheniya">
+      {
+        items.map((r, i) => (
+          <article class={`reshenie reshenie--${r.variant} vlez`} data-zabava={i}>
+            <div class="reshenie__razrez" aria-hidden="true">
+              {LAYERS[r.variant].map((l) => (
+                <i class={`sl sl--${l}`} />
+              ))}
+            </div>
+            <span class="reshenie__n">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="h-3">{r.title}</h3>
+            <p>{r.text}</p>
+          </article>
+        ))
+      }
+    </div>
+    <div class="proza vlez u-mw-760 u-mt-40">
+      {paragraphs.map((p) => <p>{p}</p>)}
+    </div>
+  </div>
+</section>
