@@ -1,0 +1,106 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+// Page styles after the layout's global styles (the original's cascade order).
+import '@/styles/inner/index.css';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import BlogCards from '@/components/blocks/BlogCards.astro';
+import CtaPanel from '@/components/blocks/CtaPanel.astro';
+import { site } from '@/config/site';
+import { formatDate, isoDate } from '@/lib/format';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+interface Props {
+  entry: CollectionEntry<'blog'>;
+}
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+// FIX T-07: share the real page URL (the original shared a fake .test domain).
+const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<BaseLayout title={data.seo.title} description={data.seo.description}>
+  <article>
+    <section class="str-glava str-glava--statiya">
+      <div class="obv obv--tesno">
+        <Breadcrumbs items={[{ label: 'Блог', href: '/blog/' }, { label: data.category }]} />
+        <div class="statiya-k__meta vlez">
+          <span class="chip">{data.category}</span>
+          <time datetime={isoDate(data.date)}>{formatDate(data.date)}</time>
+          <span>{site.name}</span>
+        </div>
+        <h1 class="statiya-h1 vlez" data-zabava="1">{data.title}</h1>
+      </div>
+      <div class="obv">
+        <div class="str-glava__kadar otkrii statiya-kadar">
+          <Image
+            src={data.image}
+            alt={data.title}
+            widths={[640, 1024]}
+            sizes="(max-width: 1100px) 92vw, 1024px"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="sek u-pt-0">
+      <div class="obv obv--tesno">
+        <div class:list={['proza', 'proza--statiya', { 'proza--podzaglavia': data.subheadingsAsH3 }]}>
+          <Content />
+        </div>
+        <div class="spodeli">
+          <span>Сподели</span>
+          <a
+            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
+            target="_blank"
+            rel="noopener"
+            aria-label="Сподели във Facebook"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              ><path d="M14 8h2.5V4.5H14A3.5 3.5 0 0 0 10.5 8v2.5H8V14h2.5v6.5H14V14h2.5l.5-3.5h-3V8.6c0-.3.3-.6.5-.6Z"
+              ></path></svg
+            >
+          </a>
+          <button type="button" data-kopirai aria-label="Копирай връзката">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg
+            >
+            <span>Копирай връзката</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <section class="sek sek--malko">
+    <div class="obv">
+      <SectionHeader eyebrow="Още от блога" title="Прочетете и" headingClass="h-3" />
+      <BlogCards exclude={entry.id} />
+    </div>
+  </section>
+
+  <CtaPanel />
+</BaseLayout>

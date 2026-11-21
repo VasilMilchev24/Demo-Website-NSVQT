@@ -129,7 +129,7 @@ const obekti = defineCollection({
     }),
 });
 
-/** Blog articles. Category is required (the original shipped one article without — G-11). */
+/** Blog articles. Every article has a category chip, so the category is required. */
 const blog = defineCollection({
   loader: glob({ base: './src/content/blog', pattern: '**/*.md' }),
   schema: ({ image }) =>
@@ -140,6 +140,8 @@ const blog = defineCollection({
       image: image(),
       /** Lead shown on the featured (first) card of /blog/. */
       excerpt: z.string().optional(),
+      /** The article's subheadings are H2 in the markup but look like the original H3s (T-08). */
+      subheadingsAsH3: z.boolean().default(false),
       seo,
     }),
 });

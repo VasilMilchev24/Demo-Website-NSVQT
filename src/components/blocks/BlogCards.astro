@@ -3,22 +3,27 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import { formatDate, isoDate } from '@/lib/format';
 
-/** Latest blog articles as cards. `exclude` hides the current article; `limit` caps the count. */
+/**
+ * Blog articles (newest first) as cards. `exclude` hides the current article; `skip` drops the first N
+ * (the featured article on /blog/); `limit` caps the count.
+ */
 interface Props {
   limit?: number;
+  skip?: number;
   exclude?: string;
+  class?: string;
 }
-const { limit = 3, exclude } = Astro.props;
+const { limit = 3, skip = 0, exclude, class: extra } = Astro.props;
 const posts = (await getCollection('blog'))
   .filter((p) => p.id !== exclude)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, limit);
+  .slice(skip, skip + limit);
 ---
 
-<div class="blog-red">
+<div class:list={['blog-red', extra]}>
   {
     posts.map((p, i) => (
-      <a class="statiya-k vlez" data-zabava={i} href={`/blog/${p.id}/`}>
+      <a class="statiya-k vlez" data-zabava={i % 3} href={`/blog/${p.id}/`}>
         <div class="statiya-k__kadar">
           <Image
             src={p.data.image}
