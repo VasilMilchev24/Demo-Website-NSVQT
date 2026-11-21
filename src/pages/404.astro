@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/ui/Button.astro';
+import { site } from '@/config/site';
+---
+
+<BaseLayout title="Страницата я няма" description="Страницата я няма" canonical={false}>
+  <section class="str-404">
+    <div>
+      <b>404</b>
+      <h1 class="h-3">Тази страница я няма</h1>
+      <p class="vodach">Може би е преместена при новия сайт. Започнете от началото или ни се обадете.</p>
+      <div class="btn-red">
+        <Button href="/">Към началото</Button>
+        <a class="btn btn--linia" href={site.phone.href}>{site.phone.display}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

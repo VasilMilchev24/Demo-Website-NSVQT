@@ -1,0 +1,35 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+// Page styles after the layout's global styles (the original's cascade order).
+import '@/styles/inner/index.css';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import LegalContact from '@/components/blocks/LegalContact.astro';
+
+const title = 'Декларация за съгласие за обработка на лични данни';
+---
+
+<BaseLayout title={title} description="Декларация за съгласие за обработка на лични данни на Ремонт Студио">
+  <section class="str-glava">
+    <div class="obv obv--tesno">
+      <Breadcrumbs items={[{ label: title }]} />
+      <h1 class="statiya-h1">{title}</h1>
+    </div>
+  </section>
+  <section class="sek u-pt-0">
+    <div class="obv obv--tesno">
+      <div class="proza proza--statiya">
+        <p>
+          Давам съгласието си личните ми данни, събирани и обработвани от този уебсайт във връзка с настоящото мое
+          онлайн запитване, при необходимост, да бъдат предоставени на дружества партньори на сайта, които извършват
+          доставка на стоки (услуги), куриери, както и на производител/доставчик, с цел обработка и отговор на моето
+          запитване.
+        </p>
+        <p>
+          Запознат/а съм с доброволния характер на предоставяне на данните, както и с последиците от предоставянето им.
+          Запознат/а съм, че имам право на достъп, на коригиране и заличаване на събраните данни.
+        </p>
+        <LegalContact />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

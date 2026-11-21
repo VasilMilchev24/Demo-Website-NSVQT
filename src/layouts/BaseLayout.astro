@@ -14,9 +14,11 @@ interface Props {
   credits?: string;
   /** Use the full brand-first title (home page). */
   brandTitle?: boolean;
+  /** Emit <link rel="canonical"> (off for the 404 page, which has no URL of its own). */
+  canonical?: boolean;
 }
 
-const { title, description, credits, brandTitle = false } = Astro.props;
+const { title, description, credits, brandTitle = false, canonical: withCanonical = true } = Astro.props;
 const fullTitle = brandTitle || !title ? `${site.name}: ${site.slogan}` : `${title} | ${site.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL(site.ogImage, Astro.site).href;
@@ -51,7 +53,7 @@ const jsonLd = {
     <meta name="description" content={description} />
     {/* Demo copy: kept out of search engines, as the original (decision 2026-11-21). */}
     <meta name="robots" content="noindex, nofollow" />
-    <link rel="canonical" href={canonical} />
+    {withCanonical && <link rel="canonical" href={canonical} />}
     <meta name="theme-color" content={site.themeColor} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />

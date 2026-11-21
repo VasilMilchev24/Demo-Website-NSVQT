@@ -78,8 +78,9 @@
   margin-top: 1.6em;
 }
 /* FIX T-08: where the original went from the page H1 straight to H3, the copy uses H2 elements styled
-   exactly like the original H3s: all subheadings of a `.proza--podzaglavia` block, or one `h2.kato-h3`. */
-.proza--podzaglavia h2,
+   exactly like the original H3s: all subheadings of a `.proza--podzaglavia` block, or one `h2.kato-h3`.
+   Specificity 0,2,1 so the page styles' mobile `.proza h2` rule (loaded later) can't override it. */
+.proza.proza--podzaglavia h2,
 .proza h2.kato-h3 {
   font-size: clamp(20px, 1.6vw, 24px);
   letter-spacing: -0.02em;
@@ -87,7 +88,7 @@
   margin-top: 1.6em;
 }
 @media (max-width: 640px) {
-  .proza--podzaglavia h2,
+  .proza.proza--podzaglavia h2,
   .proza h2.kato-h3 {
     font-size: clamp(16px, 4.6vw, 20px);
   }

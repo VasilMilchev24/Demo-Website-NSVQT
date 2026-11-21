@@ -13,3 +13,14 @@
   letter-spacing: -0.07em;
   color: var(--navy);
 }
+/* The original set these with inline style attributes; moved here for the strict CSP (T-03). */
+.str-404 h1 {
+  margin-top: 12px;
+}
+.str-404 .vodach {
+  margin: 16px auto 28px;
+  max-width: 520px;
+}
+.str-404 .btn-red {
+  justify-content: center;
+}

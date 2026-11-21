@@ -1,0 +1,10 @@
+---
+import { site } from '@/config/site';
+/** "Администратор на лични данни" line of the legal pages, built from the site config. */
+---
+
+<p>
+  Администратор на лични данни: {site.legalName}, ЕИК {site.eik}, {site.city}. Връзка: <a href={`mailto:${site.email}`}
+    >{site.email}</a
+  >, {site.phone.display}.
+</p>
