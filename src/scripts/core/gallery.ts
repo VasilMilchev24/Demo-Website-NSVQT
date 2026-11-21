@@ -41,13 +41,11 @@ function initLightbox(): void {
   ]);
   const img = el('img', { alt: '' });
   const counter = el('div', { class: 'uvel__br', 'aria-live': 'polite' });
-  const dialog = el('div', { class: 'uvel', role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Снимката' }, [
-    prev,
-    img,
-    next,
-    closeBtn,
-    counter,
-  ]);
+  const dialog = el(
+    'div',
+    { class: 'uvel', role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Снимката' },
+    [prev, img, next, closeBtn, counter],
+  );
   dialog.inert = true;
   document.body.append(dialog);
 

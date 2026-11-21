@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import Button from '@/components/ui/Button.astro';
+import { site } from '@/config/site';
+import poster from '@/assets/img/uslugi/u-tsyalosten.webp';
+
+/**
+ * Pinned hero: H1 + CTAs, the 3D apartment (scripts/3d/home/hero-scene) over a static poster
+ * (shown until WebGL is ready, and kept when WebGL is unavailable), progress counter + stage.
+ */
+---
+
+<section class="geroi" id="geroi" aria-label={site.slogan}>
+  <div class="geroi__sc">
+    <div class="geroi__tekst obv">
+      <h1 class="geroi__h1 redove">
+        <span class="red"><span>Ремонтът, за който</span></span><span class="red"><span>не мислите</span></span>
+      </h1>
+      <div class="geroi__pod">
+        <p>Поемаме пълната отговорност за всеки детайл, от първата консултация до финалното почистване. Варна и региона.</p>
+        <div class="btn-red">
+          <Button href="/kontakti/#forma">Безплатен оглед</Button>
+          <Button href={site.phone.href} variant="linia"> {site.phone.display}</Button>
+        </div>
+      </div>
+    </div>
+    <div class="geroi__scena" id="geroi-scena">
+      <Image
+        class="geroi__poster"
+        src={poster}
+        widths={[640, 1280, 2048]}
+        sizes="(max-width: 980px) 100vw, 1100px"
+        alt="Двустаен апартамент в разрез: половината още в ремонт, половината завършена"
+        fetchpriority="high"
+        loading="eager"
+      />
+      <div class="geroi__leshta" aria-hidden="true"><span>След ремонта</span></div>
+      <div class="geroi__belezhki" aria-hidden="true"></div>
+    </div>
+    <div class="geroi__dolu obv">
+      <div class="geroi__pr" aria-hidden="true"><b data-pr>00</b><span>%</span></div>
+      <div class="geroi__etap" aria-live="off">
+        <small>Ремонтът стига до</small>
+        <b data-etap>Стария апартамент</b>
+      </div>
+      <p class="geroi__podskazka">
+        <span class="mishka" aria-hidden="true"></span>Превъртете: ремонтът минава през дома. Посочете с мишката, за да
+        надникнете в „след“.
+      </p>
+    </div>
+  </div>
+</section>

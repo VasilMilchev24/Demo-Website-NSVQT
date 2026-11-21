@@ -27,7 +27,8 @@
 .stapka__n {
   font: 600 64px/1 var(--f-d);
   letter-spacing: -0.06em;
-  color: var(--sky);
+  /* FIX G-09: sky on white was 2.56:1 (large text needs 3:1); 80% sky / 20% navy = 3.43:1. */
+  color: color-mix(in oklch, var(--sky) 80%, var(--navy));
   font-variant-numeric: tabular-nums;
 }
 .stapka h3 {

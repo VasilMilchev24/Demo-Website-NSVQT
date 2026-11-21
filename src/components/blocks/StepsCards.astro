@@ -1,0 +1,30 @@
+---
+import Icon from '@/components/ui/Icon.astro';
+import { steps } from '@/data/steps';
+---
+
+<div class="stapki" data-stapki>
+  <div class="stapki__linia"><i></i></div>
+  {
+    steps.map((s, i) => (
+      <a class="stapka vlez" data-zabava={i % 4} href={s.href}>
+        <span class="stapka__ik">
+          {s.icon === 'inspect' ? (
+            <Icon name="inspect">
+              <rect x="3" y="6" width="13" height="13" rx="3" />
+              <circle cx="9.5" cy="12.5" r="2.2" />
+            </Icon>
+          ) : (
+            <Icon name={s.icon} />
+          )}
+        </span>
+        <span class="stapka__n">{s.n}</span>
+        <h3>{s.title}</h3>
+        <p>{s.short}</p>
+        <span class="vrazka">
+          Повече <Icon name="arrow" />
+        </span>
+      </a>
+    ))
+  }
+</div>

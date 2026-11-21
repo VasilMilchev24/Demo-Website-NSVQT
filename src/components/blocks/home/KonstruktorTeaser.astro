@@ -1,0 +1,51 @@
+---
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
+import BackgroundWord from '@/components/ui/BackgroundWord.astro';
+
+/** Home teaser for the renovation configurator: animated checklist chips + price card (decorative). */
+const chips = [
+  { label: 'Изкъртване', on: true },
+  { label: 'ВиК и ел.', on: true },
+  { label: 'Дограма', on: false },
+  { label: 'Замазки', on: false },
+  { label: 'Паркет', on: true },
+  { label: 'Баня', on: false },
+  { label: 'Боя', on: true },
+  { label: 'Почистване', on: true },
+];
+---
+
+<section class="sek sek--tamno s-fon" aria-label="Конструктор на ремонта">
+  <BackgroundWord top="8%">Конструктор</BackgroundWord>
+  <div class="obv">
+    <div class="konstr-promo">
+      <div class="konstr-promo__t">
+        <span class="etiket">Конструктор на ремонта</span>
+        <h2 class="h-2">Вашият ремонт в 3D, с ориентировъчна цена</h2>
+        <p class="vodach">
+          Изберете жилището, какво ремонтирате и материалите. Апартаментът се променя пред вас, а отдолу излиза
+          ориентировъчна цена по пера.
+        </p>
+        <div class="btn-red">
+          <Button href="/konstruktor/" variant="nebe">Отворете конструктора</Button>
+        </div>
+      </div>
+      <div class="konstr-promo__vizual" aria-hidden="true">
+        {
+          chips.map((c) => (
+            <span class:list={['konstr-chip', { vkl: c.on }]}>
+              <Icon name="check" />
+              {c.label}
+            </span>
+          ))
+        }
+        <div class="konstr-cena">
+          <small>Ориентировъчно</small>
+          <b>от <span>…</span> до <span>…</span> €</b>
+          <small>не е оферта, точната цена е след огледа</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

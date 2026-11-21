@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+import Icon from '@/components/ui/Icon.astro';
+import poster from '@/assets/img/uslugi/u-tsyalosten.webp';
+
+/** Large card linking to /proces/ (home and /kak-rabotim/). */
+interface Props {
+  title: string;
+  text: string;
+  tone?: 'tamno';
+}
+const { title, text, tone } = Astro.props;
+---
+
+<a class:list={['proces-promo', tone && `proces-promo--${tone}`, 'vlez']} href="/proces/">
+  <div class="proces-promo__t">
+    <span class="etiket">Процесът в 3D</span>
+    <h3 class="h-3">{title}</h3>
+    <p>{text}</p>
+    <span class="btn btn--nebe">Към процеса <span class="krag"><Icon name="arrow" /></span></span>
+  </div>
+  <div class="proces-promo__kadar">
+    <Image src={poster} alt="" widths={[640, 1280]} sizes="(max-width: 980px) 92vw, 640px" loading="lazy" decoding="async" />
+  </div>
+</a>

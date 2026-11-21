@@ -49,3 +49,9 @@
   flex: none;
   filter: drop-shadow(0 8px 10px rgb(20 30 60/0.22));
 }
+
+/* FIX G-10: the tilted ribbon's rotated corners reached 1-2px past the viewport on every page,
+   adding a horizontal scroll. overflow-x: clip (not hidden) keeps vertical overflow and sticky intact. */
+.lenta-okno {
+  overflow-x: clip;
+}

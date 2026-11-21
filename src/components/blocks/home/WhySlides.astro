@@ -1,0 +1,68 @@
+---
+/**
+ * "Защо да изберете нас": four pinned full-screen slides (Основа / Форма / Детайли / Топлина) with a
+ * 3D tool each (scripts/3d/home/tools-scene). Texts are the same as the /za-nas/ drawing cards.
+ */
+const slides = [
+  {
+    word: 'Основа',
+    tone: 'svetlo',
+    title: 'Инженерни решения и основа',
+    text: 'Започваме с най-важното: сигурността и изолацията. Извършваме цялостна подмяна или изграждане на Ел. и ВиК инсталации, както и професионална смяна на дограма, за да осигурим дългосрочна енергийна ефективност на вашия дом.',
+  },
+  {
+    word: 'Форма',
+    tone: 'nebe',
+    title: 'Грубо строителство и нивелация',
+    text: 'Постигаме идеални повърхности чрез прецизни замазки и съвременно изграждане на конструкции от гипсокартон. Това е етапът, в който пространството придобива своята нова, правилна форма.',
+  },
+  {
+    word: 'Детайли',
+    tone: 'tamno',
+    title: 'Естетика и детайли',
+    text: 'Преминаваме към фините завършващи дейности: висококачествено боядисване, прецизно лепене на плочки и цялостен ремонт на бани. Обръщаме специално внимание на хидроизолацията и естетическото подреждане на всеки елемент.',
+  },
+  {
+    word: 'Топлина',
+    tone: 'byalo',
+    title: 'Дърводелски услуги',
+    text: 'За да бъде картината пълна, предлагаме професионални дърводелски решения, които внасят топлина, характер и завършеност на интериора.',
+  },
+] as const;
+const total = String(slides.length).padStart(2, '0');
+---
+
+<section class="ozhivyava" id="ozhivyava" aria-label="Защо да изберете нас">
+  <div class="ozhivyava__sc">
+    <div class="ozhivyava__dumi">
+      {
+        slides.map((s, i) => (
+          <div class:list={['ozh-ekran', `ozh-ekran--${s.tone}`, { akt: i === 0 }]} data-ekran={i}>
+            <div class="ozh-duma" aria-hidden="true">
+              {[...s.word].map((ch) => (
+                <span class="b">{ch}</span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <div class="ozhivyava__platno" id="ozh-platno"></div>
+    <div class="ozh-info">
+      <div class="ozh-info__n"><span data-ozh-n>01</span><small>/ {total}</small></div>
+      <div>
+        {
+          slides.map((s, i) => (
+            <div class="ozh-info__t" hidden={i !== 0} data-ozh-t={i}>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="ozh-tochki" aria-hidden="true">
+        {slides.map(() => <i><b></b></i>)}
+      </div>
+    </div>
+  </div>
+</section>

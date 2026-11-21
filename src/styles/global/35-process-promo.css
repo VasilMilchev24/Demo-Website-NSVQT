@@ -1,4 +1,6 @@
-/* Ported verbatim from the original /assets/css/nachalo.css (lines 237–290). */
+/* Ported verbatim from the original /assets/css/nachalo.css (lines 237–290).
+   FIX G-04: moved from the home-only stylesheet to the global one — the original loaded these
+   styles only on the home page, so the same component rendered unstyled on /kak-rabotim/. */
 /* промото на процеса */
 .proces-promo {
   display: grid;
@@ -51,4 +53,15 @@
 .proces-promo--tamno {
   background: var(--navy-2);
   margin-top: 0;
+}
+
+/* (from the original nachalo.css responsive block — moved here with the component, G-04) */
+@media (max-width: 980px) {
+  .proces-promo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .proces-promo__kadar {
+    aspect-ratio: 4/3;
+    order: -1;
+  }
 }

@@ -1,0 +1,37 @@
+---
+import { marqueeItems } from '@/data/marquee';
+
+/** Tilted ribbon of words + 3D icons; drifts and reacts to scroll (core/scroll-effects). */
+interface Props {
+  tone?: 'navy';
+}
+const { tone } = Astro.props;
+const label = marqueeItems.map((i) => i.word).join(', ');
+---
+
+<div class="lenta-okno">
+<div class:list={['lenta', tone && `lenta--${tone}`]} data-lenta role="img" aria-label={label}>
+  <div class="lenta__vlak">
+    {
+      [0, 1].map((copy) => (
+        <div class="lenta__gr" aria-hidden={copy === 1 ? 'true' : undefined}>
+          {marqueeItems.map((item) => (
+            <>
+              <span class:list={['lenta__duma', { 'lenta__duma--kontur': item.outline }]}>{item.word}</span>
+              <img
+                class="lenta__pr"
+                src={`/assets/img/predmeti/${item.icon}-160.webp`}
+                alt=""
+                width="160"
+                height="160"
+                loading="lazy"
+                decoding="async"
+              />
+            </>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+</div>
+</div>

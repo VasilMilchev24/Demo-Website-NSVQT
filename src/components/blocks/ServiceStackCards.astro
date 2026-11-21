@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Icon from '@/components/ui/Icon.astro';
+
+/** Service cards that stack over each other while scrolling (home, /uslugi/). */
+const services = (await getCollection('uslugi')).sort((a, b) => a.data.order - b.data.order);
+const tones = ['byalo', 'tamno', 'nebe', 'byalo'] as const;
+const total = String(services.length).padStart(2, '0');
+---
+
+<div class="kupchina">
+  {
+    services.map((s, i) => (
+      <article class={`u-karta u-karta--${tones[i % tones.length]}`} data-kupchina>
+        <div class="u-karta__tekst">
+          <span class="u-karta__nomer">
+            {String(i + 1).padStart(2, '0')} / {total}
+          </span>
+          <h3>{s.data.title}</h3>
+          <p>{s.data.cardText}</p>
+          <div class="chipove">
+            {s.data.chips.map((c) => (
+              <span class="chip">{c}</span>
+            ))}
+          </div>
+          <a class="vrazka" href={`/uslugi/${s.id}/`}>
+            Към услугата <Icon name="arrow" />
+          </a>
+        </div>
+        <div class="u-karta__kadar">
+          <Image
+            src={s.data.image}
+            alt={s.data.title}
+            widths={[640, 1280]}
+            sizes="(max-width: 980px) 92vw, 680px"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </article>
+    ))
+  }
+</div>

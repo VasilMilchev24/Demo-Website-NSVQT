@@ -1,9 +1,139 @@
 ---
-// TEMPORARY shell test page — replaced by the real home page in Phase 6.
+import '@/styles/home/index.css';
+import { getImage } from 'astro:assets';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import HomeHero from '@/components/blocks/home/HomeHero.astro';
+import WhySlides from '@/components/blocks/home/WhySlides.astro';
+import KonstruktorTeaser from '@/components/blocks/home/KonstruktorTeaser.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import BackgroundWord from '@/components/ui/BackgroundWord.astro';
+import Sticker from '@/components/ui/Sticker.astro';
+import Icon from '@/components/ui/Icon.astro';
+import NumbersCards from '@/components/blocks/NumbersCards.astro';
+import Marquee from '@/components/blocks/Marquee.astro';
+import ServiceStackCards from '@/components/blocks/ServiceStackCards.astro';
+import StepsCards from '@/components/blocks/StepsCards.astro';
+import ProcessPromo from '@/components/blocks/ProcessPromo.astro';
+import ProjectCards from '@/components/blocks/ProjectCards.astro';
+import Testimonials from '@/components/blocks/Testimonials.astro';
+import BlogCards from '@/components/blocks/BlogCards.astro';
+import CtaPanel from '@/components/blocks/CtaPanel.astro';
+import stickerPhoto from '@/assets/img/obekti/dvustaen-apartament-v-tsentara-na-varna-2.webp';
+
+const sticker = await getImage({ src: stickerPhoto, width: 320, format: 'webp' });
 ---
 
-<BaseLayout brandTitle description="Shell test">
-  <section class="sek"><div class="obv"><h1 class="h-1">Shell test</h1></div></section>
-  <section class="sek"><div class="obv"><p class="vodach">Lorem</p></div></section>
+<BaseLayout
+  brandTitle
+  description="Ремонтни дейности във Варна и региона: цялостен или частичен ремонт на апартамент, къща, офис, баня, фасади и покриви. Безплатен оглед."
+>
+  <HomeHero />
+
+  {/* Mission sentence */}
+  <section class="sek s-fon" aria-label="Мисията">
+    <BackgroundWord top="6%">Спокойствие</BackgroundWord>
+    <div class="obv">
+      <span class="etiket vlez">Ремонти на жилища във Варна</span>
+      <p class="izrechenie vlez u-mt-28">
+        Създадохме Ремонт Студио с една основна мисия: да освободим клиентите си от тежестта на ремонта
+        <Sticker variant="snimka" rot="-4deg" src={sticker.src} />, като поемем пълната отговорност <span class="tiho"
+          >за всеки детайл</span
+        >
+        <Sticker variant="pr" rot="6deg" src="/assets/img/predmeti/chuk-160.webp" />, от първата консултация <Sticker
+          variant="tekst"
+          rot="-3deg">оглед · 0 €</Sticker
+        >
+        до финалното почистване <Sticker variant="pr" rot="-8deg" src="/assets/img/predmeti/sprei-160.webp" />.
+      </p>
+    </div>
+  </section>
+
+  {/* Numbers */}
+  <section class="sek u-pt-0" aria-labelledby="chisla-h">
+    {/* FIX T-08: the cards' H3s followed the H1 directly (skipped level); a visually hidden H2 fixes the outline. */}
+    <h2 class="skrito" id="chisla-h">Числата</h2>
+    <div class="obv"><NumbersCards /></div>
+  </section>
+
+  <Marquee />
+
+  {/* Services */}
+  <section class="sek s-fon" id="uslugi" aria-label="Услугите">
+    <BackgroundWord top="2%">Услуги</BackgroundWord>
+    <div class="obv">
+      <div class="glava-sek">
+        <span class="etiket">Услуги</span>
+        <h2 class="h-2 dalgo redove">
+          <span class="red"><span>От ремонта на вашия дом до обновяването</span></span><span class="red"
+            ><span>на цялата жилищна сграда</span></span
+          >
+        </h2>
+        <p>
+          Когато предстои ремонт, най-важни са доброто планиране, ясните условия и изпълнението, на което можете да
+          разчитате.
+        </p>
+      </div>
+      <ServiceStackCards />
+    </div>
+  </section>
+
+  <WhySlides />
+
+  {/* How we work */}
+  <section class="sek s-fon" aria-label="Как работим">
+    <BackgroundWord top="4%">Как работим</BackgroundWord>
+    <div class="obv">
+      <div class="glava-sek">
+        <span class="etiket">Пет стъпки</span>
+        <h2 class="h-2 redove"><span class="red"><span>Как работим?</span></span></h2>
+        <p>
+          Ние вярваме в точното планиране. Ще посетим Вашия обект, ще обсъдим идеите Ви и ще изготвим детайлна и
+          прозрачна оферта без никакви скрити разходи.
+        </p>
+      </div>
+      <StepsCards />
+      <ProcessPromo
+        title="Вижте как минава ремонтът, стая по стая"
+        text="От огледа и мерките до ключа: дванайсет стъпки в 3D, които превъртате сами."
+      />
+    </div>
+  </section>
+
+  <KonstruktorTeaser />
+
+  {/* Completed projects */}
+  <section class="sek" aria-label="Завършени обекти">
+    <div class="obv">
+      <div class="glava-sek">
+        <span class="etiket">Завършени обекти</span>
+        <h2 class="h-2 redove">
+          <span class="red"><span>Домове, преобразени</span></span><span class="red"><span>с наша помощ</span></span>
+        </h2>
+        <p>
+          Нашите завършени проекти във Варна и региона. <a class="vrazka" href="/galeriya/"
+            >Галерия <Icon name="arrow" /></a
+          >
+        </p>
+      </div>
+      <ProjectCards />
+    </div>
+  </section>
+
+  <Testimonials />
+
+  {/* Blog */}
+  <section class="sek" aria-label="Блог">
+    <div class="obv">
+      <SectionHeader eyebrow="Блог" title="Последно от блога">
+        <a class="vrazka" href="/blog/">Всички статии <Icon name="arrow" /></a>
+      </SectionHeader>
+      <BlogCards />
+    </div>
+  </section>
+
+  <CtaPanel />
 </BaseLayout>
+
+<script>
+  import '@/scripts/pages/home';
+</script>

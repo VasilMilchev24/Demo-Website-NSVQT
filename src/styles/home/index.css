@@ -1,3 +1,4 @@
 @import './01-hero.css';
-@import './02-process-promo.css';
+/* 02-process-promo.css moved to global/35-process-promo.css (FIX G-04: the component is also used on /kak-rabotim/). */
 @import './03-konstruktor-promo.css';
+@import './04-responsive.css';
