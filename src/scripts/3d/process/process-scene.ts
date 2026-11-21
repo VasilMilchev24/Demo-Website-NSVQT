@@ -209,7 +209,9 @@ export function initProcessScene(): void {
       [x0, z1],
       [x0, z0],
     ];
-    const geometry = new THREE.BufferGeometry().setFromPoints(corners.map(([x, z]) => new THREE.Vector3(x, y, z)));
+    const geometry = new THREE.BufferGeometry().setFromPoints(
+      corners.map(([x, z]) => new THREE.Vector3(x, y, z)),
+    );
     plan.add(new THREE.Line(geometry, lineMaterial(LINE)));
   }
 
@@ -224,7 +226,9 @@ export function initProcessScene(): void {
       [-m, APT_D + m],
       [-m, -m],
     ];
-    const geometry = new THREE.BufferGeometry().setFromPoints(corners.map(([x, z]) => new THREE.Vector3(x, y, z)));
+    const geometry = new THREE.BufferGeometry().setFromPoints(
+      corners.map(([x, z]) => new THREE.Vector3(x, y, z)),
+    );
     outline.add(new THREE.Line(geometry, lineMaterial(LINE)));
   }
 
@@ -373,16 +377,19 @@ export function initProcessScene(): void {
       for (const s of stages) values[s] = Math.max(values[s], value);
     });
     if (showFinished) for (const s of STAGES) values[s] = 1;
-    for (const s of STAGES) if (Math.abs(apartment.progress[s] - values[s]) > 0.0005) apartment.setStage(s, values[s]);
+    for (const s of STAGES)
+      if (Math.abs(apartment.progress[s] - values[s]) > 0.0005) apartment.setStage(s, values[s]);
 
     const sway = prefersReducedMotion ? 0 : Math.sin(p * Math.PI * 3) * 0.04;
     if (showFinished) placeCamera(11, 11, 0, sway);
     else placeCamera(step, Math.min(count - 1, step + 1), smoothstep(0.8, 1, local), sway);
 
     // overlays of steps 1–3 fade in and out within their step
-    const overlay = (i: number) => (step === i ? smoothstep(0, 0.25, local) * (1 - smoothstep(0.8, 1, local)) : 0);
+    const overlay = (i: number) =>
+      step === i ? smoothstep(0, 0.25, local) * (1 - smoothstep(0.8, 1, local)) : 0;
     const setGroup = (group: THREE.Group, i: number) => {
-      for (const child of group.children) ((child as THREE.Line).material as THREE.LineBasicMaterial).opacity = overlay(i);
+      for (const child of group.children)
+        ((child as THREE.Line).material as THREE.LineBasicMaterial).opacity = overlay(i);
       group.visible = step === i && !showFinished;
     };
     setGroup(dimensions, 0);
@@ -390,7 +397,8 @@ export function initProcessScene(): void {
     setGroup(outline, 2);
 
     // evening light on step 10 (lighting), kept at half afterwards
-    const dusk = step === 9 ? smoothstep(0.15, 0.6, local) * (1 - smoothstep(0.85, 1, local) * 0.5) : step > 9 ? 0.5 : 0;
+    const dusk =
+      step === 9 ? smoothstep(0.15, 0.6, local) * (1 - smoothstep(0.85, 1, local) * 0.5) : step > 9 ? 0.5 : 0;
     hemi.intensity = 1.05 - dusk * 0.5;
     sun.intensity = 2.3 - dusk * 1.4;
     lampDining.intensity = values.osv * 7;

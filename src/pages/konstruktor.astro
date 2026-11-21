@@ -1,0 +1,272 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+// Page styles after the layout's global styles (the original's cascade order).
+import '@/styles/konstruktor/index.css';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Icon from '@/components/ui/Icon.astro';
+
+const homes = [
+  ['ednostaen', 'Едностаен', 45],
+  ['dvustaen', 'Двустаен', 65],
+  ['tristaen', 'Тристаен', 90],
+  ['kashta', 'Къща', 130],
+] as const;
+const scope = [
+  ['izkartvane', 'Изкъртване и извозване', 'Демонтаж на стари настилки, облицовки и санитария'],
+  ['instalatsii', 'Ел. и ВиК инсталации', 'Нови кабели, табло, тръби и изводи'],
+  ['dograma', 'Смяна на дограма', 'Нови прозорци и балконска врата'],
+  ['zamazki', 'Замазки и гипсокартон', 'Равен под, окачен таван, прегради'],
+  ['steni', 'Шпакловка и боядисване', 'Стени и тавани'],
+  ['nastilki', 'Настилки', 'Паркет, ламинат или гранитогрес'],
+  ['banya', 'Баня', 'Хидроизолация, плочки и санитария'],
+  ['darvodelski', 'Кухня и дърводелски услуги', 'Кухня по мярка, врати, рафтове'],
+  ['osvetlenie', 'Осветление и детайли', 'Тела, ключове, контакти, подсветка'],
+  ['pochistvane', 'Финално почистване', 'Професионално почистване след ремонта'],
+] as const;
+const floors = [
+  ['ribena', 'Паркет рибена кост'],
+  ['laminat', 'Ламинат'],
+  ['granit', 'Гранитогрес'],
+] as const;
+const walls = [
+  ['#F4F2EE', 'Топло бяло'],
+  ['#E9EDF2', 'Студено бяло'],
+  ['#D9DED3', 'Градински'],
+  ['#E8D8C8', 'Пясъчен'],
+  ['#C9D6E3', 'Небесен'],
+] as const;
+const kitchens = [
+  ['#A9B5A0', 'Градински зелен'],
+  ['#E7E4DE', 'Светъл'],
+  ['#3A4A6B', 'Тъмносин'],
+  ['#C8B091', 'Дъб'],
+] as const;
+const classes = [
+  ['ikon', 'Икономичен'],
+  ['sreden', 'Среден'],
+  ['visok', 'Висок'],
+] as const;
+const svg = {
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  'stroke-width': '1.75',
+  'stroke-linecap': 'round',
+  'stroke-linejoin': 'round',
+  'aria-hidden': 'true',
+} as const;
+---
+
+<BaseLayout
+  title="Конструктор на ремонта: вашият ремонт в 3D"
+  description="Изберете жилището, какво ремонтирате и материалите: апартаментът се променя в 3D, а отдолу излиза ориентировъчна цена по пера."
+  bodyClass="str-kn"
+  mainClass="kn"
+>
+  <div class="kn__scena" id="kn-scena">
+    <div class="kn__platno" id="kn-platno" aria-hidden="true"></div>
+    <div class="kn__gore">
+      <Breadcrumbs items={[{ label: 'Конструктор' }]} />
+      <h1 class="kn__h1">Вашият ремонт в 3D</h1>
+    </div>
+    <div class="kn__izgledi" role="group" aria-label="Изглед">
+      <button type="button" data-izgled="predi" aria-pressed="false">
+        Преди
+      </button>
+      <button type="button" data-izgled="sled" aria-pressed="true">
+        След
+      </button>
+      <button type="button" data-izgled="otgore" aria-pressed="false">
+        Отгоре
+      </button>
+      <button type="button" data-izgled="vartene" aria-pressed="false">
+        Завърти
+      </button>
+    </div>
+    <p class="kn__podskazka">Влачете, за да завъртите · колелцето приближава</p>
+    <div class="kn__plosht" aria-hidden="true">
+      <b data-plosht-n>65</b>
+      <small>м²</small>
+    </div>
+  </div>
+
+  <div class="kn__panel">
+    {/* The original had onsubmit="return false" (an inline handler the CSP blocks); handled in the script. */}
+    <form class="kn-forma" data-kn>
+      <section class="kn-st" data-kn-st="1">
+        <h2>
+          <span>01</span>Жилището
+        </h2>
+        <div class="kn-izbor kn-izbor--4" role="radiogroup" aria-label="Вид на жилището">
+          {homes.map(([value, name, area]) => (
+            <label class="kn-karta">
+              <input
+                type="radio"
+                name="vid"
+                value={value}
+                data-plosht={area}
+                checked={value === 'dvustaen'}
+              />
+              <span class="kn-karta__ik">
+                <svg {...svg}>
+                  <path d="M4 10.5 12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19Z" />
+                  <rect x="9.5" y="12" width="5" height="5" rx=".8" />
+                  <path d="M12 12v5M9.5 14.5h5" />
+                </svg>
+              </span>
+              <b>{name}</b>
+              <small>около {area} м²</small>
+            </label>
+          ))}
+        </div>
+        <div class="kn-plazgach">
+          <label for="kn-plosht">
+            Площ <output data-plosht-out>65 м²</output>
+          </label>
+          <input id="kn-plosht" name="plosht" type="range" min="25" max="200" step="1" value="65" />
+          <div class="kn-plazgach__skala">
+            <span>25</span>
+            <span>200 м²</span>
+          </div>
+        </div>
+        <div class="kn-izbor kn-izbor--2" role="radiogroup" aria-label="Строителството">
+          <label class="kn-hapche">
+            <input type="radio" name="stroeja" value="staro" checked />
+            <span>Старо строителство</span>
+          </label>
+          <label class="kn-hapche">
+            <input type="radio" name="stroeja" value="novo" />
+            <span>Ново строителство</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="kn-st" data-kn-st="2">
+        <h2>
+          <span>02</span>Какво ремонтирате
+        </h2>
+        <p class="kn-bel">Всяко отметнато перо се вижда в 3D като ново. Неотметнатото остава старо.</p>
+        <div class="kn-obhvat">
+          {scope.map(([value, name, note]) => (
+            <label class="kn-red">
+              <input type="checkbox" name="obhvat" value={value} checked />
+              <span class="kn-red__otm">
+                <Icon name="check" />
+              </span>
+              <span class="kn-red__t">
+                <b>{name}</b>
+                <small>{note}</small>
+              </span>
+            </label>
+          ))}
+        </div>
+        <div class="kn-bystro">
+          <button type="button" data-vsichki="1">
+            Всичко
+          </button>
+          <button type="button" data-vsichki="0">
+            Нищо
+          </button>
+        </div>
+      </section>
+
+      <section class="kn-st" data-kn-st="3">
+        <h2>
+          <span>03</span>Материалите
+        </h2>
+        <div class="kn-grupa">
+          <h3>Подът</h3>
+          <div class="kn-izbor kn-izbor--3" role="radiogroup" aria-label="Подът">
+            {floors.map(([value, name]) => (
+              <label class="kn-mostra">
+                <input type="radio" name="pod" value={value} checked={value === 'ribena'} />
+                <i class={`m m--${value}`} />
+                <span>{name}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+        <div class="kn-grupa">
+          <h3>Стените</h3>
+          <div class="kn-tsvetove" role="radiogroup" aria-label="Цветът на стените">
+            {walls.map(([value, name], i) => (
+              <label class="kn-tsvyat" title={name}>
+                <input type="radio" name="steni" value={value} checked={i === 0} />
+                <i style={`background:${value}`} />
+                <span class="skrito">{name}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+        <div class="kn-grupa">
+          <h3>Кухнята</h3>
+          <div class="kn-tsvetove" role="radiogroup" aria-label="Цветът на кухнята">
+            {kitchens.map(([value, name], i) => (
+              <label class="kn-tsvyat" title={name}>
+                <input type="radio" name="kuhnya" value={value} checked={i === 0} />
+                <i style={`background:${value}`} />
+                <span class="skrito">{name}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+        <div class="kn-grupa">
+          <h3>Класът на материалите</h3>
+          <div class="kn-izbor kn-izbor--3" role="radiogroup" aria-label="Класът">
+            {classes.map(([value, name]) => (
+              <label class="kn-hapche">
+                <input type="radio" name="klas" value={value} checked={value === 'sreden'} />
+                <span>{name}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="kn-st kn-st--cena" data-kn-st="4">
+        <h2>
+          <span>04</span>Ориентировъчна цена
+        </h2>
+        <table class="kn-pera">
+          <thead>
+            <tr>
+              <th>Перо</th>
+              <th>от</th>
+              <th>до</th>
+            </tr>
+          </thead>
+          <tbody data-pera></tbody>
+        </table>
+        {/* Inline links kept on one line each: reformatting here changes the rendered spaces. */}
+        <!-- prettier-ignore -->
+        <p class="kn-bel" data-kn-iztochnik>Пазарни ориентири за Варна и България за 2026 г., труд и материали, без мебелите. Разпределението по пера е приблизително. Източници: <a href="https://handymanvarna.com/uslugi/vatreshni-remonti/" target="_blank" rel="noopener">Хендимен Варна</a>, <a href="https://www.daibau.bg/ceni/remont_na_apartament" target="_blank" rel="noopener">daibau.bg</a>. Не е оферта на Ремонт Студио: точната цена е след безплатния оглед.</p>
+      </section>
+    </form>
+
+    <div class="kn-dolu">
+      <div class="kn-sbor">
+        <small>Ориентировъчно</small>
+        <b data-sbor>…</b>
+        <span data-na-m2></span>
+      </div>
+      <div class="kn-dolu__btn">
+        <a class="btn btn--nebe" data-zapitvane href="/kontakti/#forma">
+          Изпратете запитване{' '}
+          <span class="krag">
+            <Icon name="arrow" />
+          </span>
+        </a>
+        <button class="btn btn--linia" type="button" data-kopirai>
+          <svg width="16" height="16" {...svg}>
+            <path d="M12 5v14M5 12h14"></path>
+          </svg>
+          <span>Копирай връзката</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import '@/scripts/pages/configurator';
+</script>
