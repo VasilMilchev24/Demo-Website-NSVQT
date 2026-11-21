@@ -1,0 +1,15 @@
+---
+/** Small rotated sticker inside a statement sentence (`.izrechenie`): an image or a text chip. */
+interface Props {
+  rot: string;
+  variant: 'znak' | 'pr' | 'foto' | 'tekst';
+  src?: string;
+  /** Extra modifier, e.g. "nebe" for the sky text chip. */
+  tone?: 'nebe';
+}
+const { rot, variant, src, tone } = Astro.props;
+---
+
+<span class:list={['stiker', `stiker--${variant}`, tone && `stiker--${tone}`]} style={`--rot:${rot}`}
+  >{src ? <img src={src} alt="" loading="lazy" /> : <slot />}</span
+>

@@ -41,5 +41,5 @@
   transform: translate(var(--x), var(--y)) translate(-50%, -50%) scale(1);
 }
 .bel3d.staro i {
-  background: var(--ink-3);
+  background: var(--ink-3-orig);
 }

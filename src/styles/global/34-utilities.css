@@ -1,0 +1,17 @@
+/* Small spacing utilities replacing the original one-off inline `style="…"` attributes
+   (keeps markup clean; values are exactly the original ones). */
+.u-mt-22 {
+  margin-top: 22px;
+}
+
+.u-mt-26 {
+  margin-top: 26px;
+}
+
+.u-pt-0 {
+  padding-top: 0;
+}
+
+.u-mw-980 {
+  max-width: 980px;
+}

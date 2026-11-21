@@ -1,0 +1,33 @@
+---
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
+import { site } from '@/config/site';
+
+/** Closing call-to-action panel ("Свържете се с нас…") shown at the end of most pages. */
+interface Props {
+  title?: string;
+}
+const { title = 'Свържете се с нас сега, за да заявите безплатен оглед за вашия ремонт във Варна!' } = Astro.props;
+---
+
+<section class="sek sek--malko" aria-label="Безплатен оглед">
+  <div class="obv">
+    <div class="prizov vlez">
+      <svg class="prizov__dagi" viewBox="0 0 400 400" aria-hidden="true">
+        <g fill="none" stroke="#4CACD8" stroke-width="1.2" opacity=".55">
+          {[60, 100, 140, 180, 220].map((r) => <circle cx="200" cy="200" r={r} />)}
+        </g>
+        <circle cx="200" cy="200" r="34" fill="#4CACD8"></circle>
+      </svg>
+      <h2 class="dalgo">{title}</h2>
+      <div class="prizov__d">
+        <p>Обадете ни се или ни пишете директно във Viber.</p>
+        <div class="btn-red">
+          <Button href={site.phone.href} variant="nebe" layout="tel">{site.phone.display}</Button>
+          <Button href={site.phone.viber} variant="byal" icon="viber">Viber</Button>
+        </div>
+        <a class="vrazka" href="/kontakti/#forma">или попълнете формата <Icon name="arrow" /></a>
+      </div>
+    </div>
+  </div>
+</section>

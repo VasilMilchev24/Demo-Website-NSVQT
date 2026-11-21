@@ -1,0 +1,84 @@
+---
+import '@/styles/inner/index.css';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/blocks/PageHero.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import Sticker from '@/components/ui/Sticker.astro';
+import BackgroundWord from '@/components/ui/BackgroundWord.astro';
+import DrawingCards from '@/components/blocks/about/DrawingCards.astro';
+import Commitments from '@/components/blocks/about/Commitments.astro';
+import NumbersCards from '@/components/blocks/NumbersCards.astro';
+import Testimonials from '@/components/blocks/Testimonials.astro';
+import CtaPanel from '@/components/blocks/CtaPanel.astro';
+---
+
+<BaseLayout
+  title="За нас"
+  description="Ремонтни дейности във Варна и региона: цялостен или частичен ремонт на апартамент, къща, офис"
+>
+  <PageHero eyebrow="Ремонт Студио" title="За нас" crumbs={[{ label: 'За нас' }]}>
+    Работим с признати за качеството си материали и най-добрите професионални инструменти, за да осигурим качество на
+    довършителните и ремонтни дейности във вашия имот. Предоставяме гаранция в стриктен договор с всеки наш клиент.
+  </PageHero>
+
+  {/* Mission sentence with stickers */}
+  <section class="sek u-pt-0">
+    <div class="obv">
+      <p class="izrechenie vlez">
+        Създадохме Ремонт Студио с една основна мисия: <span class="tiho"
+          >да освободим клиентите си от тежестта на ремонта</span
+        >
+        <Sticker variant="znak" rot="-5deg" src="/assets/img/logo/znak-180.png" />, като поемем пълната отговорност за
+        всеки детайл, от първата консултация
+        <Sticker variant="pr" rot="7deg" src="/assets/img/predmeti/malaj-160.webp" />
+        до финалното почистване <Sticker variant="tekst" tone="nebe" rot="-4deg">готово за нанасяне</Sticker>.
+      </p>
+    </div>
+  </section>
+
+  {/* Systematic approach: drawing cards */}
+  <section class="sek sek--tamno s-fon">
+    <BackgroundWord top="4%">Системен подход</BackgroundWord>
+    <div class="obv">
+      <SectionHeader eyebrow="Защо да изберете нас?" title="Професионализмът се крие в системния подход">
+        Вярваме, че професионализмът се крие в системния подход. Затова организираме работния процес в логическа
+        последователност, гарантираща здравина, функционалност и естетика:
+      </SectionHeader>
+      <DrawingCards />
+    </div>
+  </section>
+
+  {/* Commitments */}
+  <section class="sek">
+    <div class="obv">
+      <SectionHeader
+        eyebrow="Нашите ангажименти към вас"
+        title="Мотото ни „Ремонти на жилища във Варна“ е нашето обещание за спокойствие."
+        long
+      />
+      <Commitments />
+    </div>
+  </section>
+
+  {/* Numbers */}
+  <section class="sek u-pt-0">
+    <div class="obv">
+      <NumbersCards />
+    </div>
+  </section>
+
+  {/* Statement */}
+  <section class="sek u-pt-0">
+    <div class="obv">
+      <p class="izrechenie vlez u-mw-980">
+        Превърнете идеите си в реалност, без да се налага да мислите за трудностите по пътя.
+      </p>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <CtaPanel
+    title="Свържете се с нас още днес за безплатен оглед и професионална консултация на територията на Варна и региона."
+  />
+</BaseLayout>

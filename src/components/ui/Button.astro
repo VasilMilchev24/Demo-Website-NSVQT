@@ -1,0 +1,45 @@
+---
+import Icon from './Icon.astro';
+import type { IconName } from './icons';
+
+/**
+ * Pill button matching the original `.btn` variants:
+ * - default / nebe / byal: label + round icon circle on the right (arrow by default)
+ * - layout "tel": icon circle first (phone), label after
+ * - variant "linia": outlined, small leading icon, no circle
+ */
+interface Props {
+  href: string;
+  variant?: 'nebe' | 'byal' | 'linia';
+  layout?: 'tel';
+  icon?: IconName;
+  class?: string;
+}
+
+const { href, variant, layout, icon, class: extra } = Astro.props;
+const classes = ['btn', variant && `btn--${variant}`, layout && `btn--${layout}`, extra].filter(Boolean).join(' ');
+const iconName: IconName = icon ?? (layout === 'tel' || variant === 'linia' ? 'phone' : 'arrow');
+---
+
+{
+  variant === 'linia' ? (
+    <a class={classes} href={href}>
+      <Icon name={iconName} size={18} />
+      <slot />
+    </a>
+  ) : layout === 'tel' ? (
+    <a class={classes} href={href}>
+      <span class="krag">
+        <Icon name={iconName} />
+      </span>
+      <slot />
+    </a>
+  ) : (
+    <a class={classes} href={href}>
+      <slot />{' '}
+      <span class="krag">
+        <Icon name={iconName} />
+      </span>
+    </a>
+  )
+}

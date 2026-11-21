@@ -35,6 +35,15 @@
   font: 600 14px/1 var(--f-d);
   color: var(--sky);
 }
+
+/* FIX G-09: sky numbers were 3.43:1 on the dark cards and 2.56:1 on the white ones. */
+.cht-karta--tamna .cht-karta__n {
+  color: color-mix(in oklch, var(--sky) 55%, white);
+}
+
+.cht-karta--svetla .cht-karta__n {
+  color: var(--sky-deep);
+}
 .cht-karta__chertezh {
   flex: 1;
   display: grid;

@@ -1,0 +1,81 @@
+---
+/**
+ * "Системен подход" cards on /za-nas/: four animated technical drawings (original inline SVGs).
+ * The "2 200" label is the wardrobe dimension in the carpentry drawing (intentional, not a bug).
+ */
+const tiles = Array.from({ length: 24 }, (_, i) => ({ i, x: 22 + (i % 6) * 43, y: 22 + Math.floor(i / 6) * 40 }));
+---
+
+<div class="cht-karti">
+  <article class="cht-karta cht-karta--tamna vlez" data-zabava="0">
+    <div class="cht-karta__chertezh">
+      <svg viewBox="0 0 300 200" class="cht cht--instal" aria-hidden="true">
+        <rect x="20" y="20" width="260" height="160" rx="6" class="cht-stena"></rect>
+        <path class="cht-l cht-l--voda" d="M40 160 H120 V60 H220"></path>
+        <path class="cht-l cht-l--topla" d="M40 170 H130 V70 H220"></path>
+        <path class="cht-l cht-l--tok" d="M260 40 V100 H170 V150 H80"></path>
+        <circle cx="220" cy="60" r="7" class="cht-t"></circle>
+        <circle cx="220" cy="70" r="5" class="cht-t2"></circle>
+        <rect x="72" y="142" width="16" height="16" rx="3" class="cht-k"></rect>
+        <rect x="252" y="32" width="16" height="16" rx="3" class="cht-k"></rect>
+      </svg>
+    </div>
+    <span class="cht-karta__n">01</span>
+    <h3 class="h-4">Инженерни решения и основа</h3>
+    <p>
+      Започваме с най-важното: сигурността и изолацията. Извършваме цялостна подмяна или изграждане на Ел. и ВиК
+      инсталации, както и професионална смяна на дограма, за да осигурим дългосрочна енергийна ефективност на вашия
+      дом.
+    </p>
+  </article>
+  <article class="cht-karta cht-karta--svetla vlez" data-zabava="1">
+    <div class="cht-karta__chertezh">
+      <svg viewBox="0 0 300 200" class="cht cht--niv" aria-hidden="true">
+        <path class="cht-pod" d="M20 150 Q 80 140 150 152 T 280 146 V180 H20Z"></path>
+        <rect class="cht-zamazka" x="20" y="130" width="260" height="20"></rect>
+        <path class="cht-l cht-niv-l" d="M20 130 H280"></path>
+        <rect class="cht-nivelir" x="96" y="114" width="108" height="16" rx="4"></rect>
+        <rect class="cht-mehurche" x="143" y="118" width="14" height="8" rx="4"></rect>
+        <path class="cht-l cht-gips" d="M60 30 V110 M120 30 V110 M180 30 V110 M240 30 V110 M50 30 H250"></path>
+      </svg>
+    </div>
+    <span class="cht-karta__n">02</span>
+    <h3 class="h-4">Грубо строителство и нивелация</h3>
+    <p>
+      Постигаме идеални повърхности чрез прецизни замазки и съвременно изграждане на конструкции от гипсокартон. Това
+      е етапът, в който пространството придобива своята нова, правилна форма.
+    </p>
+  </article>
+  <article class="cht-karta cht-karta--tamna vlez" data-zabava="0">
+    <div class="cht-karta__chertezh">
+      <svg viewBox="0 0 300 200" class="cht cht--plochki" aria-hidden="true">
+        {tiles.map((t) => <rect class="cht-pl" style={`--i:${t.i}`} x={t.x} y={t.y} width="40" height="37" rx="2" />)}
+        <path class="cht-l cht-hidro" d="M20 190 H280"></path>
+      </svg>
+    </div>
+    <span class="cht-karta__n">03</span>
+    <h3 class="h-4">Естетика и детайли</h3>
+    <p>
+      Преминаваме към фините завършващи дейности: висококачествено боядисване, прецизно лепене на плочки и цялостен
+      ремонт на бани. Обръщаме специално внимание на хидроизолацията и естетическото подреждане на всеки елемент.
+    </p>
+  </article>
+  <article class="cht-karta cht-karta--svetla vlez" data-zabava="1">
+    <div class="cht-karta__chertezh">
+      <svg viewBox="0 0 300 200" class="cht cht--darvo" aria-hidden="true">
+        <rect class="cht-stena" x="40" y="24" width="220" height="156" rx="4"></rect>
+        <path class="cht-l" d="M40 76 H260 M40 128 H260 M150 24 V180"></path>
+        <rect class="cht-vrata" x="44" y="28" width="102" height="148" rx="2"></rect>
+        <circle cx="136" cy="102" r="3" class="cht-t"></circle>
+        <path class="cht-l cht-kota" d="M40 192 H260 M40 188 V196 M260 188 V196"></path>
+        <text x="150" y="188" text-anchor="middle" class="cht-txt">2 200</text>
+      </svg>
+    </div>
+    <span class="cht-karta__n">04</span>
+    <h3 class="h-4">Дърводелски услуги</h3>
+    <p>
+      За да бъде картината пълна, предлагаме професионални дърводелски решения, които внасят топлина, характер и
+      завършеност на интериора.
+    </p>
+  </article>
+</div>

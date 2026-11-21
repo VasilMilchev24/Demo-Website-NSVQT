@@ -1,0 +1,41 @@
+---
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Button from '@/components/ui/Button.astro';
+import { site } from '@/config/site';
+
+/** Inner-page hero (`.str-glava`): breadcrumbs, eyebrow, H1, lead and the two contact buttons. */
+interface Props {
+  eyebrow: string;
+  title: string;
+  crumbs: { label: string; href?: string }[];
+  /** Show "Безплатен оглед" + phone buttons under the lead (default true). */
+  buttons?: boolean;
+}
+const { eyebrow, title, crumbs, buttons = true } = Astro.props;
+---
+
+<section class="str-glava">
+  <div class="obv">
+    <Breadcrumbs items={crumbs} />
+    <div class="str-glava__red">
+      <div>
+        <span class="etiket vlez">{eyebrow}</span>
+        <h1 class="redove u-mt-22"><span class="red"><span>{title}</span></span></h1>
+      </div>
+      <div class="vlez" data-zabava="1">
+        <p class="vodach"><slot /></p>
+        {
+          buttons && (
+            <div class="btn-red u-mt-26">
+              <Button href="/kontakti/#forma">Безплатен оглед</Button>
+              <Button href={site.phone.href} variant="linia">
+                {' '}
+                {site.phone.display}
+              </Button>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,10 @@
+---
+/** Huge outlined word behind a section title; drifts horizontally on scroll (core/scroll-effects). */
+interface Props {
+  /** Vertical offset inside the section, as in the original (e.g. "4%"). */
+  top: string;
+}
+const { top } = Astro.props;
+---
+
+<div class="fon-duma" data-fon-duma aria-hidden="true" style={`top:${top}`}><slot /></div>

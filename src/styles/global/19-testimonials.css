@@ -24,14 +24,14 @@
   margin: 0;
   font: 400 clamp(18px, 1.45vw, 21px)/1.5 var(--f-t);
 }
-.otziv footer {
+.otziv figcaption {
   margin-top: auto;
   display: flex;
   align-items: center;
   gap: 12px;
   font-weight: 700;
 }
-.otziv footer::before {
+.otziv figcaption::before {
   content: "";
   width: 26px;
   height: 2px;

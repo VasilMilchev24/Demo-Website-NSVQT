@@ -14,13 +14,19 @@
   --paper: #f3f5f8;
   --white: #fff;
   --ink: color-mix(in oklch, var(--navy) 86%, black);
-  --ink-2: color-mix(in oklch, var(--navy) 66%, var(--paper));
-  --ink-3: color-mix(in oklch, var(--navy) 44%, var(--paper));
+  /* FIX G-09 (WCAG 2.2 AA contrast, measured): the text tokens were too light for small text.
+     ink-2: 66% → 76% (#64718f → #505f80; was 4.47:1 on paper, now ≥4.98:1 on paper/white/sky-soft).
+     ink-3: 44% → 72% (#919bb2 → #586686; was 2.55:1, now ≥4.7:1). Hierarchy ink > ink-2 > ink-3 kept.
+     ink-3-orig keeps the original light value for the one non-text use (3D label dot). */
+  --ink-2: color-mix(in oklch, var(--navy) 76%, var(--paper));
+  --ink-3: color-mix(in oklch, var(--navy) 72%, var(--paper));
+  --ink-3-orig: color-mix(in oklch, var(--navy) 44%, var(--paper));
   --line: color-mix(in oklch, var(--navy) 11%, var(--paper));
   --line-2: color-mix(in oklch, var(--navy) 20%, var(--paper));
   --sky-soft: color-mix(in oklch, var(--sky) 15%, var(--paper));
   --sky-mid: color-mix(in oklch, var(--sky) 42%, var(--paper));
-  --sky-deep: color-mix(in oklch, var(--sky) 72%, var(--navy));
+  /* FIX G-09: sky-deep is only used as text colour; 72% → 50% sky (#4288b6 → ≈#3a6c9b, ≥4.5:1). */
+  --sky-deep: color-mix(in oklch, var(--sky) 50%, var(--navy));
   --navy-deep: color-mix(in oklch, var(--navy) 74%, black);
   --navy-2: color-mix(in oklch, var(--navy) 88%, white);
   --navy-line: color-mix(in oklch, var(--navy) 70%, white);

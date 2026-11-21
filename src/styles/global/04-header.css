@@ -83,7 +83,8 @@
   padding: 0 6px;
   border-radius: 6px;
   background: var(--sky);
-  color: #fff;
+  /* FIX G-09: white on sky was 2.56:1; navy on sky is 4.77:1. */
+  color: var(--navy);
   font: 700 10px/1 var(--f-t);
   letter-spacing: 0.04em;
   text-transform: uppercase;

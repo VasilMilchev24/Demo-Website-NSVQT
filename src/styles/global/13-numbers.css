@@ -21,6 +21,18 @@
   background: var(--navy);
   color: #fff;
 }
+
+/* FIX G-09: navy at 75–78% opacity on sky was ~3.1:1; full navy on sky is 4.77:1. */
+.chislo--nebe .chislo__gore,
+.chislo--nebe .chislo__ime + p {
+  opacity: 1;
+}
+
+/* FIX G-06: the global `h1–h4 { color: var(--ink) }` overrode the card's white text, leaving the
+   heading navy-on-navy (invisible). Headings on the navy card inherit the card colour again. */
+.chislo--navy .chislo__ime {
+  color: inherit;
+}
 .chislo--nebe {
   background: var(--sky);
   color: var(--navy);
