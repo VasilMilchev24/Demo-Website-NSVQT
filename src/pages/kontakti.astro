@@ -1,0 +1,190 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+// Page styles after the layout's global styles (the original's cascade order).
+import '@/styles/inner/index.css';
+import PageHero from '@/components/blocks/PageHero.astro';
+import Icon from '@/components/ui/Icon.astro';
+import { site } from '@/config/site';
+
+const kinds = ['Апартамент', 'Къща', 'Баня', 'Фасада', 'Покрив', 'Друго'];
+const svg = {
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  'stroke-width': '1.75',
+  'stroke-linecap': 'round',
+  'stroke-linejoin': 'round',
+  'aria-hidden': 'true',
+} as const;
+---
+
+<BaseLayout title="Контакти" description="Жилищни ремонти във Варна и региона: свържете се с нас за оглед и оферта">
+  <PageHero eyebrow="Свържете се с нас" title="Контакти" crumbs={[{ label: 'Контакти' }]} buttons={false}>
+    Жилищни ремонти във Варна и региона: свържете се с нас за оглед и оферта.
+  </PageHero>
+
+  <section class="sek u-pt-0">
+    <div class="obv">
+      <div class="kontakti">
+        <div class="kontakti__lyavo">
+          <a class="k-karta k-karta--tel vlez" href={site.phone.href}>
+            <small>Телефон</small>
+            <b>{site.phone.display}</b>
+            <span class="vrazka">Обадете се <Icon name="arrow" /></span>
+          </a>
+          <div class="k-red">
+            <a class="k-karta vlez" data-zabava="1" href={site.phone.viber}>
+              <span class="k-ik">
+                <svg {...svg}>
+                  <path
+                    d="M12 3c5 0 8 2.6 8 7.7 0 5.2-3.2 7.4-8 7.4-.8 0-1.6-.1-2.4-.2L6 20.5v-3.5C4.6 15.7 4 13.6 4 10.7 4 5.6 7 3 12 3Z"
+                  ></path>
+                  <path
+                    d="M9.3 8.2c.4-.5 1-.4 1.3.1l.6 1c.2.4.1.9-.3 1.2l-.3.2c.4 1 1.2 1.8 2.2 2.2l.2-.3c.3-.4.8-.5 1.2-.3l1 .6c.5.3.6.9.1 1.3-.7.7-1.7.9-2.6.5a7.6 7.6 0 0 1-3.9-3.9c-.4-.9-.2-1.9.5-2.6Z"
+                  ></path>
+                </svg>
+              </span>
+              <small>Viber</small>
+              <b>Пишете ни</b>
+            </a>
+            <a class="k-karta vlez" data-zabava="2" href={`mailto:${site.email}`}>
+              <span class="k-ik">
+                <svg {...svg}><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"></rect><path d="m4.5 7 7.5 6 7.5-6"></path></svg>
+              </span>
+              {/* FIX C-12: one spelling for e-mail on this page ("Имейл"; the original mixed "Е-мейл", "e-mail", "Имейл"). */}
+              <small>Имейл</small>
+              <b class="k-email">{site.email}</b>
+            </a>
+          </div>
+          {/* Social links: "#" as in the original (decision), without target="_blank" (T-06). */}
+          <div class="k-red">
+            <a class="k-karta vlez" href={site.social.facebook}>
+              <span class="k-ik">
+                <svg {...svg}
+                  ><path d="M14 8h2.5V4.5H14A3.5 3.5 0 0 0 10.5 8v2.5H8V14h2.5v6.5H14V14h2.5l.5-3.5h-3V8.6c0-.3.3-.6.5-.6Z"
+                  ></path></svg
+                >
+              </span>
+              <small>Последвайте ни</small>
+              <b>Facebook</b>
+            </a>
+            <a class="k-karta vlez" data-zabava="1" href={site.social.instagram}>
+              <span class="k-ik">
+                <svg {...svg}
+                  ><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle
+                    cx="17.3"
+                    cy="6.7"
+                    r=".6"
+                    fill="currentColor"></circle></svg
+                >
+              </span>
+              <small>Последвайте ни</small>
+              <b>Instagram</b>
+            </a>
+          </div>
+          <div class="k-karta k-karta--karta vlez">
+            <small>Работим на територията на</small>
+            <b>{site.area}</b>
+            <svg class="karta-varna" viewBox="0 0 400 240" aria-hidden="true">
+              <path
+                class="kv-more"
+                d="M400 0 V240 H250 C 262 214, 300 206, 296 178 C 292 150, 330 146, 338 120 C 346 92, 318 70, 340 46 C 356 28, 378 18, 400 0Z"
+              ></path>
+              <path
+                class="kv-ezero"
+                d="M60 150 C 90 136, 130 150, 170 142 C 210 134, 250 152, 292 160 L 292 168 C 250 162, 210 146, 170 154 C 130 162, 90 150, 60 160Z"
+              ></path>
+              {[120, 90, 60].map((r, i) => <circle class="kv-krag" style={`--i:${i}`} cx="270" cy="120" r={r} />)}
+              <circle cx="270" cy="120" r="9" class="kv-tochka"></circle>
+              <text x="252" y="104" class="kv-txt" text-anchor="end">{site.city}</text>
+            </svg>
+            <span class="k-firma">{site.legalName} · {site.slogan} · {site.city} {site.postalCode}</span>
+          </div>
+        </div>
+
+        <div class="kontakti__forma karta vlez" id="forma">
+          <h2 class="h-3">или попълнете формата и ние ще се свържем с вас възможно най-скоро:</h2>
+          <form class="forma" data-forma novalidate>
+            <div class="pole">
+              <label id="f-izbor-l">Какво ремонтирате?</label>
+              <div class="izbor-chip" data-izbor role="group" aria-labelledby="f-izbor-l">
+                {kinds.map((k) => <button type="button" aria-pressed="false">{k}</button>)}
+              </div>
+            </div>
+            <div class="forma__red">
+              <div class="pole">
+                <label for="f-ime">Име (задължително)</label>
+                <input id="f-ime" name="ime" autocomplete="name" required aria-describedby="f-ime-zab" />
+                <span class="zab" id="f-ime-zab">Напишете името си.</span>
+              </div>
+              <div class="pole">
+                <label for="f-tel">Телефон</label>
+                <input
+                  id="f-tel"
+                  name="telefon"
+                  type="tel"
+                  autocomplete="tel"
+                  inputmode="tel"
+                  aria-describedby="f-tel-zab"
+                />
+                <span class="zab" id="f-tel-zab">Проверете телефона.</span>
+              </div>
+            </div>
+            <div class="pole">
+              <label for="f-email">Имейл (задължително)</label>
+              <input
+                id="f-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                aria-describedby="f-email-zab"
+              />
+              <span class="zab" id="f-email-zab">Проверете имейла.</span>
+            </div>
+            <div class="pole">
+              <label for="f-sab">Съобщение (задължително)</label>
+              <textarea id="f-sab" name="saobshtenie" required aria-describedby="f-sab-zab"></textarea>
+              <span class="zab" id="f-sab-zab">Напишете няколко думи за ремонта.</span>
+            </div>
+            <label class="otmetka">
+              <input type="checkbox" name="saglasie" required aria-describedby="f-saglasie-zab" />
+              <span
+                >Декларирам съгласие за обработка на лични данни с цел отговор на моето запитване. <a
+                  href="/deklaratsiya-za-lichni-danni/">Декларацията</a
+                ></span
+              >
+            </label>
+            <p class="zab-saglasie" id="f-saglasie-zab" role="alert" hidden>Нужно е съгласието, за да ви отговорим.</p>
+            <button class="btn" type="submit"
+              >Изпрати <span class="krag"><Icon name="arrow" /></span></button
+            >
+          </form>
+          <div class="forma-gotovo" hidden data-gotovo>
+            <h3 tabindex="-1">Запитването е готово</h3>
+            <p>
+              Това е демо и формата още не изпраща сама. Изпратете го по имейл с един клик или се обадете на {
+                site.phone.display
+              }.
+            </p>
+            <pre data-rezyume></pre>
+            <div class="btn-red">
+              <a class="btn btn--nebe" data-mailto href={`mailto:${site.email}`}
+                >Изпрати по имейл <span class="krag"
+                  ><svg {...svg}><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"></rect><path d="m4.5 7 7.5 6 7.5-6"
+                    ></path></svg
+                  ></span
+                ></a
+              >
+              <a class="btn btn--linia" href={site.phone.href}>{site.phone.display}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import '@/scripts/pages/contact';
+</script>

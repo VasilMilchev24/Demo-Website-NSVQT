@@ -41,7 +41,10 @@ a.k-karta:hover {
   letter-spacing: -0.02em;
 }
 .k-karta .k-email {
-  font-size: min(20px, calc(100cqi / 13.6));
+  /* FIX G-07: "/ 13.6" let the 26-character address overflow its card at every width; the address is
+     about 16.9 font-sizes wide in this font, so "/ 17.5" keeps it inside with a small margin.
+     Re-check this divisor if the e-mail address in src/config/site.ts changes length. */
+  font-size: min(20px, calc(100cqi / 17.5));
   white-space: nowrap;
 }
 .k-ik {
