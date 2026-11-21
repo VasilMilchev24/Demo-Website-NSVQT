@@ -38,7 +38,8 @@
 .st-golyama__n {
   font: 600 clamp(56px, 6vw, 88px)/0.8 var(--f-d);
   letter-spacing: -0.06em;
-  color: var(--sky);
+  /* FIX G-09: sky on white was 2.56:1 (large text needs 3:1); 80% sky / 20% navy = 3.43:1. */
+  color: color-mix(in oklch, var(--sky) 80%, var(--navy));
 }
 .st-golyama__v {
   position: relative;

@@ -16,7 +16,7 @@ interface Props {
   /** Wide H1 style (`.dalgo`). */
   long?: boolean;
   /** Extra classes for the media frame. */
-  mediaClass?: string;
+  mediaClass?: string | undefined;
 }
 const { eyebrow, title, crumbs, buttons = true, long = false, mediaClass } = Astro.props;
 ---

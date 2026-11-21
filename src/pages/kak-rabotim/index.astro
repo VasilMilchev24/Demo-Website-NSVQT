@@ -1,0 +1,57 @@
+---
+import '@/styles/inner/index.css';
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/blocks/PageHero.astro';
+import StepMedia from '@/components/blocks/steps/StepMedia.astro';
+import ProcessPromo from '@/components/blocks/ProcessPromo.astro';
+import CtaPanel from '@/components/blocks/CtaPanel.astro';
+import Icon from '@/components/ui/Icon.astro';
+import { stepsPhotoCredits } from '@/data/photo-credits';
+
+const steps = (await getCollection('kak-rabotim')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Нашият процес на работа" description="Стъпките, които следваме в нашата работа" credits={stepsPhotoCredits}>
+  <PageHero eyebrow="Стъпките, които следваме в нашата работа" title="Как работим?" crumbs={[{ label: 'Как работим?' }]}>
+    Вярваме, че професионализмът се крие в системния подход. Затова организираме работния процес в логическа
+    последователност, гарантираща здравина, функционалност и естетика:
+  </PageHero>
+
+  <section class="sek u-pt-0">
+    <div class="obv">
+      <div class="stapki-golemi">
+        {
+          steps.map((s) => (
+            <a class="st-golyama vlez" href={`/kak-rabotim/${s.id}/`}>
+              <div class="st-golyama__t">
+                <span class="st-golyama__n">{String(s.data.order).padStart(2, '0')}</span>
+                <h2 class="h-3">{s.data.title}</h2>
+                <p>{s.data.summary}</p>
+                <span class="vrazka">
+                  Повече за стъпката <Icon name="arrow" />
+                </span>
+              </div>
+              <div class:list={['st-golyama__v', { 'st-golyama__v--gr': s.data.media.type !== 'photo' }]}>
+                <StepMedia media={s.data.media} sizes="(max-width: 980px) 92vw, 560px" />
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* FIX G-04: this block rendered unstyled in the original (its CSS was only loaded on the home page). */}
+  <section class="sek sek--tamno">
+    <div class="obv">
+      <ProcessPromo
+        tone="tamno"
+        title="Изпълнението, стая по стая"
+        text="Изкъртване, инсталации, дограма, замазки, настилки, дърводелски услуги, осветление, обзавеждане и финално почистване."
+      />
+    </div>
+  </section>
+
+  <CtaPanel />
+</BaseLayout>

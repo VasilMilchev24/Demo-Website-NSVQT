@@ -1,0 +1,29 @@
+---
+/** Animated offer sheet ("Оферта") — decorative illustration of step 02. Rows reveal with --i. */
+const rows = [
+  ['Демонтаж и извозване', 'м²'],
+  ['ВиК инсталация', 'бр.'],
+  ['Ел. инсталация', 'бр.'],
+  ['Замазка', 'м²'],
+  ['Шпакловка и боя', 'м²'],
+  ['Настилки и облицовки', 'м²'],
+  ['Финално почистване', 'м²'],
+] as const;
+---
+
+<div class="list-oferta" aria-hidden="true">
+  <div class="list-oferta__gore"><b>Оферта</b><span>цени в евро</span></div>
+  {
+    rows.map(([title, unit], i) => (
+      <div class="list-oferta__red" style={`--i:${i}`}>
+        <span class="n">{String(i + 1).padStart(2, '0')}</span>
+        <span class="t">{title}</span>
+        <span class="m">{unit}</span>
+        <span class="c">
+          <i />
+        </span>
+      </div>
+    ))
+  }
+  <div class="list-oferta__obshto"><span>Общо, без скрити разходи</span><b>€</b></div>
+</div>

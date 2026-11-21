@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import OfferMock from './OfferMock.astro';
+import ContractMock from './ContractMock.astro';
+
+/** A step's visual: its photo, or the offer / contract mock. */
+interface Props {
+  media: CollectionEntry<'kak-rabotim'>['data']['media'];
+  sizes: string;
+  /** Above-the-fold hero image (eager, high priority). */
+  hero?: boolean;
+}
+const { media, sizes, hero = false } = Astro.props;
+---
+
+{
+  media.type === 'photo' ? (
+    <Image
+      src={media.image}
+      alt={media.alt}
+      widths={[640, 1200, 2000]}
+      sizes={sizes}
+      loading={hero ? 'eager' : 'lazy'}
+      fetchpriority={hero ? 'high' : 'auto'}
+      decoding="async"
+    />
+  ) : media.type === 'offer' ? (
+    <OfferMock />
+  ) : (
+    <ContractMock />
+  )
+}

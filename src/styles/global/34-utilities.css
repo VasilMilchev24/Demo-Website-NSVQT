@@ -50,6 +50,14 @@
   font-size: clamp(20px, 2.5vw, 36px);
 }
 
+.izrechenie--s {
+  font-size: clamp(20px, 2.4vw, 34px);
+}
+
+.u-mt-14 {
+  margin-top: 14px;
+}
+
 .u-pt-0 {
   padding-top: 0;
 }

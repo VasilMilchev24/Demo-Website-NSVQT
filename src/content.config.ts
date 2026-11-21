@@ -142,4 +142,35 @@ const blog = defineCollection({
     }),
 });
 
-export const collections = { uslugi, obekti, blog };
+/**
+ * "Как работим" steps. Drives /kak-rabotim/ (big cards), /kak-rabotim/[slug]/ and the home step cards.
+ * `media`: a photo, or one of the animated document mocks (offer / contract).
+ */
+const kakRabotim = defineCollection({
+  loader: glob({ base: './src/content/kak-rabotim', pattern: '**/*.md' }),
+  schema: ({ image }) => {
+    const photo = z.object({ image: image(), alt: z.string(), credit: z.string() });
+    return z.object({
+      order: z.number().int().positive(),
+      title: z.string(),
+      icon: z.enum(['inspect', 'offer', 'contract', 'tools', 'sparkle']),
+      /** Wide H1 style (`.dalgo`) on the step hero — only "Професионално изпълнение" in the original. */
+      heroLong: z.boolean().default(false),
+      /** Hero lead on the step page. */
+      lead: z.string(),
+      /** Statement next to the step number; also the text of the home step cards. */
+      statement: z.string(),
+      /** Text on the /kak-rabotim/ card; also the first paragraph of the step page (body continues). */
+      summary: z.string(),
+      media: z.discriminatedUnion('type', [
+        z.object({ type: z.literal('photo'), ...photo.shape }),
+        z.object({ type: z.literal('offer') }),
+        z.object({ type: z.literal('contract') }),
+      ]),
+      quote: z.object({ text: z.string(), caption: z.string(), photo: photo.optional() }),
+      seo,
+    });
+  },
+});
+
+export const collections = { uslugi, obekti, blog, 'kak-rabotim': kakRabotim };

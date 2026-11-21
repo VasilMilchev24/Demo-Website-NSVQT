@@ -77,6 +77,19 @@
   line-height: 1.25;
   margin-top: 1.6em;
 }
+/* FIX T-08: prose whose subheadings follow the page H1 directly uses H2 elements styled exactly like
+   the original H3s (the "Как работим" step pages). */
+.proza--podzaglavia h2 {
+  font-size: clamp(20px, 1.6vw, 24px);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-top: 1.6em;
+}
+@media (max-width: 640px) {
+  .proza--podzaglavia h2 {
+    font-size: clamp(16px, 4.6vw, 20px);
+  }
+}
 .proza ul {
   display: grid;
   gap: 10px;

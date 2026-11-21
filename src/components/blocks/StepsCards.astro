@@ -1,26 +1,29 @@
 ---
+import { getCollection } from 'astro:content';
 import Icon from '@/components/ui/Icon.astro';
-import { steps } from '@/data/steps';
+
+/** Home "Как работим?" cards: one per step from the kak-rabotim collection. */
+const steps = (await getCollection('kak-rabotim')).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <div class="stapki" data-stapki>
   <div class="stapki__linia"><i></i></div>
   {
     steps.map((s, i) => (
-      <a class="stapka vlez" data-zabava={i % 4} href={s.href}>
+      <a class="stapka vlez" data-zabava={i % 4} href={`/kak-rabotim/${s.id}/`}>
         <span class="stapka__ik">
-          {s.icon === 'inspect' ? (
+          {s.data.icon === 'inspect' ? (
             <Icon name="inspect">
               <rect x="3" y="6" width="13" height="13" rx="3" />
               <circle cx="9.5" cy="12.5" r="2.2" />
             </Icon>
           ) : (
-            <Icon name={s.icon} />
+            <Icon name={s.data.icon} />
           )}
         </span>
-        <span class="stapka__n">{s.n}</span>
-        <h3>{s.title}</h3>
-        <p>{s.short}</p>
+        <span class="stapka__n">{String(s.data.order).padStart(2, '0')}</span>
+        <h3>{s.data.title}</h3>
+        <p>{s.data.statement}</p>
         <span class="vrazka">
           Повече <Icon name="arrow" />
         </span>
