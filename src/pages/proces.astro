@@ -1,0 +1,155 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+// Page styles after the layout's global styles (the original's cascade order).
+import '@/styles/proces/index.css';
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
+import { processSteps } from '@/data/process-steps';
+import { site } from '@/config/site';
+
+const total = String(processSteps.length).padStart(2, '0');
+const pad = (n: number) => String(n).padStart(2, '0');
+const svg = {
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  'stroke-width': '1.75',
+  'stroke-linecap': 'round',
+  'stroke-linejoin': 'round',
+  'aria-hidden': 'true',
+} as const;
+---
+
+<BaseLayout
+  title="Процесът в 3D: от огледа до ключа"
+  description="Вижте в 3D как минава един цялостен ремонт с Ремонт Студио: оглед, оферта, договор, изкъртване, инсталации, дограма, замазки, настилки, дърводелски услуги, осветление, обзавеждане и финално почистване."
+  bodyClass="str-proces"
+  mainClass="pr"
+>
+  <Fragment slot="before-main">
+    <div class="pr-zarezhda" id="pr-zarezhda" aria-hidden="true">
+      <svg viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="52" class="pr-zarezhda__fon"></circle>
+        <circle cx="60" cy="60" r="52" class="pr-zarezhda__dag" pathLength="100"></circle>
+      </svg>
+      <span>Подреждаме апартамента</span>
+    </div>
+    <div class="pr-platno" id="pr-platno" aria-hidden="true"></div>
+    <div class="pr-belezhki" id="pr-belezhki" aria-hidden="true"></div>
+  </Fragment>
+
+  <section class="pr-vavod">
+    <div class="obv">
+      <span class="etiket">Процесът в 3D</span>
+      <h1 class="pr-h1">
+        От огледа
+        <br />
+        до ключа
+      </h1>
+      <p class="vodach">
+        Превъртете надолу и вижте как двустаен апартамент минава през ремонта: дванайсет стъпки, от първата
+        консултация до финалното почистване.
+      </p>
+      <p class="pr-vavod__dolu">
+        <span class="mishka" aria-hidden="true"></span>Превъртете · влачете, за да огледате · апартаментът е
+        пример, не конкретен обект
+      </p>
+    </div>
+  </section>
+
+  <div class="pr-stapki">
+    {processSteps.map((s, i) => (
+      <article class="pr-st" id={s.id} data-st={i}>
+        <div class="pr-st__karta">
+          <div class="pr-st__gore">
+            <span class="pr-st__grupa">{s.group}</span>
+            <span class="pr-st__n">
+              {pad(i + 1)} / {total}
+            </span>
+          </div>
+          <h2>{s.title}</h2>
+          <p>{s.text}</p>
+          <ul>
+            {s.items.map((item) => (
+              <li>
+                <Icon name="check" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <section class="pr-krai" id="krai">
+    <div class="obv">
+      <div class="pr-krai__karta">
+        <span class="etiket">Готово за нанасяне</span>
+        <h2 class="h-2">Ремонти на жилища във Варна</h2>
+        <p class="vodach">
+          Мотото ни е нашето обещание за спокойствие. Свържете се с нас още днес за безплатен оглед и
+          професионална консултация.
+        </p>
+        <div class="btn-red">
+          <Button href="/kontakti/#forma" variant="nebe">
+            Безплатен оглед
+          </Button>
+          <Button href={site.phone.href} variant="byal" layout="tel">
+            {site.phone.display}
+          </Button>
+        </div>
+        <a class="vrazka u-mt-18" href="/konstruktor/">
+          Вижте ориентировъчна цена в конструктора <Icon name="arrow" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Fragment slot="after-main">
+    <nav class="pr-nav" aria-label="Стъпките">
+      <div class="pr-nav__lenta">
+        <i></i>
+      </div>
+      <ol>
+        {processSteps.map((s, i) => (
+          <li>
+            <a href={`#${s.id}`} data-skok={i} title={s.title}>
+              <span>{pad(i + 1)}</span>
+              <b>{s.nav}</b>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+    <div class="pr-golyamo" aria-hidden="true">
+      <b data-golyamo-n>01</b>
+      <small data-golyamo-t>{processSteps[0]?.title}</small>
+    </div>
+    {/* FIX T-08 (axe "region"): the fixed view controls sat outside every landmark, and aria-label was on a
+         plain div. Now an <aside> landmark holds a labelled button group. */}
+    <aside aria-label="Изглед">
+      <div class="pr-kontroli" role="group" aria-label="Изглед">
+        <button type="button" data-izgled="sled" aria-pressed="false" title="Покажи готовия апартамент">
+          <svg {...svg}>
+            <path d="M12 3.5 13.6 9l5.4 1.6-5.4 1.6L12 17.6l-1.6-5.4L5 10.6 10.4 9Z"></path>
+            <path d="M18.5 15.5l.6 2 2 .6-2 .6-.6 2-.6-2-2-.6 2-.6Z"></path>
+          </svg>
+          <span>Готовото</span>
+        </button>
+        <button type="button" data-izgled="avto" aria-pressed="true" title="Следвай превъртането">
+          <svg {...svg}>
+            <path d="m12 3 8 4.5v9L12 21l-8-4.5v-9Z"></path>
+            <path d="m4 7.5 8 4.5 8-4.5M12 12v9"></path>
+          </svg>
+          <span>По стъпки</span>
+        </button>
+      </div>
+    </aside>
+  </Fragment>
+</BaseLayout>
+
+<script>
+  import { initProcessScene } from '@/scripts/3d/process/process-scene';
+  initProcessScene();
+</script>

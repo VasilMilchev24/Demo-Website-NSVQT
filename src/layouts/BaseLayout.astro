@@ -16,9 +16,20 @@ interface Props {
   brandTitle?: boolean;
   /** Emit <link rel="canonical"> (off for the 404 page, which has no URL of its own). */
   canonical?: boolean;
+  /** Extra classes on <body> / <main> (the 3D pages). */
+  bodyClass?: string;
+  mainClass?: string;
 }
 
-const { title, description, credits, brandTitle = false, canonical: withCanonical = true } = Astro.props;
+const {
+  title,
+  description,
+  credits,
+  brandTitle = false,
+  canonical: withCanonical = true,
+  bodyClass,
+  mainClass,
+} = Astro.props;
 const fullTitle = brandTitle || !title ? `${site.name}: ${site.slogan}` : `${title} | ${site.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL(site.ogImage, Astro.site).href;
@@ -77,7 +88,7 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <slot name="head" />
   </head>
-  <body>
+  <body class={bodyClass}>
     <a class="skrito" href="#sadarzhanie">Към съдържанието</a>
     <Header />
     <ScrollRoller />
@@ -87,9 +98,12 @@ const jsonLd = {
         >{site.demoBadge.label}</a
       >
     </aside>
-    <main id="sadarzhanie">
+    {/* Fixed full-screen layers of the 3D pages (canvas, loader, labels) sit before <main>, as in the original. */}
+    <slot name="before-main" />
+    <main id="sadarzhanie" class={mainClass}>
       <slot />
     </main>
+    <slot name="after-main" />
     <Footer credits={credits} />
     <script>
       import '@/scripts/core/index';
