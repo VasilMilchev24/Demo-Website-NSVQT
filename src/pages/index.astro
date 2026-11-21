@@ -1,7 +1,8 @@
 ---
-import '@/styles/home/index.css';
 import { getImage } from 'astro:assets';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+// Page styles after the layout's global styles (the original's cascade order).
+import '@/styles/home/index.css';
 import HomeHero from '@/components/blocks/home/HomeHero.astro';
 import WhySlides from '@/components/blocks/home/WhySlides.astro';
 import KonstruktorTeaser from '@/components/blocks/home/KonstruktorTeaser.astro';
@@ -42,8 +43,7 @@ const sticker = await getImage({ src: stickerPhoto, width: 320, format: 'webp' }
         <Sticker variant="pr" rot="6deg" src="/assets/img/predmeti/chuk-160.webp" />, от първата консултация <Sticker
           variant="tekst"
           rot="-3deg">оглед · 0 €</Sticker
-        >
-        до финалното почистване <Sticker variant="pr" rot="-8deg" src="/assets/img/predmeti/sprei-160.webp" />.
+        >{' '}до финалното почистване <Sticker variant="pr" rot="-8deg" src="/assets/img/predmeti/sprei-160.webp" />.
       </p>
     </div>
   </section>

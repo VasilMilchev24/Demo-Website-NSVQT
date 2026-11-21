@@ -1,7 +1,8 @@
 ---
-import '@/styles/inner/index.css';
 import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+// Page styles after the layout's global styles (the original's cascade order).
+import '@/styles/inner/index.css';
 import PageHero from '@/components/blocks/PageHero.astro';
 import StepMedia from '@/components/blocks/steps/StepMedia.astro';
 import ProcessPromo from '@/components/blocks/ProcessPromo.astro';

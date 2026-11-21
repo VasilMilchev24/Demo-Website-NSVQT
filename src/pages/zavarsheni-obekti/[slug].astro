@@ -1,0 +1,79 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+// Page styles after the layout's global styles (the original's cascade order).
+import '@/styles/inner/index.css';
+import PageHero from '@/components/blocks/PageHero.astro';
+import ProjectGallery from '@/components/blocks/ProjectGallery.astro';
+import ProjectCards from '@/components/blocks/ProjectCards.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import CtaPanel from '@/components/blocks/CtaPanel.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('obekti');
+  return projects.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+interface Props {
+  entry: CollectionEntry<'obekti'>;
+}
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+const home = `${data.homeType} апартамент`;
+const facts = [
+  ['Къде', data.location],
+  ['Жилище', home],
+  ['Ремонт', data.renovation],
+  ['Снимки', String(data.photos.length)],
+] as const;
+---
+
+<BaseLayout title={data.seo.title} description={data.seo.description}>
+  <PageHero
+    eyebrow={`${data.location} · ${home}`}
+    title={data.title}
+    long
+    crumbs={[{ label: 'Завършени обекти', href: '/zavarsheni-obekti/' }, { label: data.title }]}
+  >
+    {data.lead}
+  </PageHero>
+
+  <section class="sek u-pt-0">
+    <div class="obv">
+      <div class="tekst-kol">
+        <div class="tekst-kol__lyavo">
+          <div class="ob-fakti">
+            {
+              facts.map(([label, value]) => (
+                <div>
+                  <small>{label}</small>
+                  <b>{value}</b>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div class="proza proza--podzaglavia">
+          <p>{data.intro}</p>
+          <Content />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sek u-pt-0">
+    <div class="obv">
+      <ProjectGallery projects={[entry]} />
+    </div>
+  </section>
+
+  <section class="sek sek--malko">
+    <div class="obv">
+      <SectionHeader eyebrow="Още обекти" title="Вижте и" headingClass="h-3" />
+      <ProjectCards exclude={entry.id} more />
+    </div>
+  </section>
+
+  <CtaPanel />
+</BaseLayout>

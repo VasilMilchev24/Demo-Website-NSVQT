@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+// Page styles after the layout's global styles (the original's cascade order).
+import '@/styles/inner/index.css';
+import PageHero from '@/components/blocks/PageHero.astro';
+import ProjectGallery from '@/components/blocks/ProjectGallery.astro';
+import CtaPanel from '@/components/blocks/CtaPanel.astro';
+
+const projects = (await getCollection('obekti')).sort((a, b) => a.data.order - b.data.order);
+const total = projects.reduce((n, p) => n + p.data.photos.length, 0);
+const lead =
+  'Ремонт Студио: Ремонти на жилища във Варна. Поемаме пълната отговорност за вашия ремонт, от първата консултация до финалното почистване. Работим на територията на Варна и региона.';
+---
+
+{
+  /* FIX T-11: the original reused the site-wide default description here; this page now uses the
+     site's own sentence about the projects (from /zavarsheni-obekti/), which no other page uses as its description. */
+}
+<BaseLayout
+  title="Кадри от нашите обекти"
+  description="Нашите завършени проекти: домове, преобразени с наша помощ във Варна и региона."
+>
+  <PageHero eyebrow="Галерия" title="Кадри от нашите обекти" crumbs={[{ label: 'Галерия' }]} buttons={false}>
+    {lead}
+  </PageHero>
+
+  <section class="sek u-pt-0">
+    <div class="obv">
+      <div class="filtri" role="group" aria-label="Обекти">
+        <button type="button" aria-pressed="true" data-filtar="vsichki">Всички <small>{total}</small></button>
+        {
+          projects.map((p) => (
+            <button type="button" aria-pressed="false" data-filtar={p.id}>
+              {p.data.location} <small>{p.data.photos.length}</small>
+            </button>
+          ))
+        }
+      </div>
+      <ProjectGallery projects={projects} filterable />
+    </div>
+  </section>
+
+  <CtaPanel />
+</BaseLayout>

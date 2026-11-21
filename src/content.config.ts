@@ -99,6 +99,8 @@ const uslugi = defineCollection({
       /** Wide H1 style (`.dalgo`) on the service hero — every service except the bathroom page. */
       heroLong: z.boolean().default(true),
       sections: z.array(serviceSection).min(1),
+      /** Page-specific closing call-to-action (facade / roof pages); default panel otherwise. */
+      cta: z.object({ title: z.string(), text: z.string() }).optional(),
       seo,
     }),
 });

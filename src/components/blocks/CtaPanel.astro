@@ -6,8 +6,15 @@ import { site } from '@/config/site';
 /** Closing call-to-action panel ("Свържете се с нас…") shown at the end of most pages. */
 interface Props {
   title?: string;
+  text?: string;
+  /** Wide heading style (`.dalgo`); the short heading on the facade / roof pages has none. */
+  long?: boolean;
 }
-const { title = 'Свържете се с нас сега, за да заявите безплатен оглед за вашия ремонт във Варна!' } = Astro.props;
+const {
+  title = 'Свържете се с нас сега, за да заявите безплатен оглед за вашия ремонт във Варна!',
+  text = 'Обадете ни се или ни пишете директно във Viber.',
+  long = true,
+} = Astro.props;
 ---
 
 <section class="sek sek--malko" aria-label="Безплатен оглед">
@@ -19,9 +26,9 @@ const { title = 'Свържете се с нас сега, за да заяви�
         </g>
         <circle cx="200" cy="200" r="34" fill="#4CACD8"></circle>
       </svg>
-      <h2 class="dalgo">{title}</h2>
+      <h2 class:list={{ dalgo: long }}>{title}</h2>
       <div class="prizov__d">
-        <p>Обадете ни се или ни пишете директно във Viber.</p>
+        <p>{text}</p>
         <div class="btn-red">
           <Button href={site.phone.href} variant="nebe" layout="tel">{site.phone.display}</Button>
           <Button href={site.phone.viber} variant="byal" icon="viber">Viber</Button>
