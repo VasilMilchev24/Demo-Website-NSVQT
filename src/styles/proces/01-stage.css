@@ -1,0 +1,211 @@
+/* Ported verbatim from the original /assets/css/proces.css (lines 1–211). */
+/* „Процес“: платното е закачено зад страницата, картите на стъпките вървят отгоре */
+body.str-proces {
+  background: #eef1f5;
+}
+.str-proces .ryb {
+  display: none;
+}
+.pr-platno {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  cursor: grab;
+  touch-action: pan-y;
+}
+.pr-platno:active {
+  cursor: grabbing;
+}
+.pr-platno canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+.pr-belezhki {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.pr {
+  position: relative;
+  z-index: 3;
+  pointer-events: none;
+}
+.pr a,
+.pr button,
+.pr-st__karta,
+.pr-krai__karta {
+  pointer-events: auto;
+}
+.pr-vavod {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 0 clamp(150px, 22vh, 220px);
+}
+.pr-vavod .obv {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  align-items: flex-start;
+}
+.pr-h1 {
+  font-size: clamp(46px, 7.4vw, 124px);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  max-width: 9ch;
+}
+.pr-vavod .vodach {
+  max-width: 460px;
+  color: var(--ink-2);
+}
+.pr-vavod__dolu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13.5px;
+  color: var(--ink-3);
+  font-weight: 600;
+}
+.pr-vavod__dolu .mishka {
+  width: 22px;
+  height: 34px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1.75px currentColor;
+  position: relative;
+}
+.pr-vavod__dolu .mishka::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 7px;
+  width: 3px;
+  height: 7px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: currentColor;
+  animation: mishka 1.8s var(--izh) infinite;
+}
+@keyframes mishka {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(9px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.pr-stapki {
+  position: relative;
+}
+.pr-st {
+  min-height: 150vh;
+  padding: 0 var(--pole);
+  scroll-margin-top: 0;
+}
+.pr-st__karta {
+  position: sticky;
+  top: clamp(96px, 14vh, 130px);
+  width: min(420px, 100%);
+  padding: 26px;
+  border-radius: var(--r-l);
+  background: rgb(255 255 255/0.94);
+  box-shadow:
+    0 1px 2px rgb(20 30 60/0.05),
+    0 24px 60px -24px rgb(20 30 60/0.32);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-left: max(0px, calc((100vw - var(--shir)) / 2 - var(--pole)));
+}
+.pr-st__gore {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 700 12px/1 var(--f-t);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.pr-st__grupa {
+  color: var(--sky-deep);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pr-st__grupa::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sky);
+}
+.pr-st__n {
+  color: var(--ink-3);
+}
+.pr-st h2 {
+  font-size: clamp(24px, 2.2vw, 32px);
+  line-height: 1.08;
+}
+.pr-st p {
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.pr-st ul {
+  display: grid;
+  gap: 8px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+.pr-st li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+.pr-st li svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: var(--sky-deep);
+  margin-top: 2px;
+}
+
+.pr-krai {
+  min-height: 110vh;
+  display: flex;
+  align-items: center;
+  padding: 20vh 0;
+}
+.pr-krai__karta {
+  max-width: 560px;
+  padding: clamp(28px, 3.4vw, 48px);
+  border-radius: var(--r-xl);
+  background: var(--navy);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  box-shadow: 0 30px 80px -30px rgb(20 30 60/0.5);
+}
+.pr-krai__karta h2 {
+  color: #fff;
+}
+.pr-krai__karta .vodach {
+  color: color-mix(in oklch, #fff 74%, var(--navy));
+}
+.pr-krai__karta .etiket {
+  color: color-mix(in oklch, #fff 70%, var(--navy));
+}
+.pr-krai__karta .vrazka {
+  color: #fff;
+}

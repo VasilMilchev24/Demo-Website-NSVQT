@@ -1,0 +1,135 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Icon from '@/components/ui/Icon.astro';
+import { site } from '@/config/site';
+
+const services = (await getCollection('uslugi')).sort((a, b) => a.data.order - b.data.order);
+const path = Astro.url.pathname;
+
+/** aria-current: "page" on the exact page, "true" on its parent section (same styling, more accurate). */
+function current(href: string): 'page' | 'true' | undefined {
+  if (path === href) return 'page';
+  if (href !== '/' && path.startsWith(href)) return 'true';
+  return undefined;
+}
+const servicesCurrent = path.startsWith('/uslugi/') ? (path === '/uslugi/' ? 'page' : 'true') : undefined;
+
+const navLinks = [
+  { href: '/za-nas/', label: 'За нас' },
+  { href: '/blog/', label: 'Блог' },
+  { href: '/kontakti/', label: 'Контакти' },
+];
+---
+
+<header class="glava" id="glava">
+  <a class="glava__logo" href="/" aria-label={`${site.name}, начало`}>
+    <img
+      src="/assets/img/logo/logo-firma-600.png"
+      alt={`${site.name}: ${site.slogan}`}
+      width="600"
+      height="123"
+    />
+  </a>
+  <ul class="glava__nav">
+    <li>
+      <button
+        class="nav-v mm-btn"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mega"
+        aria-current={servicesCurrent}
+      >
+        Услуги<Icon name="chevron-down" />
+      </button>
+    </li>
+    <li>
+      <a class="nav-v" href="/proces/" aria-current={current('/proces/')}>Процес <span class="znak">3D</span></a>
+    </li>
+    <li>
+      <a class="nav-v" href="/konstruktor/" aria-current={current('/konstruktor/')}
+        >Конструктор <span class="znak">цена</span></a
+      >
+    </li>
+    <li>
+      <a class="nav-v" href="/zavarsheni-obekti/" aria-current={current('/zavarsheni-obekti/')}
+        >Обекти<Icon name="chevron-down" /></a
+      >
+      <div class="padashto">
+        <a href="/zavarsheni-obekti/">Завършени обекти<Icon name="chevron-right" /></a>
+        <a href="/galeriya/">Галерия<Icon name="chevron-right" /></a>
+      </div>
+    </li>
+    {
+      navLinks.map((l) => (
+        <li>
+          <a class="nav-v" href={l.href} aria-current={current(l.href)}>
+            {l.label}
+          </a>
+        </li>
+      ))
+    }
+    <li aria-hidden="true" class="glava__hapche"></li>
+  </ul>
+  <div class="glava__desno">
+    <a class="glava__tel" href={site.phone.href} aria-label={`Телефон ${site.phone.display}`}>
+      <span class="krag"><Icon name="phone" /></span><span>{site.phone.display}</span>
+    </a>
+    <a class="btn" href="/kontakti/#forma">Безплатен оглед <span class="krag"><Icon name="arrow" /></span></a>
+    <button class="glava__menu" type="button" aria-label="Менюто" aria-expanded="false" aria-controls="mob-menyu">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mega" id="mega" role="region" aria-label="Услугите">
+  {
+    services.map((s) => (
+      <a class="mega__u" href={`/uslugi/${s.id}/`}>
+        <span class="kadar">
+          <Image src={s.data.image} alt="" widths={[320, 640]} sizes="240px" loading="lazy" decoding="async" />
+        </span>
+        <b>{s.data.title}</b>
+        <small>{s.data.tagline}</small>
+      </a>
+    ))
+  }
+  <div class="mega__dop">
+    <a class="mega__k" href="/proces/">
+      <b>Процесът в 3D</b><small>От огледа до ключа, стъпка по стъпка</small><span class="vrazka"
+        >Вижте <Icon name="arrow" /></span
+      >
+    </a>
+    <a class="mega__k mega__k--nebe" href="/konstruktor/">
+      <b>Конструктор на ремонта</b><small>Изберете какво и вижте ориентировъчна цена</small><span class="vrazka"
+        >Към конструктора <Icon name="arrow" /></span
+      >
+    </a>
+  </div>
+</div>
+
+<div class="mob-menyu" id="mob-menyu">
+  <nav aria-label="Менюто">
+    <a href="/">Начало</a>
+    {
+      services.map((s) => (
+        <a href={`/uslugi/${s.id}/`}>
+          {s.data.shortTitle}
+          <small>услуга</small>
+        </a>
+      ))
+    }
+    <a href="/proces/">Процес <small>3D</small></a>
+    <a href="/konstruktor/">Конструктор <small>цена</small></a>
+    <a href="/kak-rabotim/">Как работим</a>
+    <a href="/zavarsheni-obekti/">Завършени обекти</a>
+    <a href="/galeriya/">Галерия</a>
+    <a href="/za-nas/">За нас</a>
+    <a href="/blog/">Блог</a>
+    <a href="/kontakti/">Контакти</a>
+  </nav>
+  <div class="btn-red">
+    <a class="btn btn--tel" href={site.phone.href}><span class="krag"><Icon name="phone" /></span>{site.phone.display}</a>
+    <a class="btn btn--nebe" href={site.phone.viber}>Пишете във Viber <span class="krag"><Icon name="viber" /></span></a>
+  </div>
+</div>

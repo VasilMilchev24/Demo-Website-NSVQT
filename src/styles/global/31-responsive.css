@@ -1,0 +1,245 @@
+/* Ported verbatim from the original /assets/css/sait.css (lines 2214–2425). */
+/* ---------- телефон и таблет ---------- */
+/* FIX G-01: header content must never exceed the pill.
+   ≤1420px: phone shows as an icon only. ≤1280px: the compact nav spacing the original used ≤1180px. */
+@media (max-width: 1420px) {
+  .glava__tel span {
+    display: none;
+  }
+  .glava__tel {
+    padding-right: 6px;
+  }
+}
+@media (max-width: 1280px) {
+  .glava {
+    gap: 10px;
+  }
+  .glava__nav .nav-v {
+    padding: 0 9px;
+    font-size: 14px;
+  }
+}
+/* FIX G-01: below 1280px the 7-item nav no longer fits beside the CTA (measured), so the burger
+   menu takes over (the original kept the nav until 980px and pushed the CTA off-screen).
+   The CTA stays visible down to 981px. */
+@media (max-width: 1279px) {
+  .glava__nav {
+    display: none;
+  }
+  .glava__menu {
+    display: grid;
+  }
+  .glava__desno {
+    margin-left: auto;
+  }
+}
+@media (max-width: 1180px) {
+  .zashto[data-n="4"],
+  .zashto[data-n="5"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .glava__nav .nav-v {
+    padding: 0 9px;
+    font-size: 14px;
+  }
+  .glava__tel span {
+    display: none;
+  }
+  .glava__tel {
+    padding-right: 6px;
+  }
+  .chisla {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .stapki {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .stapka:last-child {
+    grid-column: span 2;
+    min-height: 0;
+  }
+  .zashto {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .mega {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 980px) {
+  .glava__nav,
+  .glava .btn {
+    display: none;
+  }
+  .glava__menu {
+    display: grid;
+  }
+  .glava {
+    gap: 8px;
+  }
+  .glava__desno {
+    margin-left: auto;
+  }
+  .glava-sek {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .glava-sek > p {
+    justify-self: start;
+  }
+  .u-karta {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    top: 84px;
+  }
+  .u-karta__kadar {
+    aspect-ratio: 4/3;
+    order: -1;
+  }
+  .obekti,
+  .otzivi,
+  .blog-red {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .obekti {
+    gap: 34px;
+  }
+  .prizov {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .podval__gore {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .podval__gore > :first-child {
+    grid-column: 1/-1;
+  }
+  .str-glava__red,
+  .tekst-kol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tekst-kol__lyavo {
+    position: static;
+  }
+  .vkl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .vkl__g:first-child {
+    grid-row: auto;
+  }
+  .linia-st li {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 12px 18px;
+  }
+  .linia-st li p {
+    grid-column: 2;
+  }
+  .ozh-info {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ozh-info .ozh-tochki {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  body {
+    font-size: 16px;
+  }
+  .str-glava h1.dalgo {
+    font-size: clamp(25px, 7.4vw, 34px);
+  }
+  .linia-st h3 {
+    font-size: clamp(16px, 4.8vw, 19px);
+  }
+  .linia-st li {
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 10px 12px;
+  }
+  .linia-st b {
+    font-size: 28px;
+  }
+  .podval li a {
+    display: inline-block;
+    padding-block: 11px;
+  }
+  .podval li + li {
+    margin-top: 0;
+  }
+  .trohi a {
+    padding-block: 14px;
+  }
+  .glava__tel .krag {
+    width: 44px;
+    height: 44px;
+  }
+  .zashto[data-n] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .chisla,
+  .stapki,
+  .zashto {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .stapka:last-child {
+    grid-column: auto;
+  }
+  .chislo {
+    min-height: 380px;
+  }
+  .forma__red {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .podval__gore {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .btn {
+    height: 52px;
+    font-size: 15px;
+  }
+  .btn-red .btn {
+    flex: 1 1 100%;
+    justify-content: space-between;
+  }
+  .glava {
+    height: 58px;
+    padding-left: 16px;
+  }
+  .glava__logo {
+    height: 28px;
+  }
+  .glava__tel {
+    padding: 0;
+  }
+  .str-glava__kadar {
+    aspect-ratio: 4/3;
+  }
+  .uvel {
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+  }
+  .uvel button {
+    width: 40px;
+    height: 40px;
+  }
+  .demo-badzh {
+    font-size: 10px;
+    height: 26px;
+    left: 10px;
+    bottom: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .vlez,
+  .js .otkrii,
+  .js .redove .red > span {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
+  .js .otkrii img {
+    transform: none;
+  }
+  .lenta__vlak {
+    transform: none !important;
+  }
+  * {
+    scroll-behavior: auto;
+  }
+}

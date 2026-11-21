@@ -1,0 +1,96 @@
+---
+import '@/styles/global/index.css';
+import Header from '@/components/header/Header.astro';
+import Footer from '@/components/footer/Footer.astro';
+import ScrollRoller from '@/components/ui/ScrollRoller.astro';
+import { site } from '@/config/site';
+import { JS_CLASS_SCRIPT } from '@/config/inline-scripts';
+
+interface Props {
+  /** Page-specific title; the brand is appended (T-11). Omit on the home page. */
+  title?: string;
+  description: string;
+  /** Extra footer credits line. */
+  credits?: string;
+  /** Use the full brand-first title (home page). */
+  brandTitle?: boolean;
+}
+
+const { title, description, credits, brandTitle = false } = Astro.props;
+const fullTitle = brandTitle || !title ? `${site.name}: ${site.slogan}` : `${title} | ${site.name}`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(site.ogImage, Astro.site).href;
+
+// FIX T-05: no "sameAs": ["#", "#"]; absolute url and logo.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HomeAndConstructionBusiness',
+  name: site.name,
+  legalName: site.legalNameSchema,
+  slogan: site.slogan,
+  telephone: site.phone.e164,
+  email: site.email,
+  areaServed: site.area,
+  url: new URL('/', Astro.site).href,
+  logo: new URL('/assets/img/logo/logo-firma-600.png', Astro.site).href,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: site.city,
+    postalCode: site.postalCode,
+    addressCountry: 'BG',
+  },
+};
+---
+
+<!doctype html>
+<html lang="bg">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {/* Demo copy: kept out of search engines, as the original (decision 2026-11-21). */}
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content={site.themeColor} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="bg_BG" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo/znak-32.png" />
+    <link rel="apple-touch-icon" href="/assets/img/logo/znak-180.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="preload"
+      href="/assets/fonts/Unbounded-300-800-cyrillic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="preload" href="/assets/fonts/Manrope-300-800-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
+    <script is:inline set:html={JS_CLASS_SCRIPT} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skrito" href="#sadarzhanie">Към съдържанието</a>
+    <Header />
+    <ScrollRoller />
+    {/* FIX T-08/axe "region": the demo badge now lives inside a landmark. */}
+    <aside aria-label="Демо">
+      <a class="demo-badzh" href={site.demoBadge.href} target="_blank" rel="noopener noreferrer"
+        >{site.demoBadge.label}</a
+      >
+    </aside>
+    <main id="sadarzhanie">
+      <slot />
+    </main>
+    <Footer credits={credits} />
+    <script>
+      import '@/scripts/core/index';
+    </script>
+  </body>
+</html>

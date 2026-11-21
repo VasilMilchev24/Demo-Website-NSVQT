@@ -1,0 +1,58 @@
+/* Ported verbatim from the original /assets/css/sait.css (lines 1924–1981). */
+/* защо: плочки */
+.zashto {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.zashto[data-n="4"] {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.zashto[data-n="5"] {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.zashto__t {
+  padding: 26px;
+  border-radius: var(--r-l);
+  background: #fff;
+  box-shadow: var(--sen);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 220px;
+}
+.zashto__t .ik {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--sky-soft);
+  display: grid;
+  place-items: center;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.zashto__t .ik svg {
+  width: 24px;
+  height: 24px;
+}
+.zashto__t h3 {
+  font-size: 19px;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.zashto__t p {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+.sek--tamno .zashto__t {
+  background: var(--navy-2);
+  box-shadow: none;
+}
+.sek--tamno .zashto__t p {
+  color: color-mix(in oklch, #fff 72%, var(--navy));
+}
+.sek--tamno .zashto__t .ik {
+  background: rgb(255 255 255/0.08);
+  color: var(--sky);
+}

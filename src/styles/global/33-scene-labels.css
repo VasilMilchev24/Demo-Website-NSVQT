@@ -1,0 +1,45 @@
+/* Ported verbatim from the original /assets/css/sait.css (lines 2550–2594). */
+/* ---------- бележките, закачени за 3D модела (началото, процесът) ---------- */
+.bel3d {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  padding: 0 12px 0 6px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font: 700 12.5px/1 var(--f-t);
+  white-space: nowrap;
+  box-shadow: 0 8px 20px -10px rgb(20 30 60/0.4);
+  opacity: 0;
+  transform: translate(var(--x), var(--y)) translate(-50%, -50%) scale(0.85);
+  transition:
+    opacity 0.35s,
+    transform 0.35s var(--izh);
+}
+.bel3d i {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--sky);
+  display: grid;
+  place-items: center;
+}
+.bel3d i::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+}
+.bel3d.vid {
+  opacity: 1;
+  transform: translate(var(--x), var(--y)) translate(-50%, -50%) scale(1);
+}
+.bel3d.staro i {
+  background: var(--ink-3);
+}

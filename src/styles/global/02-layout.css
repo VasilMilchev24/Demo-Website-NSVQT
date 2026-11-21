@@ -1,0 +1,115 @@
+/* Ported verbatim from the original /assets/css/sait.css (lines 123–237). */
+/* ---------- рамка и ритъм ---------- */
+.obv {
+  width: 100%;
+  max-width: calc(var(--shir) + 2 * var(--pole));
+  margin-inline: auto;
+  padding-inline: var(--pole);
+}
+.sek {
+  padding-block: var(--sek);
+}
+.sek--malko {
+  padding-block: calc(var(--sek) * 0.62);
+}
+.sek + .sek:not(.sek--tamno):not(.sek--nebe):not(.sek--bylo) {
+  padding-top: 0;
+}
+.sek--tamno {
+  background: var(--navy);
+  color: #fff;
+}
+.sek--tamno h1,
+.sek--tamno h2,
+.sek--tamno h3 {
+  color: #fff;
+}
+.sek--bylo {
+  background: var(--white);
+}
+.sek--nebe {
+  background: var(--sky-soft);
+}
+.cheti {
+  max-width: 700px;
+}
+.h-1 {
+  font-size: clamp(40px, 6.2vw, 92px);
+}
+.h-2 {
+  font-size: clamp(26px, 4vw, 58px);
+}
+.h-3 {
+  font-size: clamp(24px, 2.5vw, 36px);
+}
+.h-4 {
+  font-size: clamp(19px, 1.6vw, 23px);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.vodach {
+  font-size: clamp(18px, 1.45vw, 21px);
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.sek--tamno .vodach {
+  color: color-mix(in oklch, #fff 74%, var(--navy));
+}
+.etiket {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font: 600 13px/1 var(--f-t);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.etiket::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sky);
+  flex: none;
+}
+.sek--tamno .etiket {
+  color: color-mix(in oklch, #fff 70%, var(--navy));
+}
+.glava-sek {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 24px 64px;
+  align-items: end;
+  margin-bottom: clamp(40px, 5vw, 72px);
+}
+.glava-sek .etiket {
+  grid-column: 1/-1;
+}
+.glava-sek > h2 {
+  max-width: 22ch;
+}
+.glava-sek > h2.dalgo {
+  grid-column: 1/-1;
+  max-width: none;
+  font-size: clamp(28px, 3.4vw, 50px);
+}
+.glava-sek > p {
+  color: var(--ink-2);
+  font-size: 18px;
+  max-width: 460px;
+  justify-self: end;
+}
+.sek--tamno .glava-sek > p {
+  color: color-mix(in oklch, #fff 72%, var(--navy));
+}
+.glava-sek--centar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 22px;
+}
+.glava-sek--centar > p {
+  justify-self: auto;
+  max-width: 620px;
+}

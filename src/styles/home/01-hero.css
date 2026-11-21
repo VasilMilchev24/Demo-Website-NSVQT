@@ -1,0 +1,236 @@
+/* Ported verbatim from the original /assets/css/nachalo.css (lines 1–236). */
+/* Началото: 3D героят, промотата, движенията на числата */
+.geroi {
+  position: relative;
+  height: 440vh;
+  background: var(--paper);
+}
+.geroi__sc {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(120% 80% at 50% 70%, #fff 0%, var(--paper) 62%);
+}
+.geroi__tekst {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: 20px 56px;
+  align-items: end;
+  padding-top: clamp(100px, 12vh, 128px);
+  position: relative;
+  z-index: 3;
+  pointer-events: none;
+}
+.geroi__tekst a,
+.geroi__tekst button {
+  pointer-events: auto;
+}
+.geroi__h1 {
+  font-size: clamp(38px, 4.9vw, 74px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  font-weight: 500;
+}
+.geroi__h1 .red:nth-child(2) {
+  color: var(--navy);
+}
+.geroi__pod {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 8px;
+}
+.geroi__pod p {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 420px;
+}
+.geroi__pod .btn--linia svg {
+  margin-right: -4px;
+}
+.geroi__scena {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: none;
+}
+.geroi__scena.bez-3d {
+  cursor: auto;
+}
+.geroi__scena canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  outline: none;
+}
+.geroi__poster {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  top: 30%;
+  bottom: 9%;
+  width: 92%;
+  height: 61%;
+  object-fit: contain;
+  object-position: 50% 50%;
+  transition: opacity 0.9s var(--izh);
+}
+.geroi__scena.zhivo .geroi__poster {
+  opacity: 0;
+  pointer-events: none;
+}
+.geroi__leshta {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  top: 0;
+  width: calc(var(--r, 130px) * 2);
+  height: calc(var(--r, 130px) * 2);
+  margin: calc(var(--r, 130px) * -1) 0 0 calc(var(--r, 130px) * -1);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px var(--sky),
+    0 22px 50px -20px rgb(20 30 60/0.45);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(var(--x, -500px), var(--y, -500px)) scale(0.6);
+  transition:
+    opacity 0.35s,
+    transform 0.45s var(--izh);
+}
+.geroi__leshta.vidima {
+  opacity: 1;
+  transform: translate(var(--x), var(--y)) scale(1);
+}
+.geroi__leshta span {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, 12px);
+  white-space: nowrap;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: var(--navy);
+  color: #fff;
+  font: 700 12px/28px var(--f-t);
+  letter-spacing: 0.04em;
+}
+.geroi__belezhki {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.geroi__dolu {
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  gap: 32px;
+  align-items: end;
+  padding-bottom: clamp(18px, 3vh, 32px);
+  position: relative;
+  z-index: 3;
+  pointer-events: none;
+}
+.geroi__pr {
+  display: flex;
+  align-items: flex-start;
+  font: 600 clamp(54px, 6vw, 92px)/0.8 var(--f-d);
+  letter-spacing: -0.06em;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+  min-width: 2.6em;
+}
+.geroi__pr span {
+  font-size: 0.36em;
+  margin-top: 0.12em;
+  margin-left: 2px;
+  color: var(--sky);
+}
+.geroi__etap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 4px;
+}
+.geroi__etap small {
+  font: 600 12px/1 var(--f-t);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.geroi__etap b {
+  font: 500 clamp(18px, 1.6vw, 24px)/1.1 var(--f-d);
+  letter-spacing: -0.025em;
+  min-width: min(12ch, 100%);
+}
+.geroi__podskazka {
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13.5px;
+  color: var(--ink-3);
+  max-width: 330px;
+  padding-bottom: 6px;
+  margin-left: auto;
+  margin-right: 260px;
+}
+.mishka {
+  flex: none;
+  width: 22px;
+  height: 34px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1.75px currentColor;
+  position: relative;
+}
+.mishka::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 7px;
+  width: 3px;
+  height: 7px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: currentColor;
+  animation: mishka 1.8s var(--izh) infinite;
+}
+@keyframes mishka {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(9px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.geroi__lenta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--line);
+  z-index: 3;
+}
+.geroi__lenta i {
+  position: absolute;
+  inset: 0;
+  background: var(--sky);
+  transform-origin: left;
+  transform: scaleX(var(--p, 0));
+}

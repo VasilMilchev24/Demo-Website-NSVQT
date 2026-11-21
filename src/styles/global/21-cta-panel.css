@@ -1,0 +1,43 @@
+/* Ported verbatim from the original /assets/css/sait.css (lines 1592–1634). */
+/* ---------- призивът накрая ---------- */
+.prizov {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+  color: #fff;
+  border-radius: var(--r-xl);
+  padding: clamp(40px, 6vw, 96px) clamp(26px, 5vw, 80px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 40px;
+  align-items: end;
+}
+.prizov h2 {
+  color: #fff;
+  font-size: clamp(32px, 4.2vw, 60px);
+}
+.prizov h2.dalgo {
+  font-size: clamp(26px, 2.9vw, 42px);
+}
+.prizov__d {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+}
+.prizov__d p {
+  color: color-mix(in oklch, #fff 74%, var(--navy));
+}
+.prizov__dagi {
+  position: absolute;
+  right: -22%;
+  bottom: -62%;
+  width: 58%;
+  aspect-ratio: 1;
+  pointer-events: none;
+  opacity: 0.45;
+}
+.prizov > *:not(.prizov__dagi) {
+  position: relative;
+  z-index: 1;
+}

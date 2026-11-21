@@ -1,0 +1,39 @@
+/* Ported verbatim from the original /assets/css/sait.css (lines 1507–1545). */
+/* ---------- отзивите ---------- */
+.otzivi {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.otziv {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: clamp(26px, 2.6vw, 36px);
+  border-radius: var(--r-l);
+  background: var(--navy-2);
+  color: #fff;
+  min-height: 360px;
+}
+.otziv__k {
+  width: 44px;
+  height: 36px;
+  color: var(--sky);
+}
+.otziv blockquote {
+  margin: 0;
+  font: 400 clamp(18px, 1.45vw, 21px)/1.5 var(--f-t);
+}
+.otziv footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+}
+.otziv footer::before {
+  content: "";
+  width: 26px;
+  height: 2px;
+  background: var(--sky);
+}

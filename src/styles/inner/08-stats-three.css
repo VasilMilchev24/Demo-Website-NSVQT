@@ -1,0 +1,42 @@
+/* Ported verbatim from the original /assets/css/vatreshni.css (lines 543–584). */
+/* числа по три */
+.chisla--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.material-red {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.material-red span {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 14.5px;
+  background: rgb(255 255 255/0.14);
+}
+.chislo .material-red span {
+  background: var(--paper);
+}
+.chislo--navy .material-red span {
+  background: rgb(255 255 255/0.1);
+}
+.gr--toplina .gr-lenta {
+  transform-box: fill-box;
+  transform-origin: left;
+  transform: scaleX(0.001);
+  transition: transform 1.2s 0.3s var(--izh);
+}
+.gr--toplina .gr-lenta2 {
+  transform-box: fill-box;
+  transform-origin: left;
+  transform: scaleX(0.001);
+  transition: transform 1.2s 0.7s var(--izh);
+}
+.vleze .gr--toplina .gr-lenta,
+.vleze .gr--toplina .gr-lenta2 {
+  transform: none;
+}

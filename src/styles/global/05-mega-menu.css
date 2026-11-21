@@ -1,0 +1,94 @@
+/* Ported verbatim from the original /assets/css/sait.css (lines 645–737). */
+/* голямото меню с услугите */
+.mega {
+  position: fixed;
+  z-index: 59;
+  top: 86px;
+  left: 50%;
+  transform: translate(-50%, 10px);
+  width: min(1100px, calc(100% - 2 * var(--pole)));
+  padding: 14px;
+  border-radius: var(--r-l);
+  background: #fff;
+  box-shadow: var(--sen-2);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) minmax(0, 1.1fr);
+  gap: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.25s,
+    transform 0.35s var(--izh),
+    visibility 0.25s;
+}
+.mega.otvoreno {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+.mega__u {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: var(--r-m);
+  transition: background 0.3s;
+}
+.mega__u:hover {
+  background: var(--paper);
+}
+.mega__u .kadar {
+  aspect-ratio: 4/3;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--paper);
+}
+.mega__u .kadar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--izh);
+}
+.mega__u:hover .kadar img {
+  transform: scale(1.05);
+}
+.mega__u b {
+  font: 500 15.5px/1.25 var(--f-d);
+  letter-spacing: -0.02em;
+}
+.mega__u small {
+  font-size: 13.5px;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+.mega__dop {
+  display: grid;
+  gap: 10px;
+}
+.mega__k {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px;
+  border-radius: var(--r-m);
+  background: var(--navy);
+  color: #fff;
+  min-height: 120px;
+}
+.mega__k--nebe {
+  background: var(--sky);
+  color: var(--navy);
+}
+.mega__k b {
+  font: 500 17px/1.2 var(--f-d);
+  letter-spacing: -0.02em;
+}
+.mega__k small {
+  font-size: 13.5px;
+  opacity: 0.82;
+}
+.mega__k .vrazka {
+  color: inherit;
+  font-size: 14px;
+}

@@ -1,0 +1,122 @@
+/* Ported verbatim from the original /assets/css/sait.css (lines 1–122). */
+/* Ремонт Студио: стилът на целия сайт. Палитрата идва от двата цвята на логото (#24345C и #4CACD8). */
+[hidden] {
+  display: none !important;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+:root {
+  --navy: #24345c;
+  --sky: #4cacd8;
+  --paper: #f3f5f8;
+  --white: #fff;
+  --ink: color-mix(in oklch, var(--navy) 86%, black);
+  --ink-2: color-mix(in oklch, var(--navy) 66%, var(--paper));
+  --ink-3: color-mix(in oklch, var(--navy) 44%, var(--paper));
+  --line: color-mix(in oklch, var(--navy) 11%, var(--paper));
+  --line-2: color-mix(in oklch, var(--navy) 20%, var(--paper));
+  --sky-soft: color-mix(in oklch, var(--sky) 15%, var(--paper));
+  --sky-mid: color-mix(in oklch, var(--sky) 42%, var(--paper));
+  --sky-deep: color-mix(in oklch, var(--sky) 72%, var(--navy));
+  --navy-deep: color-mix(in oklch, var(--navy) 74%, black);
+  --navy-2: color-mix(in oklch, var(--navy) 88%, white);
+  --navy-line: color-mix(in oklch, var(--navy) 70%, white);
+  --f-d: "Unbounded", system-ui, sans-serif;
+  --f-t: "Manrope", system-ui, sans-serif;
+  --pole: clamp(16px, 4.2vw, 48px);
+  --shir: 1240px;
+  --sek: clamp(88px, 12vw, 184px);
+  --r-s: 12px;
+  --r-m: 20px;
+  --r-l: 28px;
+  --r-xl: 36px;
+  --sen: 0 1px 2px rgb(20 30 60/0.05), 0 8px 28px -12px rgb(20 30 60/0.14);
+  --sen-2: 0 2px 4px rgb(20 30 60/0.06), 0 24px 60px -24px rgb(20 30 60/0.28);
+  --izh: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+/* FIX G-12: the original forced `-webkit-locale: "ru"` and disabled `locl` on a lang="bg" site,
+   which suppresses Bulgarian Cyrillic letterforms. Both removed; the browser follows lang="bg". */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: 110px;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-t);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  text-rendering: optimizeLegibility;
+}
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+img {
+  height: auto;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--f-d);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  margin: 0;
+  color: var(--ink);
+  text-wrap: balance;
+}
+p {
+  margin: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+::selection {
+  background: var(--sky);
+  color: #fff;
+}
+:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.skrito {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

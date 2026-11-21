@@ -1,0 +1,536 @@
+/* Ported verbatim from the original /assets/css/konstruktor.css (lines 1–536). */
+/* Конструкторът: 3D вляво (закачено), изборите вдясно, сборът долу */
+.str-kn .ryb {
+  display: none;
+}
+.kn {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(400px, 0.65fr);
+  min-height: 100vh;
+  background: var(--paper);
+}
+.kn__scena {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 60%, #fff 0%, var(--paper) 65%);
+}
+.kn__platno {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+  touch-action: pan-y;
+}
+.kn__platno:active {
+  cursor: grabbing;
+}
+.kn__platno canvas {
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0;
+  transition: opacity 0.9s var(--izh);
+}
+.kn__platno.zhivo canvas {
+  opacity: 1;
+}
+.kn__gore {
+  position: absolute;
+  left: var(--pole);
+  top: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+.kn__gore .trohi {
+  pointer-events: auto;
+  margin-bottom: 14px;
+}
+.kn__h1 {
+  font-size: clamp(30px, 3.4vw, 52px);
+  line-height: 1.02;
+}
+.kn__izgledi {
+  position: absolute;
+  left: var(--pole);
+  bottom: 28px;
+  z-index: 2;
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--sen);
+}
+.kn__izgledi button {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink-2);
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+.kn__izgledi button[aria-pressed="true"] {
+  background: var(--navy);
+  color: #fff;
+}
+.kn__izgledi button:active {
+  transform: scale(0.96);
+}
+.kn__podskazka {
+  position: absolute;
+  right: var(--pole);
+  bottom: 38px;
+  z-index: 2;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+.kn__plosht {
+  position: absolute;
+  right: var(--pole);
+  top: 104px;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  font: 600 clamp(48px, 5vw, 84px)/0.85 var(--f-d);
+  letter-spacing: -0.06em;
+  color: var(--navy);
+}
+.kn__plosht small {
+  font-size: 0.3em;
+  color: var(--sky);
+  margin-top: 0.15em;
+  letter-spacing: 0;
+}
+.kn__panel {
+  position: relative;
+  background: #fff;
+  box-shadow: -1px 0 0 var(--line);
+  display: flex;
+  flex-direction: column;
+}
+.kn-forma {
+  padding: 104px clamp(20px, 2.4vw, 36px) 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.kn-st h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 21px;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+.kn-st h2 span {
+  font: 700 12px/1 var(--f-t);
+  color: var(--sky-deep);
+  background: var(--sky-soft);
+  border-radius: 8px;
+  padding: 6px 8px;
+  letter-spacing: 0.04em;
+}
+.kn-izbor {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.kn-izbor--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.kn-izbor--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.kn-izbor--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.kn-karta,
+.kn-hapche,
+.kn-mostra,
+.kn-red,
+.kn-tsvyat {
+  position: relative;
+  cursor: pointer;
+}
+.kn-karta input,
+.kn-hapche input,
+.kn-mostra input,
+.kn-red input,
+.kn-tsvyat input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.kn-karta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 12px;
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 1.5px var(--line);
+  transition:
+    box-shadow 0.25s,
+    background 0.25s;
+}
+.kn-karta__ik {
+  width: 30px;
+  height: 30px;
+  color: var(--ink-3);
+}
+.kn-karta b {
+  font-size: 14.5px;
+}
+.kn-karta small {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+.kn-karta:has(input:checked) {
+  box-shadow: inset 0 0 0 2px var(--navy);
+  background: var(--sky-soft);
+}
+.kn-karta:has(input:checked) .kn-karta__ik {
+  color: var(--navy);
+}
+.kn-karta:has(input:focus-visible),
+.kn-hapche:has(input:focus-visible),
+.kn-mostra:has(input:focus-visible),
+.kn-red:has(input:focus-visible),
+.kn-tsvyat:has(input:focus-visible) {
+  outline: 2px solid var(--sky);
+  outline-offset: 2px;
+}
+.kn-hapche span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1.5px var(--line);
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.25s;
+  text-align: center;
+  padding: 0 10px;
+}
+.kn-hapche:has(input:checked) span {
+  background: var(--navy);
+  color: #fff;
+  box-shadow: none;
+}
+.kn-plazgach {
+  margin: 6px 0 16px;
+}
+.kn-plazgach label {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 14.5px;
+  margin-bottom: 10px;
+}
+.kn-plazgach output {
+  font: 600 18px/1 var(--f-d);
+  color: var(--navy);
+}
+.kn-plazgach input {
+  width: 100%;
+  accent-color: var(--navy);
+  height: 28px;
+}
+.kn-plazgach__skala {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--ink-3);
+}
+.kn-bel {
+  font-size: 13.5px;
+  color: var(--ink-3);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.kn-bel a {
+  color: var(--sky-deep);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.kn-obhvat {
+  display: grid;
+  gap: 6px;
+}
+.kn-red {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 1.5px var(--line);
+  transition:
+    background 0.25s,
+    box-shadow 0.25s;
+}
+.kn-red__otm {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1.5px var(--line-2);
+  display: grid;
+  place-items: center;
+  color: transparent;
+  transition: all 0.25s;
+}
+.kn-red__otm svg {
+  width: 16px;
+  height: 16px;
+}
+.kn-red__t {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.kn-red__t b {
+  font-size: 14.5px;
+}
+.kn-red__t small {
+  font-size: 12.5px;
+  color: var(--ink-3);
+}
+.kn-red:has(input:checked) {
+  background: var(--sky-soft);
+  box-shadow: inset 0 0 0 1.5px
+    color-mix(in oklch, var(--sky) 50%, var(--paper));
+}
+.kn-red:has(input:checked) .kn-red__otm {
+  background: var(--navy);
+  color: #fff;
+  box-shadow: none;
+}
+.kn-bystro {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+.kn-bystro button {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: inset 0 0 0 1.5px var(--line-2);
+}
+.kn-bystro button:hover {
+  background: var(--paper);
+}
+.kn-grupa {
+  margin-bottom: 18px;
+}
+.kn-grupa h3 {
+  font: 700 13px/1 var(--f-t);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 10px;
+}
+.kn-mostra {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 1.5px var(--line);
+  transition: box-shadow 0.25s;
+}
+.kn-mostra .m {
+  display: block;
+  height: 56px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+}
+.m--ribena {
+  background-image: url(/assets/img/3d/parket-nov.jpg);
+}
+.m--laminat {
+  background-image: url(/assets/img/3d/laminat.jpg);
+}
+.m--granit {
+  background-image: url(/assets/img/3d/granitogres.jpg);
+}
+.kn-mostra span {
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.25;
+}
+.kn-mostra:has(input:checked) {
+  box-shadow: inset 0 0 0 2px var(--navy);
+}
+.kn-tsvetove {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.kn-tsvyat i {
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgb(36 52 92/0.15);
+  transition: transform 0.25s;
+}
+.kn-tsvyat:has(input:checked) i {
+  box-shadow:
+    inset 0 0 0 1px rgb(36 52 92/0.15),
+    0 0 0 3px #fff,
+    0 0 0 5px var(--navy);
+  transform: scale(0.92);
+}
+.kn-pera {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+.kn-pera th {
+  text-align: left;
+  font: 700 11.5px/1 var(--f-t);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: 0 0 10px;
+}
+.kn-pera th:not(:first-child),
+.kn-pera td:not(:first-child) {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.kn-pera td {
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+.kn-pera td:first-child {
+  padding-right: 12px;
+}
+.kn-dolu {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+  background: #fff;
+  box-shadow:
+    0 -1px 0 var(--line),
+    0 -16px 30px -18px rgb(20 30 60/0.25);
+  padding: 18px clamp(20px, 2.4vw, 36px) 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.kn-sbor {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.kn-sbor small {
+  font: 700 11.5px/1 var(--f-t);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.kn-sbor b {
+  font: 600 clamp(22px, 2vw, 30px)/1.1 var(--f-d);
+  letter-spacing: -0.035em;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+.kn-sbor span {
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.kn-dolu__btn {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.kn-dolu__btn .btn {
+  height: 50px;
+  font-size: 14.5px;
+}
+.kn-dolu__btn .btn--linia {
+  gap: 8px;
+}
+.kn-dolu__btn .kopirano {
+  background: var(--sky-soft);
+}
+@media (max-width: 1100px) {
+  .kn {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .kn__scena {
+    position: relative;
+    height: 62vh;
+    min-height: 420px;
+  }
+  .kn__gore {
+    top: 88px;
+  }
+  .kn-forma {
+    padding-top: 36px;
+  }
+  .kn-izbor--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .kn__plosht {
+    top: auto;
+    bottom: 86px;
+    font-size: 44px;
+  }
+  .kn__podskazka {
+    display: none;
+  }
+  .kn__izgledi {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 18px;
+  }
+  .kn__izgledi button {
+    padding: 0 12px;
+    font-size: 13px;
+  }
+  .kn-izbor--3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .kn-mostra {
+    flex-direction: row;
+    align-items: center;
+  }
+  .kn-mostra .m {
+    width: 72px;
+    height: 44px;
+    flex: none;
+  }
+  .kn-dolu__btn .btn {
+    flex: 1 1 100%;
+    justify-content: space-between;
+  }
+}
+@media (min-width: 1101px) {
+  .str-kn .demo-badzh {
+    right: calc(32.5% + 14px);
+  }
+  .kn__podskazka {
+    bottom: 64px;
+  }
+}
+@media (max-width: 1100px) {
+  .str-kn .demo-badzh {
+    bottom: auto;
+    top: 76px;
+    right: 14px;
+  }
+}

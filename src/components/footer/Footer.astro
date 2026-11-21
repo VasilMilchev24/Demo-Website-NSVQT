@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import { site } from '@/config/site';
+
+interface Props {
+  /** Extra credits line (the "Как работим" pages credit the Pexels photographers). */
+  credits?: string | undefined;
+}
+const { credits } = Astro.props;
+
+const services = (await getCollection('uslugi')).sort((a, b) => a.data.order - b.data.order);
+const companyLinks = [
+  { href: '/za-nas/', label: 'За нас' },
+  { href: '/kak-rabotim/', label: 'Как работим' },
+  { href: '/proces/', label: 'Процесът в 3D' },
+  { href: '/zavarsheni-obekti/', label: 'Завършени обекти' },
+  { href: '/galeriya/', label: 'Галерия' },
+  { href: '/blog/', label: 'Блог' },
+  { href: '/kontakti/', label: 'Контакти' },
+];
+const year = 2026;
+---
+
+<footer class="podval">
+  <div class="obv">
+    <div class="podval__gore">
+      <div>
+        <a class="podval__logo" href="/" aria-label={`${site.name}, начало`}>
+          <img src="/assets/img/logo/logo-firma-600.png" alt={site.name} width="600" height="123" loading="lazy" />
+        </a>
+        <p class="podval__moto">{site.slogan}.</p>
+      </div>
+      {/* FIX T-08: column titles were <h4> right after <h2> (skipped levels); now <h2> with the same look. */}
+      <div>
+        <h2 class="podval__zaglavie">Услуги</h2>
+        <ul>
+          {
+            services.map((s) => (
+              <li>
+                <a href={`/uslugi/${s.id}/`}>{s.data.title}</a>
+              </li>
+            ))
+          }
+          <li><a href="/konstruktor/">Конструктор на ремонта</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="podval__zaglavie">{site.name}</h2>
+        <ul>
+          {
+            companyLinks.map((l) => (
+              <li>
+                <a href={l.href}>{l.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <h2 class="podval__zaglavie">Контакти</h2>
+        <a class="podval__tel" href={site.phone.href}>{site.phone.display}</a>
+        <ul>
+          <li><a href={site.phone.viber}>Viber</a></li>
+          <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          <li><span>{site.area}</span></li>
+          {/* T-06: kept as in the original (no real profiles yet), but no longer target="_blank" on "#". */}
+          <li><a href={site.social.facebook}>Facebook</a> · <a href={site.social.instagram}>Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="podval__dolu">
+      <span>© {year} {site.legalName} · ЕИК {site.eik} · {site.city}</span>
+      <span
+        ><a href="/politika-za-poveritelnost/">Политика за поверителност</a> · <a href="/deklaratsiya-za-lichni-danni/"
+          >Декларация за лични данни</a
+        ></span
+      >
+      <span>{site.graphicsNote}{credits && ` ${credits}`}</span>
+    </div>
+  </div>
+  <div class="podval__ime" aria-hidden="true">
+    {[...site.wordmark].map((ch) => <span>{ch === ' ' ? '\u00a0' : ch}</span>)}
+  </div>
+</footer>

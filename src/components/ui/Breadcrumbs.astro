@@ -1,0 +1,24 @@
+---
+import Icon from './Icon.astro';
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+interface Props {
+  items: Crumb[];
+}
+const { items } = Astro.props;
+---
+
+<nav class="trohi" aria-label="Къде сте">
+  <a href="/">Начало</a>
+  {
+    items.map((c) => (
+      <>
+        <Icon name="chevron-right" />
+        {c.href ? <a href={c.href}>{c.label}</a> : <span aria-current="page">{c.label}</span>}
+      </>
+    ))
+  }
+</nav>

@@ -1,0 +1,78 @@
+/* Ported verbatim from the original /assets/css/vatreshni.css (lines 465–542). */
+/* двете решения за хидроизолация, с разрез на слоевете */
+.dve-resheniya {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+}
+.reshenie {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: clamp(26px, 3vw, 40px);
+  border-radius: var(--r-xl);
+  background: #fff;
+  box-shadow: var(--sen);
+  position: relative;
+  overflow: hidden;
+}
+.reshenie--bitum {
+  background: var(--navy);
+  color: #fff;
+}
+.reshenie--bitum h3 {
+  color: #fff;
+}
+.reshenie__n {
+  font: 600 14px/1 var(--f-d);
+  color: var(--sky);
+}
+.reshenie p {
+  opacity: 0.84;
+}
+.reshenie__razrez {
+  height: 150px;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+  background: var(--paper);
+}
+.reshenie--bitum .reshenie__razrez {
+  background: var(--navy-2);
+}
+.sl {
+  display: block;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1s var(--izh);
+}
+.vleze .sl {
+  transform: none;
+}
+.sl--beton {
+  height: 56px;
+  background: repeating-linear-gradient(135deg, #b9bec6 0 2px, #c9cdd3 2px 9px);
+}
+.sl--grund {
+  height: 10px;
+  background: #8c96a6;
+  transition-delay: 0.25s;
+}
+.sl--guma {
+  height: 26px;
+  background: var(--sky);
+  border-radius: 0 0 14px 0;
+  transition-delay: 0.5s;
+}
+.sl--membr {
+  height: 16px;
+  background: #2a2e36;
+  transition-delay: 0.5s;
+}
+.sl--membr2 {
+  height: 16px;
+  background: #3a3f49;
+  transition-delay: 0.75s;
+  box-shadow: 0 -1px 0 #555;
+}

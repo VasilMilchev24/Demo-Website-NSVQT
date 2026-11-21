@@ -1,0 +1,38 @@
+/* Ported verbatim from the original /assets/css/sait.css (lines 1850–1886). */
+/* групите „Какво включва“ */
+.vkl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.vkl__g {
+  background: #fff;
+  border-radius: var(--r-l);
+  padding: clamp(24px, 2.4vw, 34px);
+  box-shadow: var(--sen);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.vkl__n {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.vkl__n b {
+  font: 600 44px/1 var(--f-d);
+  letter-spacing: -0.05em;
+  color: var(--sky);
+}
+.vkl__g h3 {
+  font-size: 22px;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+.vkl__g .bel {
+  font-size: 14.5px;
+  color: var(--ink-2);
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--sky-soft);
+}

@@ -1,0 +1,248 @@
+/* Ported verbatim from the original /assets/css/sait.css (lines 402–644). */
+/* ---------- главата като хапче ---------- */
+.glava {
+  position: fixed;
+  z-index: 60;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  /* FIX G-01 (root cause): the original was `calc(var(--shir) + 2*var(--pole) - 2*var(--pole) + 24px)`;
+     the ±2*pole cancels out, leaving a pill narrower than its content, so the CTA stuck out at every
+     desktop width. Intended width restored (content width + side padding); narrower viewports are
+     handled in 31-responsive.css. */
+  width: min(calc(var(--shir) + 2 * var(--pole)), calc(100% - 2 * var(--pole) + 8px));
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 8px 0 22px;
+  border-radius: 999px;
+  background: rgb(255 255 255/0.92);
+  box-shadow:
+    0 1px 0 rgb(20 30 60/0.04),
+    0 10px 34px -16px rgb(20 30 60/0.32);
+  transition:
+    height 0.4s var(--izh),
+    top 0.4s var(--izh),
+    box-shadow 0.4s;
+}
+.glava.svita {
+  height: 58px;
+  top: 10px;
+}
+.glava__logo {
+  flex: none;
+  display: block;
+  height: 34px;
+}
+.glava__logo img {
+  height: 100%;
+  width: auto;
+}
+.glava__nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-inline: auto;
+  position: relative;
+}
+.glava__nav > li {
+  position: relative;
+}
+.glava__nav a.nav-v,
+.glava__nav button.nav-v {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 13px;
+  border-radius: 999px;
+  font: 600 14.5px/1 var(--f-t);
+  white-space: nowrap;
+  color: var(--ink);
+  position: relative;
+  z-index: 1;
+  transition: color 0.25s;
+}
+.glava__nav .nav-v svg {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.3s;
+}
+.glava__nav li:hover > .nav-v svg,
+.glava__nav li.otvoreno > .nav-v svg {
+  transform: rotate(180deg);
+}
+.glava__nav .nav-v[aria-current] {
+  color: var(--sky-deep);
+}
+.znak {
+  display: inline-grid;
+  place-items: center;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 6px;
+  background: var(--sky);
+  color: #fff;
+  font: 700 10px/1 var(--f-t);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+/* FIX G-13: in the original, `.glava__nav > li { position: relative }` (higher specificity) overrode
+   this rule, so the hover pill (itself an <li>) sat in the flow and pushed the CTA out of the header
+   on every nav hover. The selector now matches that specificity and wins by source order. */
+.glava__nav > .glava__hapche {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 0;
+  height: 40px;
+  margin-top: -20px;
+  border-radius: 999px;
+  background: var(--sky-soft);
+  width: 0;
+  opacity: 0;
+  transition:
+    transform 0.45s var(--izh),
+    width 0.45s var(--izh),
+    opacity 0.25s;
+  pointer-events: none;
+}
+.glava__desno {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+.glava__tel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 16px 0 6px;
+  border-radius: 999px;
+  font: 700 15px/1 var(--f-t);
+  white-space: nowrap;
+}
+.glava__tel .krag {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--sky-soft);
+  display: grid;
+  place-items: center;
+  color: var(--navy);
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+.glava__tel .krag svg {
+  width: 16px;
+  height: 16px;
+}
+.glava__tel:hover .krag {
+  background: var(--sky);
+  color: #fff;
+}
+.glava .btn {
+  height: 48px;
+  font-size: 14.5px;
+  padding-left: 20px;
+}
+.glava .btn .krag {
+  width: 34px;
+  height: 34px;
+}
+.glava .btn::before {
+  width: 34px;
+  height: 34px;
+  margin-top: -17px;
+}
+.glava__menu {
+  display: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  place-items: center;
+}
+.glava__menu span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  position: relative;
+  transition: transform 0.3s;
+}
+.glava__menu span::before,
+.glava__menu span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.3s;
+}
+.glava__menu span::before {
+  top: -6px;
+}
+.glava__menu span::after {
+  top: 6px;
+}
+.menyu-otvoreno .glava__menu span {
+  background: transparent;
+}
+.menyu-otvoreno .glava__menu span::before {
+  transform: translateY(6px) rotate(45deg);
+}
+.menyu-otvoreno .glava__menu span::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+.padashto {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translate(-50%, 8px);
+  min-width: 220px;
+  padding: 8px;
+  border-radius: var(--r-m);
+  background: #fff;
+  box-shadow: var(--sen-2);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.25s,
+    transform 0.3s var(--izh),
+    visibility 0.25s;
+}
+.padashto::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -18px;
+  height: 18px;
+}
+.glava__nav li:hover > .padashto,
+.glava__nav li.otvoreno > .padashto {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+.padashto a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+}
+.padashto a:hover {
+  background: var(--paper);
+}

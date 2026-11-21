@@ -1,0 +1,52 @@
+/* Ported verbatim from the original /assets/css/sait.css (lines 1982–2032). */
+/* галерия и снимки на обектите */
+.galeriya {
+  columns: 3 300px;
+  column-gap: 16px;
+}
+.galeriya a {
+  display: block;
+  margin-bottom: 16px;
+  border-radius: var(--r-m);
+  overflow: hidden;
+  break-inside: avoid;
+  position: relative;
+  background: var(--line);
+}
+.galeriya img {
+  width: 100%;
+  transition: transform 1s var(--izh);
+}
+.galeriya a:hover img {
+  transform: scale(1.04);
+}
+.filtri {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.filtri button {
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: #fff;
+  font-weight: 700;
+  font-size: 14.5px;
+  box-shadow: inset 0 0 0 1px var(--line-2);
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+.filtri button[aria-pressed="true"] {
+  background: var(--navy);
+  color: #fff;
+  box-shadow: none;
+}
+.filtri button:active {
+  transform: scale(0.97);
+}
+.filtri button small {
+  opacity: 0.6;
+  margin-left: 6px;
+}

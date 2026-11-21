@@ -1,0 +1,77 @@
+/* Ported verbatim from the original /assets/css/sait.css (lines 1369–1445). */
+/* ---------- стъпките ---------- */
+.stapki {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  position: relative;
+}
+.stapka {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 340px;
+  padding: 24px;
+  border-radius: var(--r-l);
+  background: #fff;
+  box-shadow: var(--sen);
+  transition:
+    transform 0.5s var(--izh),
+    box-shadow 0.5s;
+}
+.stapka:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--sen-2);
+}
+.stapka__n {
+  font: 600 64px/1 var(--f-d);
+  letter-spacing: -0.06em;
+  color: var(--sky);
+  font-variant-numeric: tabular-nums;
+}
+.stapka h3 {
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.stapka p {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.stapka .vrazka {
+  margin-top: auto;
+  font-size: 14px;
+}
+.stapka__ik {
+  position: absolute;
+  right: 20px;
+  top: 24px;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--sky-soft);
+  display: grid;
+  place-items: center;
+  color: var(--navy);
+}
+.stapka__ik svg {
+  width: 22px;
+  height: 22px;
+}
+.stapki__linia {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -34px;
+  height: 2px;
+  background: var(--line);
+}
+.stapki__linia i {
+  position: absolute;
+  inset: 0;
+  background: var(--sky);
+  transform-origin: left;
+  transform: scaleX(var(--p, 0));
+}

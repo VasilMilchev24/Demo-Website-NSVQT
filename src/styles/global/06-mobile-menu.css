@@ -1,0 +1,42 @@
+/* Ported verbatim from the original /assets/css/sait.css (lines 738–779). */
+/* менюто на телефон */
+.mob-menyu {
+  position: fixed;
+  z-index: 58;
+  inset: 0;
+  background: var(--paper);
+  padding: 96px var(--pole) 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
+  touch-action: none;
+}
+.menyu-otvoreno .mob-menyu {
+  opacity: 1;
+  visibility: visible;
+  touch-action: auto;
+}
+.mob-menyu nav a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font: 500 24px/1.1 var(--f-d);
+  letter-spacing: -0.03em;
+}
+.mob-menyu nav a small {
+  font: 600 13px var(--f-t);
+  color: var(--ink-3);
+  letter-spacing: 0;
+}
+.mob-menyu .btn-red .btn {
+  flex: 1 1 auto;
+  justify-content: space-between;
+}

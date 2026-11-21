@@ -1,0 +1,107 @@
+/* Ported verbatim from the original /assets/css/sait.css (lines 2092–2198). */
+/* формата */
+.forma {
+  display: grid;
+  gap: 14px;
+}
+.forma__red {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.pole {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pole label {
+  font: 700 13.5px/1.2 var(--f-t);
+  color: var(--ink-2);
+}
+.pole input,
+.pole textarea {
+  width: 100%;
+  min-height: 54px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  border: 0;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--line-2);
+  font-size: 16px;
+  transition: box-shadow 0.25s;
+}
+.pole textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+.pole input:focus,
+.pole textarea:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--sky);
+}
+.pole.greshno input,
+.pole.greshno textarea {
+  box-shadow: inset 0 0 0 2px #c8553d;
+}
+.pole .zab {
+  font-size: 13px;
+  color: #a33f2a;
+  display: none;
+}
+.pole.greshno .zab {
+  display: block;
+}
+.izbor-chip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.izbor-chip button {
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--line-2);
+  font-weight: 700;
+  font-size: 14.5px;
+  transition: all 0.25s;
+}
+.izbor-chip button[aria-pressed="true"] {
+  background: var(--sky);
+  color: var(--navy);
+  box-shadow: none;
+}
+.otmetka {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.otmetka input {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  accent-color: var(--navy);
+  margin-top: 1px;
+}
+.forma-gotovo {
+  padding: 28px;
+  border-radius: var(--r-l);
+  background: var(--sky-soft);
+}
+.forma-gotovo h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.forma-gotovo pre {
+  white-space: pre-wrap;
+  font: 500 14px/1.6 var(--f-t);
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  margin: 14px 0;
+  color: var(--ink);
+}

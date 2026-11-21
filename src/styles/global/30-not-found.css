@@ -1,0 +1,15 @@
+/* Ported verbatim from the original /assets/css/sait.css (lines 2199–2213). */
+/* 404 */
+.str-404 {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 140px var(--pole) 80px;
+}
+.str-404 b {
+  display: block;
+  font: 600 clamp(120px, 24vw, 320px)/0.85 var(--f-d);
+  letter-spacing: -0.07em;
+  color: var(--navy);
+}

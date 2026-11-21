@@ -1,0 +1,120 @@
+/* Ported verbatim from the original /assets/css/proces.css (lines 242–361). */
+/* лентата със стъпките долу */
+.pr-nav {
+  position: fixed;
+  z-index: 5;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  width: min(1180px, calc(100% - 2 * var(--pole)));
+  padding: 8px;
+  border-radius: 22px;
+  background: rgb(255 255 255/0.92);
+  box-shadow: 0 14px 40px -18px rgb(20 30 60/0.4);
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.pr-gotovo .pr-nav {
+  opacity: 1;
+}
+.pr-nav__lenta {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 0;
+  height: 3px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--line);
+}
+.pr-nav__lenta i {
+  position: absolute;
+  inset: 0;
+  background: var(--sky);
+  transform-origin: left;
+  transform: scaleX(var(--p, 0));
+}
+.pr-nav ol {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.pr-nav ol::-webkit-scrollbar {
+  display: none;
+}
+.pr-nav a {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 8px 7px;
+  border-radius: 14px;
+  min-width: 0;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+.pr-nav a span {
+  font: 700 11px/1 var(--f-t);
+  color: var(--ink-3);
+}
+.pr-nav a b {
+  font: 600 11.5px/1.2 var(--f-t);
+  color: var(--ink-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pr-nav a:hover {
+  background: var(--paper);
+}
+.pr-nav a.akt {
+  background: var(--navy);
+}
+.pr-nav a.akt span {
+  color: var(--sky);
+}
+.pr-nav a.akt b {
+  color: #fff;
+}
+
+.pr-kontroli {
+  position: fixed;
+  z-index: 5;
+  left: var(--pole);
+  bottom: 104px;
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--sen);
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.pr-gotovo .pr-kontroli {
+  opacity: 1;
+}
+.pr-kontroli button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.pr-kontroli button svg {
+  width: 16px;
+  height: 16px;
+}
+.pr-kontroli button[aria-pressed="true"] {
+  background: var(--navy);
+  color: #fff;
+}
