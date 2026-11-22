@@ -17,6 +17,20 @@ export default defineConfig({
     inlineStylesheets: 'never',
   },
   integrations: [sitemap()],
+  // Dev server only: pre-bundle the Three.js add-ons the 3D pages import, so the first visit to
+  // /konstruktor/ or /proces/ can't hit a stale dependency cache ("504 Outdated Optimize Dep").
+  vite: {
+    optimizeDeps: {
+      include: [
+        'three',
+        'three/examples/jsm/controls/OrbitControls.js',
+        'three/examples/jsm/environments/RoomEnvironment.js',
+        'gsap',
+        'gsap/ScrollTrigger',
+        'lenis',
+      ],
+    },
+  },
   prefetch: false,
   devToolbar: { enabled: false },
 });
