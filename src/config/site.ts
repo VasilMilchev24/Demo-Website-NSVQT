@@ -38,7 +38,7 @@ export const site = {
     instagram: '#',
   },
   demoBadge: {
-    label: 'Демо · изработено от НОВ СВЯТ ДИГИТАЛ',
+    label: 'Демо - Изработено от Васил Милчев NS-3HPV',
     href: 'https://nov-svyat-sait.vercel.app',
   },
   /** Footer disclaimer shown on every page. */

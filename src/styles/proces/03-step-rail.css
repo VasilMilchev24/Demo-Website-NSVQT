@@ -135,3 +135,21 @@
   background: var(--navy);
   color: #fff;
 }
+
+/* FIX G-15: the fixed demo badge covered the last steps of the rail. On this page only it is
+   smaller and sits in the 16px strip below the rail, clear of the rail, controls and step cards. */
+.str-proces .demo-badzh {
+  left: auto;
+  right: 14px;
+  bottom: 2px;
+  height: 13px;
+  padding: 0 7px;
+  gap: 5px;
+  font-size: 8px;
+  letter-spacing: 0.05em;
+}
+
+.str-proces .demo-badzh::before {
+  width: 4px;
+  height: 4px;
+}

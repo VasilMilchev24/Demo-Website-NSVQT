@@ -10,14 +10,8 @@ import { ROUTES, NOT_FOUND } from './routes';
 /** WebGL pages render in software in headless CI and need more time. */
 const SLOW = new Set<string>(['/', '/proces/', '/konstruktor/']);
 
-/**
- * Known violations awaiting a decision (not fixed, not hidden): G-15 — on /proces/ the fixed demo badge covers
- * the lower half of the last two step-rail links, exactly as on the original. The badge is kept unchanged by
- * decision, so moving it needs the owner's approval.
- */
-const KNOWN: Record<string, string[]> = {
-  '/proces/': ['target-size: a[href$="#obzavezhdane"] | a[href$="#pochistvane"]'],
-};
+/** Known accessibility violations awaiting a decision (none at the moment). */
+const KNOWN: Record<string, string[]> = {};
 
 const watch = (page: Page) => {
   const errors: string[] = [];
