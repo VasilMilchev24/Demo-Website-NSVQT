@@ -1,4 +1,5 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 1635–1729). */
+
 /* ---------- подвалът ---------- */
 .podval {
   background: var(--navy-deep);
@@ -7,9 +8,11 @@
   overflow: hidden;
   position: relative;
 }
+
 .podval a:hover {
   color: #fff;
 }
+
 .podval__gore {
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr));
@@ -17,12 +20,14 @@
   padding-bottom: 56px;
   border-bottom: 1px solid rgb(255 255 255/0.1);
 }
+
 .podval__moto {
   font: 500 clamp(26px, 2.6vw, 38px)/1.12 var(--f-d);
   letter-spacing: -0.03em;
   color: #fff;
   max-width: 420px;
 }
+
 .podval__logo {
   display: inline-block;
   background: #fff;
@@ -30,10 +35,12 @@
   padding: 12px 16px;
   margin-bottom: 26px;
 }
+
 .podval__logo img {
   height: 38px;
   width: auto;
 }
+
 /* FIX T-08: footer column titles are now <h2 class="podval__zaglavie"> (were <h4>). */
 .podval .podval__zaglavie {
   font: 600 12.5px/1 var(--f-t);
@@ -42,13 +49,16 @@
   color: color-mix(in oklch, #fff 52%, var(--navy));
   margin-bottom: 18px;
 }
+
 .podval li + li {
   margin-top: 10px;
 }
+
 .podval li a,
 .podval li span {
   font-size: 15.5px;
 }
+
 .podval__tel {
   font: 500 26px/1 var(--f-d);
   letter-spacing: -0.03em;
@@ -56,6 +66,7 @@
   display: inline-block;
   margin-bottom: 12px;
 }
+
 .podval__dolu {
   display: flex;
   flex-wrap: wrap;
@@ -65,10 +76,12 @@
   font-size: 13.5px;
   color: color-mix(in oklch, #fff 56%, var(--navy));
 }
+
 .podval__dolu a {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
 /* FIX G-02: the wordmark now spells the site's own brand (13 letters instead of the foreign
    8-letter "КИС БИЛД"), so the size is scaled by 8/13 to keep the same full-width look. */
 .podval__ime {
@@ -83,15 +96,18 @@
   display: flex;
   justify-content: center;
 }
+
 .podval__ime span {
   display: inline-block;
   transition:
     transform 0.7s var(--izh),
     color 0.7s;
 }
+
 .podval__ime.vleze span {
   color: color-mix(in oklch, var(--navy) 80%, var(--sky));
 }
+
 .podval__ime span:hover {
   transform: translateY(-12%);
   color: var(--sky);

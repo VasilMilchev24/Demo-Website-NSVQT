@@ -1,4 +1,5 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 2426–2549). */
+
 /* ---------- графиките към числата: оживяват, щом картата влезе ---------- */
 .gr-vazel {
   opacity: 0;
@@ -9,30 +10,34 @@
     opacity 0.4s calc(var(--i) * 0.18s + 0.2s),
     transform 0.5s calc(var(--i) * 0.18s + 0.2s) var(--izh);
 }
+
 .vleze .gr-vazel {
   opacity: 1;
   transform: none;
 }
+
 .gr-tochka {
-  offset-path: path(
-    "M10 96 C 60 96, 60 30, 110 30 S 160 96, 205 70 S 240 24, 250 24"
-  );
+  offset-path: path('M10 96 C 60 96, 60 30, 110 30 S 160 96, 205 70 S 240 24, 250 24');
   offset-rotate: 0deg;
   opacity: 0;
 }
+
 .vleze .gr-tochka {
   opacity: 1;
   animation: grpat 4.5s 1.2s var(--izh) infinite;
 }
+
 @keyframes grpat {
   0% {
     offset-distance: 0%;
   }
+
   70%,
   100% {
     offset-distance: 100%;
   }
 }
+
 .gr-etiket {
   transform: translateX(-20px);
   opacity: 0;
@@ -40,27 +45,33 @@
     transform 0.9s 0.2s var(--izh),
     opacity 0.6s 0.2s;
 }
+
 .vleze .gr-etiket {
   transform: none;
   opacity: 1;
 }
+
 .gr-cherta {
   stroke-dasharray: 140;
   stroke-dashoffset: 140;
   transition: stroke-dashoffset 0.9s 1s var(--izh);
 }
+
 .vleze .gr-cherta {
   stroke-dashoffset: 0;
 }
+
 .gr-maistor {
   transition:
     transform 1.1s calc(var(--i) * 0.06s + 0.6s) var(--izh),
     opacity 0.5s calc(var(--i) * 0.06s + 1.3s);
 }
+
 .vleze .gr-maistor {
   transform: translate(var(--x), var(--y)) scale(0.4);
   opacity: 0;
 }
+
 .gr-edin {
   opacity: 0;
   transform-box: fill-box;
@@ -70,22 +81,27 @@
     opacity 0.5s 1.4s,
     transform 0.7s 1.4s cubic-bezier(0.3, 1.5, 0.5, 1);
 }
+
 .vleze .gr-edin {
   opacity: 1;
   transform: none;
 }
+
 .gr-godina rect {
   transform-box: fill-box;
   transform-origin: bottom;
   transform: scaleY(0);
   transition: transform 0.7s calc(var(--i) * 0.16s + 0.3s) var(--izh);
 }
+
 .vleze .gr-godina rect {
   transform: none;
 }
+
 .chislo--navy .gr text {
   fill: #24345c;
 }
+
 @media (prefers-reduced-motion: reduce) {
   .gr-vazel,
   .gr-etiket,
@@ -93,18 +109,22 @@
     opacity: 1;
     transform: none;
   }
+
   .gr-cherta {
     stroke-dashoffset: 0;
   }
+
   .gr-godina rect {
     transform: none;
   }
+
   .gr-maistor {
     opacity: 0;
   }
 }
+
 .u-karta::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
@@ -113,9 +133,11 @@
   pointer-events: none;
   z-index: 3;
 }
+
 .u-karta {
   --sen-k: 0;
 }
+
 @media (max-width: 980px) {
   .demo-badzh {
     right: 10px;

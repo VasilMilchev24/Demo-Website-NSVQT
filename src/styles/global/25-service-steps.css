@@ -1,10 +1,12 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 1887–1923). */
+
 /* стъпките на услугата на линия */
 .linia-st {
   display: grid;
   gap: 0;
   counter-reset: st;
 }
+
 .linia-st li {
   display: grid;
   grid-template-columns: 120px minmax(0, 1fr) minmax(0, 1.2fr);
@@ -13,26 +15,32 @@
   border-top: 1px solid var(--line-2);
   align-items: start;
 }
+
 .sek--tamno .linia-st li {
   border-color: rgb(255 255 255/0.14);
 }
+
 .linia-st li:last-child {
   border-bottom: 1px solid var(--line-2);
 }
+
 .linia-st b {
   font: 600 40px/1 var(--f-d);
   letter-spacing: -0.05em;
   color: var(--sky);
 }
+
 .linia-st h3 {
   font-size: clamp(20px, 1.7vw, 25px);
   letter-spacing: -0.02em;
   line-height: 1.2;
 }
+
 .linia-st p {
   color: var(--ink-2);
   font-size: 16.5px;
 }
+
 .sek--tamno .linia-st p {
   color: color-mix(in oklch, #fff 72%, var(--navy));
 }

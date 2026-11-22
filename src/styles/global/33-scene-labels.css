@@ -1,4 +1,5 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 2550–2594). */
+
 /* ---------- бележките, закачени за 3D модела (началото, процесът) ---------- */
 .bel3d {
   position: absolute;
@@ -21,6 +22,7 @@
     opacity 0.35s,
     transform 0.35s var(--izh);
 }
+
 .bel3d i {
   width: 18px;
   height: 18px;
@@ -29,17 +31,20 @@
   display: grid;
   place-items: center;
 }
+
 .bel3d i::after {
-  content: "";
+  content: '';
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: #fff;
 }
+
 .bel3d.vid {
   opacity: 1;
   transform: translate(var(--x), var(--y)) translate(-50%, -50%) scale(1);
 }
+
 .bel3d.staro i {
   background: var(--ink-3-orig);
 }

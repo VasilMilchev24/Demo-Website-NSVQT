@@ -1,4 +1,5 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 863–923). */
+
 /* ---------- появи ---------- */
 .js .vlez {
   opacity: 0;
@@ -7,55 +8,70 @@
     opacity 0.9s var(--izh),
     transform 0.9s var(--izh);
 }
+
 .js .vlez.vleze {
   opacity: 1;
   transform: none;
 }
-.js .vlez[data-zabava="1"] {
+
+.js .vlez[data-zabava='1'] {
   transition-delay: 0.08s;
 }
-.js .vlez[data-zabava="2"] {
+
+.js .vlez[data-zabava='2'] {
   transition-delay: 0.16s;
 }
-.js .vlez[data-zabava="3"] {
+
+.js .vlez[data-zabava='3'] {
   transition-delay: 0.24s;
 }
+
 .js .otkrii {
   clip-path: inset(12% 6% 12% 6% round var(--r-l));
   transition: clip-path 1.2s var(--izh);
 }
+
 .js .otkrii img {
   transform: scale(1.12);
   transition: transform 1.6s var(--izh);
 }
+
 .js .otkrii.vleze {
   clip-path: inset(0 0 0 0 round var(--r-l));
 }
+
 .js .otkrii.vleze img {
   transform: none;
 }
+
 .redove .red {
   display: block;
   overflow: hidden;
   padding-bottom: 0.08em;
   margin-bottom: -0.08em;
 }
+
 .redove .red > span {
   display: inline-block;
 }
+
 .js .redove .red > span {
   transform: translateY(105%);
   transition: transform 1s var(--izh);
 }
+
 .js .redove.vleze .red > span {
   transform: none;
 }
+
 .js .redove.vleze .red:nth-child(2) > span {
   transition-delay: 0.08s;
 }
+
 .js .redove.vleze .red:nth-child(3) > span {
   transition-delay: 0.16s;
 }
+
 .js .redove.vleze .red:nth-child(4) > span {
   transition-delay: 0.24s;
 }

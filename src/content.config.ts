@@ -28,7 +28,9 @@ const serviceSection = z.discriminatedUnion('type', [
     eyebrow: z.string(),
     title: z.string(),
     lead: z.string().optional(),
-    groups: z.array(z.object({ title: z.string(), items: z.array(z.string()).min(1), note: z.string().optional() })),
+    groups: z.array(
+      z.object({ title: z.string(), items: z.array(z.string()).min(1), note: z.string().optional() }),
+    ),
     footnote: z.string().optional(),
   }),
   z.object({
@@ -59,7 +61,10 @@ const serviceSection = z.discriminatedUnion('type', [
     title: z.string(),
     lead: z.string().optional(),
     dark: z.boolean().default(false),
-    items: z.array(z.object({ title: z.string(), text: z.string() })).min(1).max(6),
+    items: z
+      .array(z.object({ title: z.string(), text: z.string() }))
+      .min(1)
+      .max(6),
   }),
   z.object({ ...base, type: z.literal('facade-stats') }),
   z.object({
@@ -67,7 +72,9 @@ const serviceSection = z.discriminatedUnion('type', [
     type: z.literal('roof-solutions'),
     eyebrow: z.string(),
     title: z.string(),
-    items: z.array(z.object({ variant: z.enum(['guma', 'bitum']), title: z.string(), text: z.string() })).length(2),
+    items: z
+      .array(z.object({ variant: z.enum(['guma', 'bitum']), title: z.string(), text: z.string() }))
+      .length(2),
     paragraphs: z.array(z.string()),
   }),
   /** Closing text block: the Markdown body of the entry, with optional heading / eyebrow / signature. */

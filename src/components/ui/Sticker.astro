@@ -4,12 +4,15 @@ interface Props {
   rot: string;
   variant: 'znak' | 'pr' | 'snimka' | 'tekst';
   src?: string;
+  /** Intrinsic image size (T-09: every <img> has width/height; CSS sets the displayed size). */
+  width?: number;
+  height?: number;
   /** Extra modifier, e.g. "nebe" for the sky text chip. */
   tone?: 'nebe';
 }
-const { rot, variant, src, tone } = Astro.props;
+const { rot, variant, src, width, height, tone } = Astro.props;
 ---
 
 <span class:list={['stiker', `stiker--${variant}`, tone && `stiker--${tone}`]} style={`--rot:${rot}`}
-  >{src ? <img src={src} alt="" loading="lazy" /> : <slot />}</span
+  >{src ? <img src={src} alt="" width={width} height={height} loading="lazy" decoding="async" /> : <slot />}</span
 >

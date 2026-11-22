@@ -1,10 +1,12 @@
 /* Ported verbatim from the original /assets/css/vatreshni.css (lines 771–804). */
+
 /* ангажиментите */
 .angazh {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
 }
+
 .angazh__k {
   display: flex;
   flex-direction: column;
@@ -14,10 +16,12 @@
   background: #fff;
   box-shadow: var(--sen);
 }
+
 .angazh__k p {
   color: var(--ink-2);
   font-size: 16px;
 }
+
 .angazh__ik {
   width: 56px;
   height: 56px;
@@ -28,6 +32,7 @@
   place-items: center;
   margin-bottom: 8px;
 }
+
 .angazh__ik svg {
   width: 26px;
   height: 26px;

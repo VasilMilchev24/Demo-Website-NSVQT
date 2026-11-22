@@ -1,4 +1,5 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 924–950). */
+
 /* ---------- огромните контурни думи зад разделите ---------- */
 .fon-duma {
   position: absolute;
@@ -14,13 +15,16 @@
   will-change: transform;
   user-select: none;
 }
+
 .sek--tamno .fon-duma {
   -webkit-text-stroke-color: rgb(255 255 255/0.12);
 }
+
 .s-fon {
   position: relative;
   overflow: clip;
 }
+
 .s-fon > .obv {
   position: relative;
   z-index: 1;

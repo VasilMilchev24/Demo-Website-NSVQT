@@ -37,13 +37,13 @@ const sticker = await getImage({ src: stickerPhoto, width: 320, format: 'webp' }
       <span class="etiket vlez">Ремонти на жилища във Варна</span>
       <p class="izrechenie vlez u-mt-28">
         Създадохме Ремонт Студио с една основна мисия: да освободим клиентите си от тежестта на ремонта
-        <Sticker variant="snimka" rot="-4deg" src={sticker.src} />, като поемем пълната отговорност <span class="tiho"
+        <Sticker variant="snimka" rot="-4deg" src={sticker.src} width={Number(sticker.attributes["width"])} height={Number(sticker.attributes["height"])} />, като поемем пълната отговорност <span class="tiho"
           >за всеки детайл</span
         >
-        <Sticker variant="pr" rot="6deg" src="/assets/img/predmeti/chuk-160.webp" />, от първата консултация <Sticker
+        <Sticker variant="pr" rot="6deg" src="/assets/img/predmeti/chuk-160.webp" width={160} height={160} />, от първата консултация <Sticker
           variant="tekst"
           rot="-3deg">оглед · 0 €</Sticker
-        >{' '}до финалното почистване <Sticker variant="pr" rot="-8deg" src="/assets/img/predmeti/sprei-160.webp" />.
+        >{' '}до финалното почистване <Sticker variant="pr" rot="-8deg" src="/assets/img/predmeti/sprei-160.webp" width={160} height={160} />.
       </p>
     </div>
   </section>

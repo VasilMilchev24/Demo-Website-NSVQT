@@ -1,0 +1,8 @@
+# Build output and dependencies
+dist/
+node_modules/
+.astro/
+package-lock.json
+# .astro templates are not auto-formatted: Prettier's reflow of inline markup changed rendered
+# whitespace (e.g. "Варна, daibau.bg" lost its space). Their text is verified by a word-level diff.
+**/*.astro

@@ -1,4 +1,5 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 738–779). */
+
 /* менюто на телефон */
 .mob-menyu {
   position: fixed;
@@ -17,11 +18,13 @@
     visibility 0.3s;
   touch-action: none;
 }
+
 .menyu-otvoreno .mob-menyu {
   opacity: 1;
   visibility: visible;
   touch-action: auto;
 }
+
 .mob-menyu nav a {
   display: flex;
   justify-content: space-between;
@@ -31,11 +34,13 @@
   font: 500 24px/1.1 var(--f-d);
   letter-spacing: -0.03em;
 }
+
 .mob-menyu nav a small {
   font: 600 13px var(--f-t);
   color: var(--ink-3);
   letter-spacing: 0;
 }
+
 .mob-menyu .btn-red .btn {
   flex: 1 1 auto;
   justify-content: space-between;

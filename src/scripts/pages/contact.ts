@@ -56,7 +56,9 @@ export function initContactForm(): void {
     input.closest('.pole')?.classList.toggle('greshno', isError);
     input.setAttribute('aria-invalid', String(isError));
   };
-  [name, phone, email, message].forEach((input) => input.addEventListener('input', () => setError(input, false)));
+  [name, phone, email, message].forEach((input) =>
+    input.addEventListener('input', () => setError(input, false)),
+  );
   consent.addEventListener('change', () => {
     consent.setAttribute('aria-invalid', String(!consent.checked));
     if (consent.checked) consentError.hidden = true;
@@ -80,7 +82,9 @@ export function initContactForm(): void {
       return;
     }
 
-    const kinds = chips.filter((c) => c.getAttribute('aria-pressed') === 'true').map((c) => c.textContent?.trim() ?? '');
+    const kinds = chips
+      .filter((c) => c.getAttribute('aria-pressed') === 'true')
+      .map((c) => c.textContent?.trim() ?? '');
     const text = [
       `Име: ${name.value.trim()}`,
       `Имейл: ${email.value.trim()}`,

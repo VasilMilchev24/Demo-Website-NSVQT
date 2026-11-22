@@ -1,10 +1,12 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 1014–1089). */
+
 /* ---------- числата (цветни карти с огромно число и графика към него) ---------- */
 .chisla {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
 }
+
 .chislo {
   position: relative;
   display: flex;
@@ -17,6 +19,7 @@
   color: var(--ink);
   box-shadow: var(--sen);
 }
+
 .chislo--navy {
   background: var(--navy);
   color: #fff;
@@ -33,13 +36,16 @@
 .chislo--navy .chislo__ime {
   color: inherit;
 }
+
 .chislo--nebe {
   background: var(--sky);
   color: var(--navy);
 }
+
 .chislo--blido {
   background: var(--sky-soft);
 }
+
 .chislo__gore {
   display: flex;
   justify-content: space-between;
@@ -49,6 +55,7 @@
   text-transform: uppercase;
   opacity: 0.75;
 }
+
 .chislo__n {
   font: 600 clamp(96px, 10vw, 150px)/0.9 var(--f-d);
   letter-spacing: -0.06em;
@@ -58,12 +65,14 @@
   gap: 6px;
   font-variant-numeric: tabular-nums;
 }
+
 .chislo__n small {
   font: 700 clamp(14px, 1.15vw, 17px)/1.15 var(--f-t);
   letter-spacing: 0;
   margin-top: 0.55em;
   max-width: 6.5em;
 }
+
 .chislo__gr {
   flex: 1;
   display: grid;
@@ -71,15 +80,18 @@
   margin-block: 10px;
   min-height: 120px;
 }
+
 .chislo__gr svg {
   width: 100%;
   height: auto;
   overflow: visible;
 }
+
 .chislo__ime {
   font: 500 20px/1.2 var(--f-d);
   letter-spacing: -0.02em;
 }
+
 .chislo__ime + p {
   font-size: 14.5px;
   line-height: 1.5;

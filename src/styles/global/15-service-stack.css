@@ -1,9 +1,11 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 1155–1237). */
+
 /* ---------- услугите като карти, които се застъпват ---------- */
 .kupchina {
   display: grid;
   gap: 0;
 }
+
 .u-karta {
   position: sticky;
   top: 96px;
@@ -19,53 +21,65 @@
   transform-origin: 50% 0;
   will-change: transform;
 }
+
 .u-karta--tamno {
   background: var(--navy);
   color: #fff;
 }
+
 .u-karta--tamno .u-karta__ime {
   color: #fff;
 }
+
 .u-karta--nebe {
   background: var(--sky);
   color: var(--navy);
 }
+
 .u-karta__tekst {
   display: flex;
   flex-direction: column;
   gap: 18px;
   padding: clamp(28px, 3.4vw, 52px);
 }
+
 .u-karta__nomer {
   font: 600 13px/1 var(--f-t);
   letter-spacing: 0.08em;
   opacity: 0.7;
 }
+
 /* card title may be an h2 or h3 (ServiceStackCards headingLevel) */
 .u-karta .u-karta__ime {
   font-size: clamp(28px, 3vw, 44px);
 }
+
 .u-karta__tekst > p {
   font-size: 16.5px;
   line-height: 1.6;
   opacity: 0.86;
   max-width: 440px;
 }
+
 .u-karta .chip {
   background: rgb(36 52 92/0.07);
   color: inherit;
 }
+
 .u-karta--tamno .chip {
   background: rgb(255 255 255/0.1);
 }
+
 .u-karta--nebe .chip {
   background: rgb(255 255 255/0.4);
 }
+
 .u-karta__tekst .vrazka {
   margin-top: auto;
   align-self: flex-start;
   color: inherit;
 }
+
 .u-karta__kadar {
   position: relative;
   margin: 10px;
@@ -73,12 +87,21 @@
   overflow: hidden;
   background: var(--paper);
 }
+
 .u-karta__kadar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 1.2s var(--izh);
 }
+
 .u-karta:hover .u-karta__kadar img {
   transform: scale(1.03);
+}
+
+/* FIX G-09: on the sky card the dimmed navy text failed contrast (paragraph 3.79:1 at 86% opacity,
+   13px number 2.89:1 at 70%); full-opacity navy on sky is 4.77:1. The other cards are unchanged. */
+.u-karta--nebe .u-karta__nomer,
+.u-karta--nebe .u-karta__tekst > p {
+  opacity: 1;
 }

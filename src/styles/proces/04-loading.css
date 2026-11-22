@@ -1,4 +1,5 @@
 /* Ported verbatim from the original /assets/css/proces.css (lines 362–509). */
+
 /* зареждането */
 .pr-zarezhda {
   position: fixed;
@@ -14,20 +15,24 @@
     opacity 0.8s var(--izh),
     visibility 0.8s;
 }
+
 .pr-zarezhda.gotovo {
   opacity: 0;
   visibility: hidden;
 }
+
 .pr-zarezhda svg {
   width: 110px;
   height: 110px;
   transform: rotate(-90deg);
 }
+
 .pr-zarezhda__fon {
   fill: none;
   stroke: var(--line-2);
   stroke-width: 5;
 }
+
 .pr-zarezhda__dag {
   fill: none;
   stroke: var(--sky);
@@ -35,17 +40,21 @@
   stroke-linecap: round;
   stroke-dasharray: 28 72;
 }
+
 .pr-zarezhda svg {
   animation: zar 1.1s linear infinite;
 }
+
 @keyframes zar {
   from {
     transform: rotate(-90deg);
   }
+
   to {
     transform: rotate(270deg);
   }
 }
+
 .pr-zarezhda span {
   font: 600 14px/1 var(--f-t);
   color: var(--ink-2);
@@ -56,38 +65,45 @@
   position: relative;
   z-index: 3;
 }
+
 .bez-3d .pr-platno {
-  background: url(/assets/img/uslugi/u-tsyalosten-2048.webp) center/contain
-    no-repeat;
+  background: url('/assets/img/uslugi/u-tsyalosten-2048.webp') center/contain no-repeat;
 }
 
 @media (max-width: 1180px) {
   .pr-nav a {
     padding: 8px 4px 7px;
   }
+
   .pr-nav a b {
     font-size: 10px;
     letter-spacing: -0.01em;
   }
 }
+
 @media (max-width: 980px) {
   .pr-nav a b {
     font-size: 11.5px;
   }
+
   .pr-nav a {
     min-width: 100px !important;
     padding: 8px;
   }
+
   .pr-vavod {
     align-items: flex-start;
     padding-top: 110px;
   }
+
   .pr-h1 {
     font-size: clamp(42px, 12vw, 72px);
   }
+
   .pr-st {
     min-height: 120vh;
   }
+
   .pr-st__karta {
     top: auto;
     bottom: 96px;
@@ -95,28 +111,35 @@
     margin-top: 55vh;
     width: 100%;
   }
+
   .pr-golyamo {
     top: 84px;
     right: 16px;
   }
+
   .pr-golyamo b {
     font-size: 56px;
   }
+
   .pr-golyamo small {
     font-size: 12px;
     max-width: 150px;
   }
+
   .pr-nav ol {
     grid-template-columns: repeat(12, auto);
   }
+
   .pr-nav a {
     min-width: 92px;
   }
+
   .pr-kontroli {
     bottom: auto;
     top: 84px;
     left: 16px;
   }
+
   .pr-kontroli button span {
     display: none;
   }
@@ -129,15 +152,18 @@
     opacity 0.45s var(--izh),
     transform 0.6s var(--izh);
 }
+
 .pr-st.akt .pr-st__karta {
   opacity: 1;
   transform: none;
 }
+
 .pr-kontroli {
   left: auto;
   right: var(--pole);
   bottom: 96px;
 }
+
 @media (max-width: 980px) {
   .pr-kontroli {
     right: auto;

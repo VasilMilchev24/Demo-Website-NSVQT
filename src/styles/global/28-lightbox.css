@@ -1,4 +1,5 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 2033–2091). */
+
 /* увеличение */
 .uvel {
   position: fixed;
@@ -14,10 +15,12 @@
     opacity 0.3s,
     visibility 0.3s;
 }
+
 .uvel.otvoreno {
   opacity: 1;
   visibility: visible;
 }
+
 .uvel img {
   max-height: 88vh;
   max-width: 100%;
@@ -25,6 +28,7 @@
   border-radius: 12px;
   object-fit: contain;
 }
+
 .uvel button {
   width: 52px;
   height: 52px;
@@ -35,18 +39,22 @@
   place-items: center;
   margin: auto;
 }
+
 .uvel button:hover {
   background: rgb(255 255 255/0.2);
 }
+
 .uvel button svg {
   width: 20px;
   height: 20px;
 }
+
 .uvel__zatv {
   position: absolute;
   top: 18px;
   right: 18px;
 }
+
 .uvel__br {
   position: absolute;
   bottom: 22px;

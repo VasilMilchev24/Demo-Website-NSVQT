@@ -1,9 +1,11 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 1238–1368). */
+
 /* ---------- логото оживява: огромни думи и 3D предмет в средата ---------- */
 .ozhivyava {
   position: relative;
   height: 420vh;
 }
+
 .ozhivyava__sc {
   position: sticky;
   top: 0;
@@ -13,12 +15,14 @@
   background: var(--paper);
   transition: background-color 0.8s var(--izh);
 }
+
 .ozhivyava__dumi {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
 }
+
 .ozh-ekran {
   position: absolute;
   inset: 0;
@@ -34,10 +38,12 @@
     opacity 0.5s,
     visibility 0.5s;
 }
+
 .ozh-ekran.akt {
   opacity: 1;
   visibility: visible;
 }
+
 .ozh-duma {
   font: 600 clamp(80px, 17.5vw, 300px)/0.86 var(--f-d);
   letter-spacing: -0.06em;
@@ -46,16 +52,20 @@
   text-align: center;
   will-change: transform;
 }
+
 .ozh-duma .b {
   display: inline-block;
   will-change: transform, opacity;
 }
+
 .ozh-ekran--tamno .ozh-duma {
   color: #fff;
 }
+
 .ozh-ekran--nebe .ozh-duma {
   color: var(--navy);
 }
+
 .ozh-info {
   position: absolute;
   left: var(--pole);
@@ -68,43 +78,52 @@
   max-width: var(--shir);
   margin: auto;
 }
+
 .ozh-info__n {
   font: 600 54px/1 var(--f-d);
   letter-spacing: -0.05em;
   color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
+
 .ozh-info__n small {
   font-size: 15px;
   letter-spacing: 0;
+
   /* FIX G-09: 0.6 gave 3.92:1; 0.7 gives 5.19:1. */
   opacity: 0.7;
   margin-left: 6px;
 }
+
 .ozh-info h3 {
   font-size: clamp(20px, 1.8vw, 26px);
   margin-bottom: 8px;
 }
+
 .ozh-info p {
   max-width: 520px;
   font-size: 15.5px;
   line-height: 1.55;
   color: var(--ink-2);
 }
+
 .ozhivyava__platno {
   position: absolute;
   inset: 0;
   z-index: 2;
   pointer-events: none;
 }
+
 .ozhivyava__platno canvas {
   width: 100% !important;
   height: 100% !important;
 }
+
 .ozh-tamno .ozh-info__n,
 .ozh-tamno .ozh-info h3 {
   color: #fff;
 }
+
 .ozh-tamno .ozh-info p {
   color: color-mix(in oklch, #fff 72%, var(--navy));
 }
@@ -116,10 +135,12 @@
   color: var(--navy);
   opacity: 1;
 }
+
 .ozh-tochki {
   display: flex;
   gap: 8px;
 }
+
 .ozh-tochki i {
   width: 34px;
   height: 4px;
@@ -128,6 +149,7 @@
   overflow: hidden;
   position: relative;
 }
+
 .ozh-tochki i b {
   position: absolute;
   inset: 0;
@@ -135,6 +157,7 @@
   transform-origin: left;
   transform: scaleX(var(--p, 0));
 }
+
 .ozh-tamno .ozh-tochki i {
   background: rgb(255 255 255/0.2);
 }

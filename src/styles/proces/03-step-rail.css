@@ -1,4 +1,5 @@
 /* Ported verbatim from the original /assets/css/proces.css (lines 242–361). */
+
 /* лентата със стъпките долу */
 .pr-nav {
   position: fixed;
@@ -14,9 +15,11 @@
   opacity: 0;
   transition: opacity 0.6s;
 }
+
 .pr-gotovo .pr-nav {
   opacity: 1;
 }
+
 .pr-nav__lenta {
   position: absolute;
   left: 14px;
@@ -27,6 +30,7 @@
   overflow: hidden;
   background: var(--line);
 }
+
 .pr-nav__lenta i {
   position: absolute;
   inset: 0;
@@ -34,6 +38,7 @@
   transform-origin: left;
   transform: scaleX(var(--p, 0));
 }
+
 .pr-nav ol {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -44,9 +49,11 @@
   overflow-x: auto;
   scrollbar-width: none;
 }
+
 .pr-nav ol::-webkit-scrollbar {
   display: none;
 }
+
 .pr-nav a {
   display: flex;
   flex-direction: column;
@@ -58,10 +65,12 @@
     background 0.3s,
     color 0.3s;
 }
+
 .pr-nav a span {
   font: 700 11px/1 var(--f-t);
   color: var(--ink-3);
 }
+
 .pr-nav a b {
   font: 600 11.5px/1.2 var(--f-t);
   color: var(--ink-2);
@@ -69,15 +78,19 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .pr-nav a:hover {
   background: var(--paper);
 }
+
 .pr-nav a.akt {
   background: var(--navy);
 }
+
 .pr-nav a.akt span {
   color: var(--sky);
 }
+
 .pr-nav a.akt b {
   color: #fff;
 }
@@ -96,9 +109,11 @@
   opacity: 0;
   transition: opacity 0.6s;
 }
+
 .pr-gotovo .pr-kontroli {
   opacity: 1;
 }
+
 .pr-kontroli button {
   display: flex;
   align-items: center;
@@ -110,11 +125,13 @@
   font-size: 13px;
   color: var(--ink-2);
 }
+
 .pr-kontroli button svg {
   width: 16px;
   height: 16px;
 }
-.pr-kontroli button[aria-pressed="true"] {
+
+.pr-kontroli button[aria-pressed='true'] {
   background: var(--navy);
   color: #fff;
 }

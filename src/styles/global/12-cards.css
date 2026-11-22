@@ -1,4 +1,5 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 1002–1013). */
+
 /* ---------- карти ---------- */
 .karta {
   background: #fff;
@@ -6,6 +7,7 @@
   padding: clamp(24px, 2.6vw, 36px);
   box-shadow: var(--sen);
 }
+
 .sek--tamno .karta {
   background: var(--navy-2);
   box-shadow: none;

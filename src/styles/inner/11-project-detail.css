@@ -1,22 +1,27 @@
 /* Ported verbatim from the original /assets/css/vatreshni.css (lines 805–905). */
+
 /* обектите отвътре */
 .obekti-golemi {
   display: grid;
   gap: clamp(40px, 6vw, 96px);
 }
+
 .ob-golyam {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   gap: clamp(28px, 4vw, 64px);
   align-items: center;
 }
+
 .ob-golyam:nth-child(even) .ob-golyam__snimki {
   order: 2;
 }
+
 .ob-golyam__snimki {
   position: relative;
   aspect-ratio: 5/4;
 }
+
 .ob-golyam__k {
   position: absolute;
   border-radius: var(--r-l);
@@ -24,12 +29,14 @@
   box-shadow: var(--sen-2);
   background: var(--line);
 }
+
 .ob-golyam__k img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 1.2s var(--izh);
 }
+
 .ob-golyam__k--0 {
   left: 0;
   top: 0;
@@ -37,6 +44,7 @@
   height: 100%;
   z-index: 1;
 }
+
 .ob-golyam__k--1 {
   right: 0;
   top: 6%;
@@ -44,6 +52,7 @@
   height: 46%;
   z-index: 2;
 }
+
 .ob-golyam__k--2 {
   right: 6%;
   bottom: 0;
@@ -51,32 +60,40 @@
   height: 46%;
   z-index: 2;
 }
+
 .ob-golyam:hover .ob-golyam__k img {
   transform: scale(1.04);
 }
+
 .ob-golyam__t {
   display: flex;
   flex-direction: column;
   gap: 16px;
   align-items: flex-start;
 }
+
 .ob-golyam__t > .chip {
   margin-right: 6px;
 }
+
 .ob-golyam__t h2 {
   margin-top: 6px;
 }
+
 .ob-golyam__t p:not(.vodach) {
   color: var(--ink-2);
 }
+
 .ob-golyam__t .chip svg {
   margin-right: 4px;
 }
+
 .ob-fakti {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
+
 .ob-fakti div {
   padding: 18px;
   border-radius: var(--r-m);
@@ -86,16 +103,19 @@
   flex-direction: column;
   gap: 8px;
 }
+
 .ob-fakti small {
   font: 600 12px/1 var(--f-t);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-3);
 }
+
 .ob-fakti b {
   font: 500 18px/1.2 var(--f-d);
   letter-spacing: -0.02em;
 }
+
 .obekti--2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }

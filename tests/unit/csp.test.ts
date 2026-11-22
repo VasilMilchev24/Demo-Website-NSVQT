@@ -10,8 +10,11 @@ import { JS_CLASS_SCRIPT } from '../../src/config/inline-scripts';
 interface VercelConfig {
   headers: { source: string; headers: { key: string; value: string }[] }[];
 }
-const vercel = JSON.parse(readFileSync(new URL('../../vercel.json', import.meta.url), 'utf8')) as VercelConfig;
-const csp = vercel.headers.flatMap((h) => h.headers).find((h) => h.key === 'Content-Security-Policy')?.value ?? '';
+const vercel = JSON.parse(
+  readFileSync(new URL('../../vercel.json', import.meta.url), 'utf8'),
+) as VercelConfig;
+const csp =
+  vercel.headers.flatMap((h) => h.headers).find((h) => h.key === 'Content-Security-Policy')?.value ?? '';
 
 describe('Content-Security-Policy', () => {
   it('whitelists the hash of the inline js-class script', () => {

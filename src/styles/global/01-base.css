@@ -1,19 +1,23 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 1–122). */
+
 /* Ремонт Студио: стилът на целия сайт. Палитрата идва от двата цвята на логото (#24345C и #4CACD8). */
 [hidden] {
   display: none !important;
 }
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
+
 :root {
   --navy: #24345c;
   --sky: #4cacd8;
   --paper: #f3f5f8;
   --white: #fff;
   --ink: color-mix(in oklch, var(--navy) 86%, black);
+
   /* FIX G-09 (WCAG 2.2 AA contrast, measured): the text tokens were too light for small text.
      ink-2: 66% → 76% (#64718f → #505f80; was 4.47:1 on paper, now ≥4.98:1 on paper/white/sky-soft).
      ink-3: 44% → 72% (#919bb2 → #586686; was 2.55:1, now ≥4.7:1). Hierarchy ink > ink-2 > ink-3 kept.
@@ -25,13 +29,14 @@
   --line-2: color-mix(in oklch, var(--navy) 20%, var(--paper));
   --sky-soft: color-mix(in oklch, var(--sky) 15%, var(--paper));
   --sky-mid: color-mix(in oklch, var(--sky) 42%, var(--paper));
+
   /* FIX G-09: sky-deep is only used as text colour; 72% → 50% sky (#4288b6 → ≈#3a6c9b, ≥4.5:1). */
   --sky-deep: color-mix(in oklch, var(--sky) 50%, var(--navy));
   --navy-deep: color-mix(in oklch, var(--navy) 74%, black);
   --navy-2: color-mix(in oklch, var(--navy) 88%, white);
   --navy-line: color-mix(in oklch, var(--navy) 70%, white);
-  --f-d: "Unbounded", system-ui, sans-serif;
-  --f-t: "Manrope", system-ui, sans-serif;
+  --f-d: 'Unbounded', system-ui, sans-serif;
+  --f-t: 'Manrope', system-ui, sans-serif;
   --pole: clamp(16px, 4.2vw, 48px);
   --shir: 1240px;
   --sek: clamp(88px, 12vw, 184px);
@@ -43,6 +48,7 @@
   --sen-2: 0 2px 4px rgb(20 30 60/0.06), 0 24px 60px -24px rgb(20 30 60/0.28);
   --izh: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
+
 /* FIX G-12: the original forced `-webkit-locale: "ru"` and disabled `locl` on a lang="bg" site,
    which suppresses Bulgarian Cyrillic letterforms. Both removed; the browser follows lang="bg". */
 html {
@@ -50,6 +56,7 @@ html {
   text-size-adjust: 100%;
   scroll-padding-top: 110px;
 }
+
 body {
   margin: 0;
   background: var(--paper);
@@ -59,8 +66,9 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
 }
+
 img,
 svg,
 video,
@@ -68,13 +76,16 @@ canvas {
   display: block;
   max-width: 100%;
 }
+
 img {
   height: auto;
 }
+
 a {
   color: inherit;
   text-decoration: none;
 }
+
 button {
   font: inherit;
   color: inherit;
@@ -83,12 +94,14 @@ button {
   padding: 0;
   cursor: pointer;
 }
+
 input,
 textarea,
 select {
   font: inherit;
   color: inherit;
 }
+
 h1,
 h2,
 h3,
@@ -101,23 +114,28 @@ h4 {
   color: var(--ink);
   text-wrap: balance;
 }
+
 p {
   margin: 0;
 }
+
 ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
+
 ::selection {
   background: var(--sky);
   color: #fff;
 }
+
 :focus-visible {
   outline: 2px solid var(--sky);
   outline-offset: 3px;
   border-radius: 6px;
 }
+
 .skrito {
   position: absolute !important;
   width: 1px;

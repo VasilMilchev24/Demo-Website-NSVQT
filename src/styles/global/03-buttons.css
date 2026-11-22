@@ -1,9 +1,11 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 238–401). */
+
 /* ---------- бутони ---------- */
 .btn {
   --bg: var(--navy);
   --fg: #fff;
   --krag: var(--sky);
+
   display: inline-flex;
   align-items: center;
   gap: 14px;
@@ -22,6 +24,7 @@
     transform 0.35s var(--izh),
     box-shadow 0.35s var(--izh);
 }
+
 .btn .krag {
   width: 40px;
   height: 40px;
@@ -33,12 +36,14 @@
   flex: none;
   transition: transform 0.45s var(--izh);
 }
+
 .btn .krag svg {
   width: 18px;
   height: 18px;
 }
+
 .btn::before {
-  content: "";
+  content: '';
   position: absolute;
   z-index: -1;
   right: 8px;
@@ -51,72 +56,92 @@
   transform: scale(0);
   transition: transform 0.55s var(--izh);
 }
+
 .btn:hover::before {
   transform: scale(9);
 }
+
 .btn:hover {
   color: var(--navy);
 }
+
 .btn:hover .krag {
   transform: rotate(-45deg);
 }
+
 .btn:active {
   transform: scale(0.97);
 }
+
 .btn--nebe {
   --bg: var(--sky);
   --fg: var(--navy);
   --krag: var(--navy);
 }
+
 .btn--nebe .krag {
   color: #fff;
 }
+
 .btn--nebe:hover {
   color: #fff;
 }
+
 .btn--byal {
   --bg: #fff;
   --fg: var(--navy);
   --krag: var(--sky);
 }
+
 .btn--linia {
   --bg: transparent;
   --fg: var(--ink);
+
   box-shadow: inset 0 0 0 1.5px var(--line-2);
   padding: 0 24px;
 }
+
 .btn--linia::before {
   display: none;
 }
+
 .btn--linia:hover {
   box-shadow: inset 0 0 0 1.5px var(--navy);
   color: var(--ink);
 }
+
 .sek--tamno .btn--linia {
   --fg: #fff;
+
   box-shadow: inset 0 0 0 1.5px rgb(255 255 255/0.28);
 }
+
 .sek--tamno .btn--linia:hover {
   box-shadow: inset 0 0 0 1.5px #fff;
   color: #fff;
 }
+
 .btn--tel {
   padding: 0 22px 0 8px;
   gap: 12px;
 }
+
 .btn--tel .krag {
   order: -1;
 }
+
 .btn--tel::before {
   right: auto;
   left: 8px;
 }
+
 .btn-red {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
 }
+
 .vrazka {
   display: inline-flex;
   align-items: center;
@@ -125,27 +150,31 @@
   font-size: 15.5px;
   color: var(--ink);
   padding-block: 6px;
-  background: linear-gradient(currentColor, currentColor) 0 100%/100% 1.5px
-    no-repeat;
+  background: linear-gradient(currentcolor, currentcolor) 0 100%/100% 1.5px no-repeat;
   transition:
     background-size 0.4s var(--izh),
     gap 0.3s;
 }
+
 .vrazka svg {
   width: 16px;
   height: 16px;
   transition: transform 0.3s var(--izh);
 }
+
 .vrazka:hover {
   background-size: 0 1.5px;
   background-position: 100% 100%;
 }
+
 .vrazka:hover svg {
   transform: translateX(4px);
 }
+
 .sek--tamno .vrazka {
   color: #fff;
 }
+
 .chip {
   display: inline-flex;
   align-items: center;
@@ -157,6 +186,7 @@
   font: 600 13.5px/1 var(--f-t);
   white-space: nowrap;
 }
+
 .chipove {
   display: flex;
   flex-wrap: wrap;

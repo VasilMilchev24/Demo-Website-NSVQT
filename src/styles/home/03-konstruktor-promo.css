@@ -1,4 +1,5 @@
 /* Ported verbatim from the original /assets/css/nachalo.css (lines 291–456). */
+
 /* промото на конструктора */
 .konstr-promo {
   display: grid;
@@ -6,12 +7,14 @@
   gap: 40px 72px;
   align-items: center;
 }
+
 .konstr-promo__t {
   display: flex;
   flex-direction: column;
   gap: 22px;
   align-items: flex-start;
 }
+
 .konstr-promo__vizual {
   position: relative;
   display: flex;
@@ -21,6 +24,7 @@
   border-radius: var(--r-xl);
   background: var(--navy-2);
 }
+
 .konstr-chip {
   display: inline-flex;
   align-items: center;
@@ -29,6 +33,7 @@
   padding: 0 18px 0 8px;
   border-radius: 999px;
   background: rgb(255 255 255/0.06);
+
   /* FIX G-09: 70% white was 3.97:1 on the chip; 78% = 4.75:1. */
   color: color-mix(in oklch, #fff 78%, var(--navy));
   font-weight: 700;
@@ -37,6 +42,7 @@
     background 0.5s,
     color 0.5s;
 }
+
 .konstr-chip svg {
   width: 30px;
   height: 30px;
@@ -46,14 +52,17 @@
   color: transparent;
   transition: all 0.5s;
 }
+
 .konstr-chip.vkl {
   background: var(--sky);
   color: var(--navy);
 }
+
 .konstr-chip.vkl svg {
   background: var(--navy);
   color: var(--sky);
 }
+
 .konstr-cena {
   width: 100%;
   margin-top: 14px;
@@ -65,11 +74,13 @@
   flex-direction: column;
   gap: 6px;
 }
+
 .konstr-cena small {
   font-size: 12.5px;
   color: var(--ink-3);
   font-weight: 600;
 }
+
 .konstr-cena b {
   font: 600 clamp(26px, 2.6vw, 38px)/1.05 var(--f-d);
   letter-spacing: -0.04em;

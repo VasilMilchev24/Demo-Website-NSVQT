@@ -1,4 +1,5 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 1730–1849). */
+
 /* ---------- страниците отвътре ---------- */
 .str-glava {
   padding-top: clamp(132px, 15vw, 190px);
@@ -6,6 +7,7 @@
   position: relative;
   overflow: clip;
 }
+
 .trohi {
   display: flex;
   flex-wrap: wrap;
@@ -15,28 +17,35 @@
   color: var(--ink-3);
   margin-bottom: 28px;
 }
+
 .trohi a:hover {
   color: var(--ink);
 }
+
 .trohi svg {
   width: 12px;
   height: 12px;
 }
+
 .str-glava__red {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 40px 64px;
   align-items: end;
 }
+
 .str-glava h1 {
   font-size: clamp(36px, 5.2vw, 80px);
 }
+
 .str-glava h1.dalgo {
   font-size: clamp(26px, 3.9vw, 60px);
 }
+
 .str-glava .vodach {
   max-width: 560px;
 }
+
 .str-glava__kadar {
   margin-top: clamp(40px, 5vw, 72px);
   border-radius: var(--r-xl);
@@ -44,39 +53,47 @@
   background: #fff;
   aspect-ratio: 16/8;
 }
+
 .str-glava__kadar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .tekst-kol {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
   gap: 40px 72px;
   align-items: start;
 }
+
 .tekst-kol__lyavo {
   position: sticky;
   top: 120px;
 }
+
 .proza {
   font-size: 18px;
   line-height: 1.7;
   color: var(--ink);
 }
+
 .proza > * + * {
   margin-top: 1.1em;
 }
+
 .proza h2 {
   font-size: clamp(26px, 2.4vw, 34px);
   margin-top: 1.8em;
 }
+
 .proza h3 {
   font-size: clamp(20px, 1.6vw, 24px);
   letter-spacing: -0.02em;
   line-height: 1.25;
   margin-top: 1.6em;
 }
+
 /* FIX T-08: where the original went from the page H1 straight to H3, the copy uses H2 elements styled
    exactly like the original H3s: all subheadings of a `.proza--podzaglavia` block, or one `h2.kato-h3`.
    Specificity 0,2,1 so the page styles' mobile `.proza h2` rule (loaded later) can't override it. */
@@ -87,22 +104,26 @@
   line-height: 1.25;
   margin-top: 1.6em;
 }
+
 @media (max-width: 640px) {
   .proza.proza--podzaglavia h2,
   .proza h2.kato-h3 {
     font-size: clamp(16px, 4.6vw, 20px);
   }
 }
+
 .proza ul {
   display: grid;
   gap: 10px;
 }
+
 .proza ul li {
   position: relative;
   padding-left: 30px;
 }
+
 .proza ul li::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 4px;
   top: 0.62em;
@@ -111,14 +132,17 @@
   border-radius: 4px;
   background: var(--sky-mid);
 }
+
 .proza a {
   color: var(--sky-deep);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
 .proza strong {
   font-weight: 700;
 }
+
 .spisak-otm li {
   display: flex;
   gap: 14px;
@@ -127,6 +151,7 @@
   border-bottom: 1px solid var(--line);
   font-size: 16.5px;
 }
+
 .spisak-otm li svg {
   flex: none;
   width: 22px;

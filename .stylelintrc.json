@@ -5,7 +5,14 @@
     "custom-property-pattern": null,
     "keyframes-name-pattern": null,
     "no-descending-specificity": null,
-    "declaration-block-no-redundant-longhand-properties": null
+    "declaration-block-no-redundant-longhand-properties": null,
+    "selector-not-notation": null,
+    "media-feature-range-notation": null,
+    "property-no-vendor-prefix": null,
+    "property-no-deprecated": null,
+    "no-duplicate-selectors": null,
+    "alpha-value-notation": null,
+    "import-notation": null
   },
   "overrides": [{ "files": ["**/*.astro"], "customSyntax": "postcss-html" }]
 }

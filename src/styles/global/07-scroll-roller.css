@@ -1,4 +1,5 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 780–835). */
+
 /* ---------- десният ръб: валякът боядисва колко сте прочели ---------- */
 .ryb {
   position: fixed;
@@ -9,6 +10,7 @@
   width: 22px;
   pointer-events: none;
 }
+
 .ryb__pista {
   position: absolute;
   left: 9px;
@@ -18,6 +20,7 @@
   border-radius: 4px;
   background: var(--line);
 }
+
 .ryb__boya {
   position: absolute;
   left: 5px;
@@ -29,6 +32,7 @@
   transform-origin: top;
   opacity: 0.9;
 }
+
 .ryb__valyak {
   position: absolute;
   left: -4px;
@@ -40,15 +44,18 @@
   cursor: pointer;
   filter: drop-shadow(0 3px 6px rgb(20 30 60/0.22));
 }
+
 .ryb__valyak svg {
   width: 30px;
   height: 46px;
   overflow: visible;
 }
+
 .ryb__valyak .valec {
   transform-box: fill-box;
   transform-origin: center;
 }
+
 @media (hover: none), (max-width: 1100px) {
   .ryb {
     display: none;

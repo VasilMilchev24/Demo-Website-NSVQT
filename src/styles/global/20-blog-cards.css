@@ -1,30 +1,36 @@
 /* Ported verbatim from the original /assets/css/sait.css (lines 1546–1591). */
+
 /* ---------- блогът ---------- */
 .blog-red {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
+
 .statiya-k {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
+
 .statiya-k__kadar {
   aspect-ratio: 4/3;
   border-radius: var(--r-l);
   overflow: hidden;
   background: var(--line);
 }
+
 .statiya-k__kadar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 1s var(--izh);
 }
+
 .statiya-k:hover .statiya-k__kadar img {
   transform: scale(1.04);
 }
+
 .statiya-k__meta {
   display: flex;
   gap: 12px;
@@ -33,12 +39,14 @@
   color: var(--ink-3);
   letter-spacing: 0.02em;
 }
+
 .statiya-k__meta .chip {
   height: 26px;
   font-size: 12px;
   background: var(--sky-soft);
   color: var(--navy);
 }
+
 .statiya-k h3 {
   font-size: clamp(19px, 1.5vw, 22px);
   line-height: 1.25;

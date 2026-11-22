@@ -1,10 +1,12 @@
 /* Ported verbatim from the original /assets/css/vatreshni.css (lines 585–770). */
+
 /* чертежите в „За нас“ */
 .cht-karti {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
+
 .cht-karta {
   display: flex;
   flex-direction: column;
@@ -13,24 +15,30 @@
   border-radius: var(--r-xl);
   min-height: 520px;
 }
+
 .cht-karta--svetla {
   background: #fff;
   color: var(--ink);
 }
+
 .sek--tamno .cht-karta--svetla h3 {
   color: var(--ink);
 }
+
 .cht-karta--tamna {
   background: var(--navy-2);
   color: #fff;
 }
+
 .cht-karta--tamna h3 {
   color: #fff;
 }
+
 .cht-karta p {
   opacity: 0.82;
   font-size: 16px;
 }
+
 .cht-karta__n {
   font: 600 14px/1 var(--f-d);
   color: var(--sky);
@@ -44,6 +52,7 @@
 .cht-karta--svetla .cht-karta__n {
   color: var(--sky-deep);
 }
+
 .cht-karta__chertezh {
   flex: 1;
   display: grid;
@@ -56,20 +65,24 @@
     linear-gradient(90deg, var(--grid, rgb(36 52 92/0.06)) 1px, transparent 1px);
   background-size: 22px 22px;
 }
+
 .cht-karta--tamna .cht-karta__chertezh {
   --grid: rgb(255 255 255/0.06);
 }
+
 .cht {
   width: 100%;
   max-width: 360px;
   overflow: visible;
 }
+
 .cht-stena {
   fill: none;
-  stroke: currentColor;
+  stroke: currentcolor;
   stroke-opacity: 0.25;
   stroke-width: 1.5;
 }
+
 .cht-l {
   fill: none;
   stroke-width: 3;
@@ -78,45 +91,57 @@
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
 }
+
 .vleze .cht-l {
   animation: chert 2.2s var(--izh) forwards;
 }
+
 @keyframes chert {
   to {
     stroke-dashoffset: 0;
   }
 }
+
 .cht-l--voda {
   stroke: #4cacd8;
 }
+
 .cht-l--topla {
   stroke: #e0785a;
   animation-delay: 0.25s !important;
 }
+
 .cht-l--tok {
   stroke: #f2b84b;
   animation-delay: 0.5s !important;
 }
+
 .cht-t {
   fill: #4cacd8;
 }
+
 .cht-t2 {
   fill: #e0785a;
 }
+
 .cht-k {
   fill: #fff;
-  stroke: currentColor;
+  stroke: currentcolor;
   stroke-width: 1.5;
 }
+
 .cht-karta--svetla .cht-l--tok {
   stroke: #d69a2b;
 }
+
 .cht-pod {
   fill: color-mix(in oklch, var(--navy) 30%, white);
 }
+
 .cht-karta--tamna .cht-pod {
   fill: rgb(255 255 255/0.18);
 }
+
 .cht-zamazka {
   fill: #9ba6b8;
   transform-box: fill-box;
@@ -124,37 +149,45 @@
   transform: scaleX(0);
   transition: transform 1.6s 0.3s var(--izh);
 }
+
 .vleze .cht-zamazka {
   transform: none;
 }
+
 .cht-niv-l {
   stroke: #4cacd8;
   stroke-width: 2;
 }
+
 .cht-nivelir {
   fill: #f2b84b;
 }
+
 .cht-mehurche {
   fill: #fff;
   animation: mehur 3s ease-in-out infinite;
 }
+
 @keyframes mehur {
   0%,
   100% {
     transform: translateX(-14px);
   }
+
   50% {
     transform: translateX(10px);
   }
 }
+
 .cht-gips {
-  stroke: currentColor;
+  stroke: currentcolor;
   stroke-opacity: 0.5;
   stroke-width: 2;
 }
+
 .cht-pl {
   fill: #fff;
-  stroke: currentColor;
+  stroke: currentcolor;
   stroke-opacity: 0.2;
   opacity: 0;
   transform: translateY(-10px);
@@ -162,17 +195,21 @@
     opacity 0.4s calc(var(--i) * 0.05s),
     transform 0.4s calc(var(--i) * 0.05s) var(--izh);
 }
+
 .cht-karta--svetla .cht-pl {
   fill: var(--sky-soft);
 }
+
 .vleze .cht-pl {
   opacity: 1;
   transform: none;
 }
+
 .cht-hidro {
   stroke: #4cacd8;
   stroke-width: 6;
 }
+
 .cht-vrata {
   fill: #c8a27a;
   fill-opacity: 0.85;
@@ -181,15 +218,18 @@
   transform: scaleX(0);
   transition: transform 1.4s 0.5s var(--izh);
 }
+
 .vleze .cht-vrata {
   transform: none;
 }
+
 .cht-kota {
   stroke: #4cacd8;
   stroke-width: 1.5;
 }
+
 .cht-txt {
   font: 700 11px var(--f-t);
-  fill: currentColor;
+  fill: currentcolor;
   opacity: 0.7;
 }

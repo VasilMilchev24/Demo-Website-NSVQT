@@ -1,9 +1,11 @@
 /* Ported verbatim from the original /assets/css/vatreshni.css (lines 185–255). */
+
 /* как работим: големите стъпки */
 .stapki-golemi {
   display: grid;
   gap: 18px;
 }
+
 .st-golyama {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -16,13 +18,16 @@
     transform 0.6s var(--izh),
     box-shadow 0.6s;
 }
+
 .st-golyama:nth-child(even) .st-golyama__v {
   order: -1;
 }
+
 .st-golyama:hover {
   transform: translateY(-4px);
   box-shadow: var(--sen-2);
 }
+
 .st-golyama__t {
   display: flex;
   flex-direction: column;
@@ -31,16 +36,20 @@
   justify-content: center;
   align-items: flex-start;
 }
+
 .st-golyama__t p {
   color: var(--ink-2);
   max-width: 460px;
 }
+
 .st-golyama__n {
   font: 600 clamp(56px, 6vw, 88px)/0.8 var(--f-d);
   letter-spacing: -0.06em;
+
   /* FIX G-09: sky on white was 2.56:1 (large text needs 3:1); 80% sky / 20% navy = 3.43:1. */
   color: color-mix(in oklch, var(--sky) 80%, var(--navy));
 }
+
 .st-golyama__v {
   position: relative;
   min-height: 380px;
@@ -49,6 +58,7 @@
   border-radius: calc(var(--r-xl) - 10px);
   overflow: hidden;
 }
+
 .st-golyama__v img {
   position: absolute;
   inset: 0;
@@ -57,15 +67,18 @@
   object-fit: cover;
   transition: transform 1.4s var(--izh);
 }
+
 .st-golyama:hover .st-golyama__v img {
   transform: scale(1.04);
 }
+
 .st-golyama__v--gr {
   display: grid;
   place-items: center;
   padding: 24px;
   background: var(--sky-soft);
 }
+
 .st-golyama__v--gr .list-oferta,
 .st-golyama__v--gr .list-dogovor {
   box-shadow: var(--sen);
